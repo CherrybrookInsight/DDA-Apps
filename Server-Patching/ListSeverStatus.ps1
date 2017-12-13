@@ -1,21 +1,39 @@
 cls
 $LogFilePath = "C:\Users\dzhou\OneDrive - Dimension Data\Documents\GitHubRepo\DDA-Apps\Server-Patching\ServerCheckLog.txt"
-$ServerLit = "AUNDDPDAPT01", "AUNDDPDIIS01", "AUNDDPDIIS02", "AUNDDSSDBP01", "AUNDDSSDBP03", "AUNDDSSDWP01", "AUNDDSSISP01", "AUNDDSSISP02", "AUNDDVSSQL01"
+#$ServerLit = "AUNDDPDAPT01", "AUNDDPDIIS01", "AUNDDSSDBP01", "AUNDDSSDBP03", "AUNDDSSDWP01", "AUNDDSSISP01", "AUNDDSSISP02", "AUNDDVSSQL01", "AUNDDPDIIS02" 
+$WebServerLit = "AUNDDPDIIS01", "AUNDDPDIIS02" 
 $ServerLit | ft -AutoSize
 
 foreach ($S in $ServerLit)
 {	
 	$S | Write-Host -ForegroundColor green
-	if (gsv "*SQL*" -ComputerName $S)
+	$SQLComponents = gsv "*SQL*" -ComputerName $S
+	if ($SQLComponents)
 	{	
-	"Connecting to: "+$S | Write-Host -ForegroundColor green 
+	
+$SQLComponents | Sort-Object Status -Descending | ft -AutoSize
+		"Connecting to: "+$S | Write-Host -ForegroundColor green 
+		
 		$DBList = Invoke-Sqlcmd -serverinstance $S -Query "sp_helpdb"
 		$DBList | Out-File $LogFilePath -append -force
 		
 		$DBList | ft -AutoSize
+
+
 	}
+
 }
 
+foreach ($S1 in $WebServerLit)
+{
+		Invoke-Command  -ComputerName $S1 { "Connecting to: "+$S1; Import-Module WebAdministration; Get-ChildItem -path IIS:\Sites | ft PSPath, Name, State -AutoSize } | out-file "C:\Users\dzhou\OneDrive - Dimension Data\Documents\GitHubRepo\DDA-Apps\Server-Patching\WebSites.txt" -Append
+	
+		#Invoke-Command  -ComputerName AUNDDPDIIS02 { Import-Module WebAdministration; Get-ChildItem -path IIS:\Sites | ft -AutoSize } 
+		#Invoke-Command  -ComputerName AUNDDPDIIS01 { Import-Module WebAdministration; Get-ChildItem -path IIS:\Sites  | ft -AutoSize } 
+
+}
+
+Start-Process	"C:\Users\dzhou\OneDrive - Dimension Data\Documents\GitHubRepo\DDA-Apps\Server-Patching\WebSites.txt"
 Start-Process $LogFilePath
 
 <#
