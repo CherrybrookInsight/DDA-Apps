@@ -1,0 +1,21 @@
+﻿                                                                                                                                 as_at_date              is_broker_enabled name
+-------------------------------------------------------------------------------------------------------------------------------- ----------------------- ----------------- --------------------------------------------------------------------------------------------------------------------------------
+AUMCPSVPSQLAG02\SQLINST1                                                                                                         2017-11-22 17:26:10.837 0                 master
+AUMCPSVPSQLAG02\SQLINST1                                                                                                         2017-11-22 17:26:10.837 0                 model
+AUMCPSVPSQLAG02\SQLINST1                                                                                                         2017-11-22 17:26:10.837 0                 SSLDBA
+AUMCPSVPSQLAG02\SQLINST1                                                                                                         2017-11-22 17:26:10.837 0                 ContentStore
+AUMCPSVPSQLAG02\SQLINST1                                                                                                         2017-11-22 17:26:10.837 0                 SSLMDW
+AUMCPSVPSQLAG02\SQLINST1                                                                                                         2017-11-22 17:26:10.837 0                 DDAITAppMonitoring
+AUMCPSVPSQLAG02\SQLINST1                                                                                                         2017-11-22 17:26:10.837 1                 Changepoint_CPTEMPDB
+AUMCPSVPSQLAG02\SQLINST1                                                                                                         2017-11-22 17:26:10.837 1                 Changepoint_CPExtended
+AUMCPSVPSQLAG02\SQLINST1                                                                                                         2017-11-22 17:26:10.837 1                 SbManagementDB
+AUMCPSVPSQLAG02\SQLINST1                                                                                                         2017-11-22 17:26:10.837 1                 SbGatewayDatabase
+AUMCPSVPSQLAG02\SQLINST1                                                                                                         2017-11-22 17:26:10.837 1                 SBMessageContainer01
+AUMCPSVPSQLAG02\SQLINST1                                                                                                         2017-11-22 17:26:10.837 1                 SBMessageContainer02
+AUMCPSVPSQLAG02\SQLINST1                                                                                                         2017-11-22 17:26:10.837 1                 SBMessageContainer03
+AUMCPSVPSQLAG02\SQLINST1                                                                                                         2017-11-22 17:26:10.837 1                 Changepoint
+AUMCPSVPSQLAG02\SQLINST1                                                                                                         2017-11-22 17:26:10.837 1                 msdb
+AUMCPSVPSQLAG02\SQLINST1                                                                                                         2017-11-22 17:26:10.837 1                 tempdb
+
+(16 row(s) affected)
+

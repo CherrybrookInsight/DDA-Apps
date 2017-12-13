@@ -1,0 +1,15 @@
+DB migration to MCP - SQL cluster instance AUNDDPDSQC01, AUNDDPDSQC02 in production - K2 databases and components
+
+Hi Team,
+ 
+As you know IT is in the process to migrate on-premises server to MCP environment, K2 Dbs and components are in the scope of the server migration, can you please assist with the tasks as following?
+1. Review and confirm if K2 uses the database, SQL Services can migrate these databases to MCP environment if required;  
+3. Reconfigure K2 and components to connect to new MCP SQL environment; 
+ 
+In the project scope: Shared SQL instance AUNDDPDSQC01, AUNDDPDSQC02 in Production environment.
+
+Refer to DD application and DB list via the link to IT library:
+http://community.didata.com.au/sites/it/_layouts/xlviewer.aspx?id=/sites/it/Shared%20Documents/Application%20Services/SQL/SQL%20Cluster%20Consolidation%20Project/DB%20Migration/Copy%20of%20DDAU_ClusterDatabases-ExtractedFromEmailJon-Henri-DBs%20on%20physical%20cluster-Friday%206%20October%202017.xlsx&Source=http%3A%2F%2Fcommunity%2Edidata%2Ecom%2Eau%2Fsites%2Fit%2FShared%2520Documents%2FForms%2FAllItems%2Easpx%3FRootFolder%3D%252Fsites%252Fit%252FShared%2520Documents%252FApplication%2520Services%252FSQL%252FSQL%2520Cluster%2520Consolidation%2520Project%252FDB%2520Migration&DefaultItemOpen=1&DefaultItemOpen=1
+
+Link to MCP SQL environment document:
+http://community.didata.com.au/sites/it/Shared%20Documents/Application%20Services/SQL/MCP%20SQL%20Environment/MCP%20SQL%20Environment.docx

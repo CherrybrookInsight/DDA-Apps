@@ -1,0 +1,14 @@
+DB migration to MCP-SQL cluster instance AUNDDVSSQL01 in production - IPPhoneServices
+
+Hi Team, 
+
+As you know IT is in the process to migrate on-premises server to MCP environment, IPPhoneServices DB server is in the scope, can you please assist with the tasks as following? 
+1. Review and confirm if IPPhoneServices uses the database server. SQL Services can migrate application databases to MCP environment if required; 
+3. Reconfigure IPPhoneServices and components to connect to new MCP SQL environment; 
+
+Source SQL instance: Shared SQL instance AUNDDVSSQL01 in Production environments. 
+name					db_size		owner	dbid	created		status			compatibility_level
+IPPhoneServices	      3.00 MB	sa	39	Apr  2 2016	Status=ONLINE, Updateability=READ_WRITE, UserAccess=MULTI_USER, Recovery=FULL, Version=611, Collation=SQL_Latin1_General_CP1_CI_AS, SQLSortOrder=52, IsAutoCreateStatistics, IsAutoUpdateStatistics, IsFullTextEnabled	90
+
+Link to MCP SQL environment document: 
+http://community.didata.com.au/sites/it/Shared%20Documents/Application%20Services/SQL/MCP%20SQL%20Environment/MCP%20SQL%20Environment.docx

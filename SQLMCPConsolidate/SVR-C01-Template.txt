@@ -1,0 +1,22 @@
+DB migration to MCP - SQL cluster instance AUNDDPDSQC01 in production - Mcafee
+
+Hi Team,
+ 
+As you know IT is in the process to migrate on-premises server to MCP environment, Mcafee SQL backend is in the scope of the server migration, can you please assist with the Mcafee related tasks as following?
+1. Review new MCP SQL environment to host Mcafee SQL components, please refer to the link attached below to IT portal for details of MCP SQL server; 
+2. Configure Mcafee to connect to new MCP SQL environment, SQL Services and TeamWest can assist to Mcafee database migration;
+ 
+Link to MCP SQL environment document:
+http://community.didata.com.au/sites/it/Shared%20Documents/Application%20Services/SQL/MCP%20SQL%20Environment/MCP%20SQL%20Environment.docx
+ 
+Source SQL instance: 
+Shared SQL in Production environments.
+server_name : AUNDDPDSQC01\AUNDDPDSQC01
+as_at_date : 16/08/2017 3:53:17 PM
+sql/os : Microsoft SQL Server 2012 (SP3) (KB3072779) - 11.0.6020.0 (X64) 
+Oct 20 2015 15:36:27 
+Copyright (c) Microsoft Corporation
+Enterprise Edition (64-bit) on Windows NT 6.1 <X64> (Build 7601: Service Pack 1)
+ 
+All DB from AUNDDPDSQC01:
+http://community.didata.com.au/sites/it/Shared Documents/Application Services/SQL/SQL Cluster Consolidation Project/DB Migration/SQL Migration- PROD - AUNDDPDSQC01.xlsx

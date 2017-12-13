@@ -1,0 +1,36 @@
+DB migration to MCP - SQL cluster instance AUNDDPDSQC01 in production - Lync databases and SQL components
+
+Hi Team,
+ 
+As you know IT is in the process to migrate on-premises server to MCP environment, Lync are in the scope of the server migration, can you please assist with the tasks as following?
+1. Review and confirm if Lync still uses these databases;
+2. SQL Services can migrate these databases to MCP environment if required;  
+2. Reconfigure Lync and components to connect to new MCP SQL environment; 
+ 
+Link to MCP SQL environment document:
+http://community.didata.com.au/sites/it/Shared%20Documents/Application%20Services/SQL/MCP%20SQL%20Environment/MCP%20SQL%20Environment.docx
+ 
+Source SQL instance: Shared SQL instance in Production environments.
+server_name : AUNDDPDSQC01
+Databases:
+rtc                                                                                      1536.00 MB sa               108 Sep 19 2012 Status=ONLINE, Updateability=READ_WRITE, UserAccess=MULTI_USER, Recovery=SIMPLE, Version=661, Collat...
+rtcab                                                                                    3200.00 MB sa               109 Sep 19 2012 Status=ONLINE, Updateability=READ_WRITE, UserAccess=MULTI_USER, Recovery=SIMPLE, Version=661, Collat...
+rtcab1                                                                                   2239.81 MB sa               110 Sep 19 2012 Status=ONLINE, Updateability=READ_WRITE, UserAccess=MULTI_USER, Recovery=SIMPLE, Version=661, Collat...
+rgsconfig                                                                                  64.00 MB sa               111 Sep 19 2012 Status=ONLINE, Updateability=READ_WRITE, UserAccess=MULTI_USER, Recovery=SIMPLE, Version=661, Collat...
+rgsdyn                                                                                     64.00 MB sa               112 Sep 19 2012 Status=ONLINE, Updateability=READ_WRITE, UserAccess=MULTI_USER, Recovery=SIMPLE, Version=661, Collat...
+cpsdyn                                                                                     48.00 MB sa               113 Sep 19 2012 Status=ONLINE, Updateability=READ_WRITE, UserAccess=MULTI_USER, Recovery=SIMPLE, Version=661, Collat...
+LcsCDR                                                                                  22144.00 MB sa               114 Sep 19 2012 Status=ONLINE, Updateability=READ_WRITE, UserAccess=MULTI_USER, Recovery=SIMPLE, Version=661, Collat...
+LcsLog                                                                                  47232.00 MB sa               115 Sep 19 2012 Status=ONLINE, Updateability=READ_WRITE, UserAccess=MULTI_USER, Recovery=SIMPLE, Version=661, Collat...
+
+ 
+All DB from AUNDDPDSQC01:
+http://community.didata.com.au/sites/it/Shared Documents/Application Services/SQL/SQL Cluster Consolidation Project/DB Migration/SQL Migration- PROD - AUNDDPDSQC01.xlsx
+
+
+Hi David, 
+
+It appeared the Lync databases were created around 2013, no active connection to it at the time checking from SQL sessions today, possible Lync has been reconfigured to use other server(s), over to you to look into it and confirm assuming you look after AD? 
+
+Give me a yell if anything does not make sense. 
+
+Daniel

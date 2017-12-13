@@ -1,0 +1,739 @@
+DECLARE @DB_Users TABLE (DBName sysname, UserName sysname, LoginType sysname
+, AssociatedRole varchar(max), create_date datetime, modify_date datetime)
+
+INSERT @DB_Users
+EXEC sp_MSforeachdb
+'use [?]
+SELECT ''?'' AS DB_Name,
+case prin.name when ''dbo'' then prin.name + '' (''
+    + (select SUSER_SNAME(owner_sid) from master.sys.databases where name =''?'') + '')''
+    else prin.name end AS UserName,
+    prin.type_desc AS LoginType,
+    isnull(USER_NAME(mem.role_principal_id),'''') AS AssociatedRole, 
+    create_date, modify_date
+FROM sys.database_principals prin
+LEFT OUTER JOIN sys.database_role_members mem
+    ON prin.principal_id=mem.member_principal_id
+WHERE prin.sid IS NOT NULL and prin.sid NOT IN (0x00)
+and prin.is_fixed_role <> 1 AND prin.name NOT LIKE ''##%'''
+
+SELECT dbname, username, logintype, create_date, modify_date,
+    STUFF((SELECT ',' + CONVERT(VARCHAR(500), associatedrole)
+        FROM @DB_Users user2
+        WHERE user1.DBName=user2.DBName AND user1.UserName=user2.UserName
+        FOR XML PATH('')
+    ),1,1,'') AS Permissions_user
+FROM @DB_Users user1
+--WHERE 
+--user1.UserName = N'<put your login-name here!>'
+GROUP BY dbname, username, logintype, create_date, modify_date
+ORDER BY DBName, username
+
+dbname	username	logintype	create_date	modify_date	Permissions_user
+AspNetDb_FBA	aspnet_Membership_BasicAccess	DATABASE_ROLE	2009-05-08 09:19:03.323	2009-05-08 09:19:03.323	
+AspNetDb_FBA	aspnet_Membership_FullAccess	DATABASE_ROLE	2009-05-08 09:19:03.310	2009-05-08 09:19:03.310	aspnet_Membership_BasicAccess,aspnet_Membership_ReportingAccess
+AspNetDb_FBA	aspnet_Membership_ReportingAccess	DATABASE_ROLE	2009-05-08 09:19:03.323	2009-05-08 09:19:03.323	
+AspNetDb_FBA	aspnet_Personalization_BasicAccess	DATABASE_ROLE	2009-05-08 09:19:04.013	2009-05-08 09:19:04.013	
+AspNetDb_FBA	aspnet_Personalization_FullAccess	DATABASE_ROLE	2009-05-08 09:19:04.013	2009-05-08 09:19:04.013	aspnet_Personalization_BasicAccess,aspnet_Personalization_ReportingAccess
+AspNetDb_FBA	aspnet_Personalization_ReportingAccess	DATABASE_ROLE	2009-05-08 09:19:04.013	2009-05-08 09:19:04.013	
+AspNetDb_FBA	aspnet_Profile_BasicAccess	DATABASE_ROLE	2009-05-08 09:19:03.543	2009-05-08 09:19:03.543	
+AspNetDb_FBA	aspnet_Profile_FullAccess	DATABASE_ROLE	2009-05-08 09:19:03.543	2009-05-08 09:19:03.543	aspnet_Profile_BasicAccess,aspnet_Profile_ReportingAccess
+AspNetDb_FBA	aspnet_Profile_ReportingAccess	DATABASE_ROLE	2009-05-08 09:19:03.543	2009-05-08 09:19:03.543	
+AspNetDb_FBA	aspnet_Roles_BasicAccess	DATABASE_ROLE	2009-05-08 09:19:03.810	2009-05-08 09:19:03.810	
+AspNetDb_FBA	aspnet_Roles_FullAccess	DATABASE_ROLE	2009-05-08 09:19:03.810	2009-05-08 09:19:03.810	aspnet_Roles_BasicAccess,aspnet_Roles_ReportingAccess
+AspNetDb_FBA	aspnet_Roles_ReportingAccess	DATABASE_ROLE	2009-05-08 09:19:03.810	2009-05-08 09:19:03.810	
+AspNetDb_FBA	aspnet_WebEvent_FullAccess	DATABASE_ROLE	2009-05-08 09:19:04.107	2009-05-08 09:19:04.107	
+AspNetDb_FBA	AU\svc_moss_content	WINDOWS_USER	2009-05-19 14:47:10.057	2009-05-19 14:47:10.057	db_owner
+AspNetDb_FBA	AU\svc_moss_crawl	WINDOWS_USER	2009-05-19 14:46:49.230	2009-05-19 14:46:49.230	db_owner
+AspNetDb_FBA	AU\svc_moss_excel	WINDOWS_USER	2009-05-19 14:46:27.447	2009-05-19 14:46:27.447	db_owner
+AspNetDb_FBA	au\svc_moss_farm	WINDOWS_USER	2009-05-19 12:24:04.987	2009-05-19 12:24:04.987	db_owner
+AspNetDb_FBA	AU\svc_moss_ProfileImp	WINDOWS_USER	2009-05-19 14:45:49.167	2009-05-19 14:45:49.167	db_owner
+AspNetDb_FBA	AU\svc_moss_search	WINDOWS_USER	2009-05-19 14:45:26.103	2009-05-19 14:45:26.103	db_owner
+AspNetDb_FBA	AU\svc_moss_service	WINDOWS_USER	2009-05-19 14:44:58.307	2009-05-19 14:44:58.307	db_owner
+AspNetDb_FBA	AU\svc_moss_ServicePool	WINDOWS_USER	2009-05-11 14:34:49.837	2009-05-11 14:34:49.837	db_owner
+AspNetDb_FBA	AU\svc_sqladmin	WINDOWS_USER	2009-05-19 14:44:10.417	2009-05-19 14:44:10.417	db_owner
+AspNetDb_FBA	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:35:51.917	db_owner
+AspNetDb_FBA	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+AspNetdb_ITA	aspnet_Membership_BasicAccess	DATABASE_ROLE	2009-10-01 12:42:27.463	2009-10-01 12:42:27.463	
+AspNetdb_ITA	aspnet_Membership_FullAccess	DATABASE_ROLE	2009-10-01 12:42:27.450	2009-10-01 12:42:27.450	aspnet_Membership_BasicAccess,aspnet_Membership_ReportingAccess
+AspNetdb_ITA	aspnet_Membership_ReportingAccess	DATABASE_ROLE	2009-10-01 12:42:27.527	2009-10-01 12:42:27.527	
+AspNetdb_ITA	aspnet_Personalization_BasicAccess	DATABASE_ROLE	2009-10-01 12:42:27.573	2009-10-01 12:42:27.573	
+AspNetdb_ITA	aspnet_Personalization_FullAccess	DATABASE_ROLE	2009-10-01 12:42:27.573	2009-10-01 12:42:27.573	aspnet_Personalization_BasicAccess,aspnet_Personalization_ReportingAccess
+AspNetdb_ITA	aspnet_Personalization_ReportingAccess	DATABASE_ROLE	2009-10-01 12:42:27.590	2009-10-01 12:42:27.590	
+AspNetdb_ITA	aspnet_Profile_BasicAccess	DATABASE_ROLE	2009-10-01 12:42:27.543	2009-10-01 12:42:27.543	
+AspNetdb_ITA	aspnet_Profile_FullAccess	DATABASE_ROLE	2009-10-01 12:42:27.543	2009-10-01 12:42:27.543	aspnet_Profile_BasicAccess,aspnet_Profile_ReportingAccess
+AspNetdb_ITA	aspnet_Profile_ReportingAccess	DATABASE_ROLE	2009-10-01 12:42:27.543	2009-10-01 12:42:27.543	
+AspNetdb_ITA	aspnet_Roles_BasicAccess	DATABASE_ROLE	2009-10-01 12:42:27.560	2009-10-01 12:42:27.560	
+AspNetdb_ITA	aspnet_Roles_FullAccess	DATABASE_ROLE	2009-10-01 12:42:27.560	2009-10-01 12:42:27.560	aspnet_Roles_BasicAccess,aspnet_Roles_ReportingAccess
+AspNetdb_ITA	aspnet_Roles_ReportingAccess	DATABASE_ROLE	2009-10-01 12:42:27.560	2009-10-01 12:42:27.560	
+AspNetdb_ITA	aspnet_WebEvent_FullAccess	DATABASE_ROLE	2009-10-01 12:42:27.590	2009-10-01 12:42:27.590	
+AspNetdb_ITA	AU\cflowers	WINDOWS_USER	2009-10-01 11:09:26.410	2009-10-01 11:09:26.410	db_owner,db_securityadmin
+AspNetdb_ITA	AU\jsilberb	WINDOWS_USER	2009-10-01 11:08:39.563	2009-10-01 11:08:39.563	db_owner,db_securityadmin
+AspNetdb_ITA	AU\svc_itaprod	WINDOWS_USER	2009-10-01 11:02:31.387	2009-10-01 11:02:31.387	db_owner,db_securityadmin
+AspNetdb_ITA	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:36:06.317	db_owner
+AspNetdb_ITA	ITAUser	SQL_USER	2009-10-01 12:18:54.307	2009-10-01 12:18:54.307	db_owner
+AspNetdb_ITA	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+Auction	Administrators	WINDOWS_GROUP	2005-07-12 12:00:00.687	2005-07-12 12:00:01.293	db_owner
+Auction	CTIntranet	SQL_USER	2005-07-14 17:05:27.670	2007-06-21 17:24:21.010	db_owner
+Auction	CTIntranet2	SQL_USER	2006-07-22 12:07:48.473	2006-07-22 15:22:27.807	db_owner,db_datareader,db_datawriter
+Auction	dbo (sa)	SQL_USER	2000-08-06 01:27:55.170	2016-04-02 16:36:28.897	db_owner
+Auction	public	DATABASE_ROLE	2000-08-06 01:27:55.187	2007-06-21 17:20:56.647	
+BIPortal_Farm_Config	AU\AUNNIMSMSS01$	WINDOWS_USER	2008-02-13 13:41:16.297	2008-02-13 13:41:16.297	WSS_Content_Application_Pools
+BIPortal_Farm_Config	AU\DMAdmins	WINDOWS_GROUP	2008-02-13 13:49:46.560	2008-02-13 13:49:46.560	db_owner
+BIPortal_Farm_Config	AU\dmunning	WINDOWS_USER	2009-07-01 14:30:44.740	2009-07-01 14:30:44.740	
+BIPortal_Farm_Config	AU\DZHOU	WINDOWS_USER	2013-01-14 16:25:39.577	2013-01-14 16:25:39.577	db_owner
+BIPortal_Farm_Config	AU\gtsiliri	WINDOWS_USER	2013-01-15 10:03:30.543	2013-01-15 10:03:30.543	db_owner
+BIPortal_Farm_Config	AU\iladdu	WINDOWS_USER	2016-09-21 15:18:06.153	2016-09-21 15:18:06.153	db_owner
+BIPortal_Farm_Config	AU\jbrown	WINDOWS_USER	2010-12-09 11:07:55.297	2010-12-09 11:07:55.297	db_owner
+BIPortal_Farm_Config	AU\jtheeng	WINDOWS_USER	2009-04-29 19:38:44.007	2009-04-29 19:38:44.007	db_owner
+BIPortal_Farm_Config	AU\klin	WINDOWS_USER	2009-11-21 00:17:18.797	2009-11-21 00:17:18.797	db_owner
+BIPortal_Farm_Config	AU\mchavan	WINDOWS_USER	2010-03-11 16:31:41.750	2010-03-11 16:31:41.750	db_owner
+BIPortal_Farm_Config	AU\onovik	WINDOWS_USER	2013-06-25 11:09:58.313	2013-06-25 11:09:58.313	db_owner
+BIPortal_Farm_Config	AU\oyoon	WINDOWS_USER	2008-02-15 11:48:12.517	2008-02-15 11:48:12.517	db_owner
+BIPortal_Farm_Config	AU\ppablo	WINDOWS_USER	2008-10-21 10:18:44.777	2008-10-21 10:18:44.777	db_owner
+BIPortal_Farm_Config	AU\svc_moss_content	WINDOWS_USER	2008-02-14 11:54:10.540	2008-02-14 11:54:10.540	WSS_Content_Application_Pools
+BIPortal_Farm_Config	AU\svc_moss_crawl	WINDOWS_USER	2008-02-13 13:52:40.847	2008-02-13 13:52:40.847	WSS_Content_Application_Pools
+BIPortal_Farm_Config	AU\svc_moss_farm	WINDOWS_USER	2008-02-13 13:40:20.153	2008-02-13 13:40:20.153	WSS_Content_Application_Pools,db_owner
+BIPortal_Farm_Config	AU\svc_moss_ProfileImp	WINDOWS_USER	2008-02-15 19:46:19.043	2008-02-15 19:46:19.043	WSS_Content_Application_Pools
+BIPortal_Farm_Config	AU\svc_moss_search	WINDOWS_USER	2008-02-13 13:51:01.000	2008-02-13 13:51:01.000	WSS_Content_Application_Pools,db_owner
+BIPortal_Farm_Config	AU\svc_moss_service	WINDOWS_USER	2008-02-13 14:38:26.853	2008-02-13 14:38:26.853	WSS_Content_Application_Pools,db_owner
+BIPortal_Farm_Config	AU\svc_moss_ServicePool	WINDOWS_USER	2008-02-13 14:15:47.083	2008-02-13 14:15:47.083	WSS_Content_Application_Pools
+BIPortal_Farm_Config	AU\svc_sqladmin	WINDOWS_USER	2008-03-12 18:16:36.713	2008-03-12 18:16:36.713	WSS_Content_Application_Pools
+BIPortal_Farm_Config	BUILTIN\Administrators	WINDOWS_GROUP	2008-02-13 13:41:10.297	2008-02-13 13:41:10.297	db_owner
+BIPortal_Farm_Config	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:36:41.260	db_owner
+BIPortal_Farm_Config	NT AUTHORITY\NETWORK SERVICE	WINDOWS_USER	2008-03-12 18:16:32.073	2008-03-12 18:16:32.073	WSS_Content_Application_Pools
+BIPortal_Farm_Config	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+BIPortal_Farm_Config	WSS_Content_Application_Pools	DATABASE_ROLE	2008-02-13 13:40:10.967	2008-02-13 13:40:10.967	
+BIPortal_SSP_DB	AU\gtsiliri	WINDOWS_USER	2013-01-15 15:45:47.173	2013-01-15 15:45:47.173	db_owner
+BIPortal_SSP_DB	AU\svc_moss_content	WINDOWS_USER	2008-02-14 11:54:35.713	2008-02-14 11:54:35.713	db_owner
+BIPortal_SSP_DB	au\svc_moss_search	WINDOWS_USER	2008-02-13 14:39:57.370	2008-02-13 14:39:57.370	db_owner
+BIPortal_SSP_DB	AU\svc_moss_service	WINDOWS_USER	2008-02-13 14:39:49.277	2008-02-13 14:39:49.277	db_owner
+BIPortal_SSP_DB	au\svc_moss_servicepool	WINDOWS_USER	2008-02-13 14:39:49.387	2008-02-13 14:39:49.387	db_owner
+BIPortal_SSP_DB	dbo (AU\svc_moss_farm)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:37:50.117	db_owner
+BIPortal_SSP_DB	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+BIPortal_SSP_Search_DB	AU\gtsiliri	WINDOWS_USER	2013-01-15 15:45:47.500	2013-01-15 15:45:47.500	db_owner
+BIPortal_SSP_Search_DB	AU\svc_moss_content	WINDOWS_USER	2008-02-14 11:54:35.807	2008-02-14 11:54:35.807	db_owner
+BIPortal_SSP_Search_DB	au\svc_moss_search	WINDOWS_USER	2008-02-13 14:39:57.357	2008-02-13 14:39:57.357	db_owner
+BIPortal_SSP_Search_DB	AU\svc_moss_service	WINDOWS_USER	2008-02-13 14:39:54.810	2008-02-13 14:39:54.810	db_owner
+BIPortal_SSP_Search_DB	au\svc_moss_servicepool	WINDOWS_USER	2008-02-13 14:39:54.903	2008-02-13 14:39:54.903	db_owner
+BIPortal_SSP_Search_DB	dbo (AU\svc_moss_farm)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:38:05.363	db_owner
+BIPortal_SSP_Search_DB	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+BIPortal_SSP_WSS_Content	AU\svc_moss_content	WINDOWS_USER	2008-03-19 17:44:32.023	2008-03-19 17:44:32.023	db_owner
+BIPortal_SSP_WSS_Content	AU\svc_moss_service	WINDOWS_USER	2008-02-13 14:39:49.420	2008-02-13 14:39:49.420	db_owner
+BIPortal_SSP_WSS_Content	AU\svc_moss_ServicePool	WINDOWS_USER	2008-02-13 14:34:26.363	2008-02-13 14:34:26.363	db_owner
+BIPortal_SSP_WSS_Content	AU\svc_sqladmin	WINDOWS_USER	2008-03-12 18:16:37.963	2008-03-12 18:16:37.963	db_owner
+BIPortal_SSP_WSS_Content	dbo (AU\svc_moss_farm)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:38:19.003	db_owner
+BIPortal_SSP_WSS_Content	NT AUTHORITY\NETWORK SERVICE	WINDOWS_USER	2008-03-12 18:16:35.043	2008-03-12 18:16:35.043	db_owner
+BIPortal_SSP_WSS_Content	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+BIPortal_WSS_Content	AU\svc_moss_content	WINDOWS_USER	2008-02-14 11:54:11.447	2008-02-14 11:54:11.447	db_owner
+BIPortal_WSS_Content	AU\svc_moss_service	WINDOWS_USER	2008-02-13 14:57:15.710	2008-02-13 14:57:15.710	db_owner
+BIPortal_WSS_Content	AU\svc_moss_ServicePool	WINDOWS_USER	2008-02-13 14:56:58.287	2008-02-13 14:56:58.287	db_owner
+BIPortal_WSS_Content	AU\svc_sqladmin	WINDOWS_USER	2008-03-12 18:16:37.090	2008-03-12 18:16:37.090	db_owner
+BIPortal_WSS_Content	dbo (AU\svc_moss_farm)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:38:32.620	db_owner
+BIPortal_WSS_Content	NT AUTHORITY\NETWORK SERVICE	WINDOWS_USER	2008-03-12 18:16:32.497	2008-03-12 18:16:32.497	db_owner
+BIPortal_WSS_Content	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+BIPortal_WSS_Content_Main	AU\svc_moss_content	WINDOWS_USER	2009-03-06 15:37:57.330	2009-03-06 15:37:57.330	db_owner
+BIPortal_WSS_Content_Main	AU\svc_moss_farm	WINDOWS_USER	2009-03-06 15:37:57.203	2009-03-06 15:37:57.203	db_owner
+BIPortal_WSS_Content_Main	AU\svc_moss_service	WINDOWS_USER	2009-03-06 15:38:14.640	2009-03-06 15:38:14.640	db_owner
+BIPortal_WSS_Content_Main	AU\svc_sqladmin	WINDOWS_USER	2009-03-14 16:51:47.227	2009-03-14 16:51:47.227	db_owner
+BIPortal_WSS_Content_Main	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:39:29.973	db_owner
+BIPortal_WSS_Content_Main	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+BIPortal_WSS_Content_MS	AU\svc_moss_content	WINDOWS_USER	2008-02-18 17:13:08.620	2008-02-18 17:13:08.620	db_owner
+BIPortal_WSS_Content_MS	AU\svc_moss_service	WINDOWS_USER	2008-02-18 17:13:35.853	2008-02-18 17:13:35.853	db_owner
+BIPortal_WSS_Content_MS	AU\svc_sqladmin	WINDOWS_USER	2008-03-12 18:16:37.230	2008-03-12 18:16:37.230	db_owner
+BIPortal_WSS_Content_MS	dbo (AU\svc_moss_farm)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.420	db_owner
+BIPortal_WSS_Content_MS	NT AUTHORITY\NETWORK SERVICE	WINDOWS_USER	2008-03-12 18:16:32.747	2008-03-12 18:16:32.747	db_owner
+BIPortal_WSS_Content_MS	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+BIPortal_WSS_Search	AU\svc_moss_content	WINDOWS_USER	2008-02-14 11:55:00.743	2008-02-14 11:55:00.743	db_owner
+BIPortal_WSS_Search	AU\svc_moss_crawl	WINDOWS_USER	2008-02-13 14:31:34.593	2008-02-13 14:31:34.593	db_owner
+BIPortal_WSS_Search	AU\svc_moss_search	WINDOWS_USER	2008-02-15 18:34:24.620	2008-02-15 18:34:24.620	db_owner
+BIPortal_WSS_Search	AU\svc_moss_ServicePool	WINDOWS_USER	2008-02-13 14:35:01.550	2008-02-13 14:35:01.550	db_owner
+BIPortal_WSS_Search	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:40:13.077	db_owner
+BIPortal_WSS_Search	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+BIPortalMySite_WSS_Content	AU\svc_moss_content	WINDOWS_USER	2008-03-19 17:44:31.443	2008-03-19 17:44:31.443	db_owner
+BIPortalMySite_WSS_Content	AU\svc_moss_service	WINDOWS_USER	2008-02-13 14:39:49.463	2008-02-13 14:39:49.463	db_owner
+BIPortalMySite_WSS_Content	AU\svc_moss_ServicePool	WINDOWS_USER	2008-02-13 14:36:25.913	2008-02-13 14:36:25.913	db_owner
+BIPortalMySite_WSS_Content	AU\svc_sqladmin	WINDOWS_USER	2008-03-12 18:16:37.700	2008-03-12 18:16:37.700	db_owner
+BIPortalMySite_WSS_Content	dbo (AU\svc_moss_farm)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:40:48.660	db_owner
+BIPortalMySite_WSS_Content	NT AUTHORITY\NETWORK SERVICE	WINDOWS_USER	2008-03-12 18:16:33.853	2008-03-12 18:16:33.853	db_owner
+BIPortalMySite_WSS_Content	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+Citrix_Command_Center	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:41:14.963	db_owner
+Citrix_Command_Center	NetscalerCMD	SQL_USER	2010-02-18 14:32:06.370	2010-02-18 14:32:06.370	db_owner
+Citrix_Command_Center	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+CTIntranetMem	cgleeson	SQL_USER	2001-11-13 14:41:23.530	2001-11-13 14:41:23.530	
+CTIntranetMem	CTIntranet	SQL_USER	2002-10-04 16:34:45.443	2007-06-13 20:10:19.500	db_owner
+CTIntranetMem	dbo (sa)	SQL_USER	1998-11-13 02:58:39.250	2016-04-02 16:41:27.420	db_owner
+CTIntranetMem	public	DATABASE_ROLE	1998-11-13 02:58:39.267	2007-06-13 19:58:31.720	
+DDLS_Intranet_CentralAdminDB	AU\AUNLSMSMSS01$	WINDOWS_USER	2008-05-16 16:21:05.087	2008-05-16 16:21:05.087	WSS_Content_Application_Pools
+DDLS_Intranet_CentralAdminDB	AU\jtheeng	WINDOWS_USER	2009-04-30 17:23:16.163	2009-04-30 17:23:16.163	WSS_Content_Application_Pools
+DDLS_Intranet_CentralAdminDB	AU\svc_moss_content	WINDOWS_USER	2008-05-16 16:51:46.700	2008-05-16 16:51:46.700	WSS_Content_Application_Pools
+DDLS_Intranet_CentralAdminDB	AU\svc_moss_crawl	WINDOWS_USER	2008-05-16 19:19:06.030	2008-05-16 19:19:06.030	WSS_Content_Application_Pools
+DDLS_Intranet_CentralAdminDB	AU\svc_moss_farm	WINDOWS_USER	2008-05-16 16:20:30.620	2008-05-16 16:20:30.620	WSS_Content_Application_Pools,db_owner
+DDLS_Intranet_CentralAdminDB	AU\svc_moss_search	WINDOWS_USER	2008-05-16 19:19:05.480	2008-05-16 19:19:05.480	WSS_Content_Application_Pools
+DDLS_Intranet_CentralAdminDB	AU\svc_moss_service	WINDOWS_USER	2008-05-16 19:29:41.273	2008-05-16 19:29:41.273	WSS_Content_Application_Pools
+DDLS_Intranet_CentralAdminDB	AU\svc_sqladmin	WINDOWS_USER	2009-04-30 17:08:16.313	2009-04-30 17:08:16.313	WSS_Content_Application_Pools
+DDLS_Intranet_CentralAdminDB	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:41:42.963	db_owner
+DDLS_Intranet_CentralAdminDB	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+DDLS_Intranet_CentralAdminDB	WSS_Content_Application_Pools	DATABASE_ROLE	2008-05-16 16:21:01.290	2008-05-16 16:21:01.290	
+DDLS_Intranet_ConfigDB	AU\AUNLSMSMSS01$	WINDOWS_USER	2008-05-16 16:21:04.963	2008-05-16 16:21:04.963	WSS_Content_Application_Pools
+DDLS_Intranet_ConfigDB	AU\gcarthew	WINDOWS_USER	2012-03-12 14:28:30.803	2012-03-12 14:28:30.803	db_owner
+DDLS_Intranet_ConfigDB	AU\gtsiliri	WINDOWS_USER	2017-02-14 17:37:33.113	2017-02-14 17:37:33.113	db_owner
+DDLS_Intranet_ConfigDB	AU\jtheeng	WINDOWS_USER	2009-04-30 17:23:16.070	2009-04-30 17:23:16.070	WSS_Content_Application_Pools
+DDLS_Intranet_ConfigDB	AU\kmerckel	WINDOWS_USER	2009-04-29 15:52:44.453	2009-04-29 15:52:44.453	db_owner
+DDLS_Intranet_ConfigDB	AU\mwalsh	WINDOWS_USER	2012-05-25 18:17:08.527	2012-05-25 18:17:08.527	db_owner
+DDLS_Intranet_ConfigDB	AU\ply	WINDOWS_USER	2008-05-16 17:01:31.667	2008-05-16 17:01:31.667	db_datareader
+DDLS_Intranet_ConfigDB	AU\svc_moss_content	WINDOWS_USER	2008-05-16 16:51:46.670	2008-05-16 16:51:46.670	WSS_Content_Application_Pools
+DDLS_Intranet_ConfigDB	AU\svc_moss_crawl	WINDOWS_USER	2008-05-16 19:19:05.967	2008-05-16 19:19:05.967	WSS_Content_Application_Pools
+DDLS_Intranet_ConfigDB	AU\svc_moss_farm	WINDOWS_USER	2008-05-16 16:20:21.210	2008-05-16 16:20:21.210	WSS_Content_Application_Pools,db_owner
+DDLS_Intranet_ConfigDB	AU\svc_moss_search	WINDOWS_USER	2008-05-16 19:19:05.310	2008-05-16 19:19:05.310	WSS_Content_Application_Pools
+DDLS_Intranet_ConfigDB	AU\svc_moss_service	WINDOWS_USER	2008-05-16 19:29:41.260	2008-05-16 19:29:41.260	WSS_Content_Application_Pools
+DDLS_Intranet_ConfigDB	AU\svc_sqladmin	WINDOWS_USER	2009-04-30 17:08:16.250	2009-04-30 17:08:16.250	WSS_Content_Application_Pools
+DDLS_Intranet_ConfigDB	BUILTIN\Administrators	WINDOWS_GROUP	2008-05-16 16:20:58.430	2008-05-16 16:20:58.430	db_owner
+DDLS_Intranet_ConfigDB	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:41:54.433	db_owner
+DDLS_Intranet_ConfigDB	peter.ly	SQL_USER	2014-07-03 12:55:21.110	2014-07-03 12:55:21.110	db_datareader
+DDLS_Intranet_ConfigDB	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+DDLS_Intranet_ConfigDB	WSS_Content_Application_Pools	DATABASE_ROLE	2008-05-16 16:20:11.070	2008-05-16 16:20:11.070	
+DDLS_Intranet_Content	AU\mwalsh	WINDOWS_USER	2009-08-25 10:00:52.583	2009-08-25 10:00:52.583	db_datareader
+DDLS_Intranet_Content	AU\scarey	WINDOWS_USER	2008-06-26 10:09:17.010	2008-06-26 10:09:17.010	db_owner
+DDLS_Intranet_Content	AU\svc_moss_content	WINDOWS_USER	2008-05-16 19:12:39.817	2008-05-16 19:12:39.817	db_owner
+DDLS_Intranet_Content	AU\svc_moss_farm	WINDOWS_USER	2008-05-16 18:29:35.940	2008-05-16 18:29:35.940	db_owner
+DDLS_Intranet_Content	AU\svc_moss_service	WINDOWS_USER	2008-05-16 19:36:06.077	2008-05-16 19:36:06.077	db_owner
+DDLS_Intranet_Content	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:42:11.377	db_owner
+DDLS_Intranet_Content	PHead	SQL_USER	2008-04-18 17:14:26.350	2008-04-18 17:14:26.350	db_owner
+DDLS_Intranet_Content	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+DDLS_Intranet_DDLS_SSP	au\svc_moss_farm	WINDOWS_USER	2008-07-09 15:44:18.487	2008-07-09 15:44:18.487	db_owner
+DDLS_Intranet_DDLS_SSP	AU\svc_moss_search	WINDOWS_USER	2008-05-27 16:21:35.340	2008-05-27 16:21:35.340	db_owner
+DDLS_Intranet_DDLS_SSP	AU\svc_moss_service	WINDOWS_USER	2008-05-16 19:36:05.890	2008-05-16 19:36:05.890	db_owner
+DDLS_Intranet_DDLS_SSP	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:42:23.390	db_owner
+DDLS_Intranet_DDLS_SSP	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+DDLS_Intranet_Search_AUNLSMSMSS01	AU\svc_moss_crawl	WINDOWS_USER	2008-06-12 17:24:21.890	2008-06-12 17:24:21.890	db_owner
+DDLS_Intranet_Search_AUNLSMSMSS01	AU\svc_moss_farm	WINDOWS_USER	2008-07-09 15:53:00.740	2008-07-09 15:53:00.740	db_owner
+DDLS_Intranet_Search_AUNLSMSMSS01	AU\svc_moss_search	WINDOWS_USER	2008-06-12 17:24:21.780	2008-06-12 17:24:21.780	db_owner
+DDLS_Intranet_Search_AUNLSMSMSS01	AU\svc_moss_service	WINDOWS_USER	2008-06-12 17:24:21.907	2008-06-12 17:24:21.907	db_owner
+DDLS_Intranet_Search_AUNLSMSMSS01	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:42:34.977	db_owner
+DDLS_Intranet_Search_AUNLSMSMSS01	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+DDLS_Intranet_SSO	au\svc_moss_service	WINDOWS_USER	2012-07-24 16:34:38.887	2012-07-24 16:34:38.887	
+DDLS_Intranet_SSO	dbo (AU\svc_moss_farm)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.493	db_owner
+DDLS_Intranet_SSO	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+DDLS_Intranet_SSP	au\svc_moss_farm	WINDOWS_USER	2009-04-30 17:16:04.630	2009-04-30 17:16:04.630	db_owner
+DDLS_Intranet_SSP	AU\svc_moss_service	WINDOWS_USER	2008-05-16 19:29:53.243	2008-05-16 19:29:53.243	db_owner
+DDLS_Intranet_SSP	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.500	db_owner
+DDLS_Intranet_SSP	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+DDLS_Intranet_SSP_Search	au\svc_moss_farm	WINDOWS_USER	2008-07-09 15:45:18.440	2008-07-09 15:45:18.440	db_owner
+DDLS_Intranet_SSP_Search	AU\svc_moss_search	WINDOWS_USER	2008-05-27 16:21:35.653	2008-05-27 16:21:35.653	db_owner
+DDLS_Intranet_SSP_Search	AU\svc_moss_service	WINDOWS_USER	2008-05-16 19:36:15.937	2008-05-16 19:36:15.937	db_owner
+DDLS_Intranet_SSP_Search	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.510	db_owner
+DDLS_Intranet_SSP_Search	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+DDSchedule	AU\lthomas	WINDOWS_USER	2013-07-29 11:46:11.330	2013-07-29 11:46:11.330	db_owner
+DDSchedule	bi_sales	SQL_USER	2013-07-29 11:00:38.920	2013-07-29 11:00:38.920	db_owner
+DDSchedule	dbo (sa)	SQL_USER	2000-08-06 01:27:55.170	2016-04-02 16:51:54.513	db_owner
+DDSchedule	ddshed	SQL_USER	2009-04-14 11:09:20.397	2009-04-14 11:09:20.397	db_datareader
+DDSchedule	public	DATABASE_ROLE	2000-08-06 01:27:55.187	2007-08-07 10:03:42.203	
+DDSchedule	ScheduleRO	SQL_USER	2004-08-12 10:50:01.230	2007-08-08 08:24:03.400	db_datareader
+DDScheduleNew	AU\lthomas	WINDOWS_USER	2013-07-29 11:46:11.330	2013-07-29 11:46:11.330	db_owner
+DDScheduleNew	bi_sales	SQL_USER	2013-07-29 11:00:38.920	2013-07-29 11:00:38.920	db_owner
+DDScheduleNew	dbo (sa)	SQL_USER	2000-08-06 01:27:55.170	2016-04-02 16:51:54.517	db_owner
+DDScheduleNew	ddshed	SQL_USER	2009-04-14 11:09:20.397	2009-04-14 11:09:20.397	db_datareader
+DDScheduleNew	public	DATABASE_ROLE	2000-08-06 01:27:55.187	2007-08-07 10:03:42.203	
+DDScheduleNew	ScheduleRO	SQL_USER	2004-08-12 10:50:01.230	2007-08-08 08:24:03.400	db_datareader
+Defaulkt_SSP_Search_DB	AU\svc_moss_farm	WINDOWS_USER	2009-01-14 16:12:21.857	2009-01-14 16:12:21.857	db_owner
+Defaulkt_SSP_Search_DB	au\svc_moss_search	WINDOWS_USER	2009-01-14 16:12:24.950	2009-01-14 16:12:24.950	db_owner
+Defaulkt_SSP_Search_DB	AU\svc_moss_service	WINDOWS_USER	2009-01-14 16:12:21.730	2009-01-14 16:12:21.730	db_owner
+Defaulkt_SSP_Search_DB	au\svc_sqladmin	WINDOWS_USER	2009-01-14 19:09:41.893	2009-01-14 19:09:41.893	db_owner
+Defaulkt_SSP_Search_DB	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.523	db_owner
+Defaulkt_SSP_Search_DB	NT AUTHORITY\NETWORK SERVICE	WINDOWS_USER	2009-01-20 17:35:08.577	2009-01-20 17:35:08.577	db_owner
+Defaulkt_SSP_Search_DB	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+EdgeSight5	aspnet_Profile_BasicAccess	DATABASE_ROLE	2009-07-14 10:22:52.997	2009-07-14 10:22:52.997	
+EdgeSight5	aspnet_Profile_FullAccess	DATABASE_ROLE	2009-07-14 10:22:52.997	2009-07-14 10:22:52.997	aspnet_Profile_BasicAccess,aspnet_Profile_ReportingAccess
+EdgeSight5	aspnet_Profile_ReportingAccess	DATABASE_ROLE	2009-07-14 10:22:52.997	2009-07-14 10:22:52.997	
+EdgeSight5	dbo (AU\svc_citrix_edgesight)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.540	db_owner
+EdgeSight5	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+EdgeSight5	ztmanager	DATABASE_ROLE	2009-07-14 10:22:35.293	2009-07-14 10:22:35.293	
+EdgeSight5	ztoperator	DATABASE_ROLE	2009-07-14 10:22:35.293	2009-07-14 10:22:35.293	
+EdgeSight5	ztpublic	DATABASE_ROLE	2009-07-14 10:22:35.277	2009-07-14 10:22:35.277	
+eqcas	dbo (AU\svc_equitrac)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.553	db_owner
+eqcas	eqcas	SQL_USER	2011-03-14 10:56:57.680	2011-03-14 10:56:57.680	db_owner
+eqcas	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+Equitrac	AU\nslatter	WINDOWS_USER	2010-06-28 16:10:29.143	2010-06-28 16:10:29.143	db_owner
+Equitrac	AU\svc_equitrac	WINDOWS_USER	2010-06-28 16:15:18.010	2010-06-28 16:15:18.010	db_owner
+Equitrac	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.557	db_owner
+Equitrac	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+Events	dbo (sa)	SQL_USER	2000-08-06 01:27:55.170	2016-04-02 16:51:54.560	db_owner
+Events	EventUser	SQL_USER	2005-10-14 10:56:02.640	2007-08-08 15:29:15.583	db_datareader,db_datawriter
+Events	public	DATABASE_ROLE	2000-08-06 01:27:55.187	2007-08-08 11:38:16.540	
+GGEVENT	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.563	db_owner
+GGEVENT	OpsXML	SQL_USER	2007-12-04 11:19:04.593	2007-12-04 11:19:04.593	db_owner
+GGEVENT	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+IgnitionSuite	AU\cflowers	WINDOWS_USER	2010-03-02 14:15:43.420	2010-03-02 14:15:43.420	db_owner
+IgnitionSuite	AU\hsingh	WINDOWS_USER	2012-05-31 10:28:58.130	2012-05-31 10:28:58.130	db_sproc_reader,db_datareader
+IgnitionSuite	AU\jsilberb	WINDOWS_USER	2010-03-02 14:15:30.500	2010-03-02 14:15:30.500	db_owner
+IgnitionSuite	CREATIVENGINE\Andrew.Morris	WINDOWS_USER	2005-07-20 09:55:02.873	2005-07-20 09:55:02.873	db_owner,db_accessadmin,db_securityadmin,db_ddladmin,db_backupoperator,db_datareader,db_datawriter,db_denydatareader,db_denydatawriter
+IgnitionSuite	CREATIVENGINE\dennis.lee	WINDOWS_USER	2005-07-21 09:54:03.243	2005-07-21 09:54:03.243	db_owner
+IgnitionSuite	CREATIVENGINE\gavin.oliver	WINDOWS_USER	2005-08-01 15:58:13.130	2005-08-01 15:58:13.130	db_owner,db_accessadmin,db_securityadmin,db_ddladmin,db_backupoperator,db_datareader,db_datawriter,db_denydatareader,db_denydatawriter
+IgnitionSuite	CREATIVENGINE\Ian.Jones	WINDOWS_USER	2005-08-22 15:34:07.797	2005-08-22 15:34:07.797	db_owner,db_accessadmin,db_securityadmin,db_ddladmin,db_backupoperator,db_datareader,db_datawriter,db_denydatareader,db_denydatawriter
+IgnitionSuite	CREATIVENGINE\michael.shapiro	WINDOWS_USER	2005-08-22 14:52:23.217	2005-08-22 14:52:23.217	db_owner,db_accessadmin,db_securityadmin,db_ddladmin,db_backupoperator,db_datareader,db_datawriter,db_denydatareader,db_denydatawriter
+IgnitionSuite	CREATIVENGINE\Tim.Kirkman	WINDOWS_USER	2006-02-20 16:18:34.580	2006-02-20 16:18:34.580	db_owner,db_accessadmin,db_securityadmin,db_ddladmin,db_backupoperator,db_datareader,db_datawriter,db_denydatareader,db_denydatawriter
+IgnitionSuite	db_sproc_reader	DATABASE_ROLE	2012-05-31 12:20:46.253	2012-05-31 12:20:46.253	
+IgnitionSuite	dbadmin	SQL_USER	2005-04-27 14:59:39.613	2005-04-27 14:59:39.613	db_owner,db_accessadmin,db_securityadmin,db_ddladmin,db_backupoperator,db_datareader,db_datawriter,db_denydatareader,db_denydatawriter
+IgnitionSuite	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.577	db_owner
+IgnitionSuite	IgnitionSuite_cms	SQL_USER	2010-05-07 10:35:49.237	2010-05-07 10:35:49.237	db_owner,db_datareader,db_datawriter
+IgnitionSuite	IgnitionSuite_staging_cms	SQL_USER	2010-03-02 14:11:19.727	2010-03-02 14:11:19.727	db_owner,db_datareader,db_datawriter
+IgnitionSuite	IgnitionSuite_staging_web	SQL_USER	2010-03-02 14:11:34.303	2010-03-02 14:11:34.303	db_datareader,db_datawriter
+IgnitionSuite	IgnitionSuite_web	SQL_USER	2010-05-07 10:38:03.897	2010-05-07 10:38:03.897	db_datareader,db_datawriter
+IgnitionSuite	khilogin	SQL_USER	2008-01-10 13:25:59.200	2008-01-10 13:25:59.200	
+IgnitionSuite	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2006-06-15 15:30:57.483	
+IgnitionSuite_Staging	AU\cflowers	WINDOWS_USER	2010-03-02 14:15:43.420	2010-03-02 14:15:43.420	db_owner
+IgnitionSuite_Staging	AU\hsingh	WINDOWS_USER	2012-05-31 10:29:54.680	2012-05-31 10:29:54.680	db_sproc_reader,db_datareader
+IgnitionSuite_Staging	AU\jsilberb	WINDOWS_USER	2010-03-02 14:15:30.500	2010-03-02 14:15:30.500	db_owner
+IgnitionSuite_Staging	CREATIVENGINE\Andrew.Morris	WINDOWS_USER	2005-07-20 09:55:02.873	2005-07-20 09:55:02.873	db_owner,db_accessadmin,db_securityadmin,db_ddladmin,db_backupoperator,db_datareader,db_datawriter,db_denydatareader,db_denydatawriter
+IgnitionSuite_Staging	CREATIVENGINE\dennis.lee	WINDOWS_USER	2005-07-21 09:54:03.243	2005-07-21 09:54:03.243	db_owner
+IgnitionSuite_Staging	CREATIVENGINE\gavin.oliver	WINDOWS_USER	2005-08-01 15:58:13.130	2005-08-01 15:58:13.130	db_owner,db_accessadmin,db_securityadmin,db_ddladmin,db_backupoperator,db_datareader,db_datawriter,db_denydatareader,db_denydatawriter
+IgnitionSuite_Staging	CREATIVENGINE\Ian.Jones	WINDOWS_USER	2005-08-22 15:34:07.797	2005-08-22 15:34:07.797	db_owner,db_accessadmin,db_securityadmin,db_ddladmin,db_backupoperator,db_datareader,db_datawriter,db_denydatareader,db_denydatawriter
+IgnitionSuite_Staging	CREATIVENGINE\michael.shapiro	WINDOWS_USER	2005-08-22 14:52:23.217	2005-08-22 14:52:23.217	db_owner,db_accessadmin,db_securityadmin,db_ddladmin,db_backupoperator,db_datareader,db_datawriter,db_denydatareader,db_denydatawriter
+IgnitionSuite_Staging	CREATIVENGINE\Tim.Kirkman	WINDOWS_USER	2006-02-20 16:18:34.580	2006-02-20 16:18:34.580	db_owner,db_accessadmin,db_securityadmin,db_ddladmin,db_backupoperator,db_datareader,db_datawriter,db_denydatareader,db_denydatawriter
+IgnitionSuite_Staging	db_sproc_reader	DATABASE_ROLE	2012-05-31 11:29:28.730	2012-05-31 11:29:28.730	
+IgnitionSuite_Staging	dbadmin	SQL_USER	2005-04-27 14:59:39.613	2005-04-27 14:59:39.613	db_owner,db_accessadmin,db_securityadmin,db_ddladmin,db_backupoperator,db_datareader,db_datawriter,db_denydatareader,db_denydatawriter
+IgnitionSuite_Staging	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.607	db_owner
+IgnitionSuite_Staging	IgnitionSuite_cms	SQL_USER	2010-05-07 10:35:49.237	2010-05-07 10:35:49.237	db_owner,db_datareader,db_datawriter
+IgnitionSuite_Staging	IgnitionSuite_staging_cms	SQL_USER	2010-03-02 14:11:19.727	2010-03-02 14:11:19.727	db_owner,db_datareader,db_datawriter
+IgnitionSuite_Staging	IgnitionSuite_staging_web	SQL_USER	2010-03-02 14:11:34.303	2010-03-02 14:11:34.303	db_datareader,db_datawriter
+IgnitionSuite_Staging	IgnitionSuite_web	SQL_USER	2010-05-07 10:38:03.897	2010-05-07 10:38:03.897	db_datareader,db_datawriter
+IgnitionSuite_Staging	khilogin	SQL_USER	2008-01-10 13:25:59.200	2008-01-10 13:25:59.200	
+IgnitionSuite_Staging	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2006-06-15 15:30:57.483	
+IgnitionSuite_Staging	Role_sproc_reader	APPLICATION_ROLE	2012-05-31 11:25:19.850	2012-05-31 11:25:19.883	
+IPAD	AU\hvanopst	WINDOWS_USER	2007-08-31 16:56:29.047	2007-08-31 16:56:29.047	db_owner,db_datareader
+IPAD	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.613	db_owner
+IPAD	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+IPAD	svc_ilm	WINDOWS_USER	2007-08-31 14:35:22.307	2007-08-31 14:35:22.307	db_datareader,db_datawriter
+IPPhoneServices	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.617	db_owner
+IPPhoneServices	ips	SQL_USER	2007-12-04 11:19:04.830	2007-12-04 11:41:09.157	db_owner
+IPPhoneServices	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+ITAQuote	AU\cflowers	WINDOWS_USER	2009-10-01 11:09:26.910	2009-10-01 11:09:26.910	db_owner
+ITAQuote	AU\jsilberb	WINDOWS_USER	2009-10-01 11:08:40.203	2009-10-01 11:08:40.203	db_owner
+ITAQuote	AU\svc_itaprod	WINDOWS_USER	2009-10-01 11:00:38.213	2009-10-01 11:00:38.213	db_owner
+ITAQuote	db_executor	DATABASE_ROLE	2009-10-01 11:35:00.037	2009-10-01 11:35:00.037	
+ITAQuote	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.620	db_owner
+ITAQuote	ITAUser	SQL_USER	2009-10-01 12:18:54.883	2009-10-01 12:18:54.883	db_executor,db_datareader,db_datawriter
+ITAQuote	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+ITCareers	dbo (sa)	SQL_USER	2000-08-06 01:27:55.170	2016-04-02 16:51:54.633	db_owner
+ITCareers	ITCareers	SQL_USER	2006-01-16 17:28:29.827	2007-08-01 13:15:31.170	
+ITCareers	public	DATABASE_ROLE	2000-08-06 01:27:55.187	2007-08-01 13:12:46.790	
+LiteSpeedCentral	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.640	db_owner
+LiteSpeedCentral	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+master	AU\svc_RSExec	WINDOWS_USER	2016-04-02 16:23:05.330	2016-04-02 16:23:05.330	
+master	AUNDDVSSQL01-NE\SQLServer2005MSFTEUser$AUNDDVSSQL01-NE$MSSQLSERVER	WINDOWS_GROUP	2016-03-31 11:40:39.610	2016-03-31 11:40:39.610	
+master	dbo (sa)	SQL_USER	2003-04-08 09:10:19.600	2003-04-08 09:10:19.600	db_owner
+master	public	DATABASE_ROLE	2003-04-08 09:10:19.630	2005-10-14 01:36:15.737	
+MicrosoftIdentityIntegrationServer	au\svc_ilm	WINDOWS_USER	2007-08-31 12:29:16.130	2007-08-31 12:29:16.130	db_owner
+MicrosoftIdentityIntegrationServer	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.653	db_owner
+MicrosoftIdentityIntegrationServer	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+model	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2003-04-08 09:10:42.287	db_owner
+model	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+MOSS_Ext_AdminContent	AU\AUNDDMSMOS01$	WINDOWS_USER	2009-01-27 16:37:50.997	2009-01-27 16:37:50.997	WSS_Content_Application_Pools
+MOSS_Ext_AdminContent	AU\gtsiliri	WINDOWS_USER	2015-09-03 15:40:54.330	2015-09-03 15:40:54.330	db_owner
+MOSS_Ext_AdminContent	AU\svc_moss_content	WINDOWS_USER	2009-01-27 17:07:30.550	2009-01-27 17:07:30.550	WSS_Content_Application_Pools
+MOSS_Ext_AdminContent	AU\svc_moss_crawl	WINDOWS_USER	2009-01-27 16:47:26.033	2009-01-27 16:47:26.033	WSS_Content_Application_Pools
+MOSS_Ext_AdminContent	AU\svc_moss_search	WINDOWS_USER	2009-01-27 16:47:25.813	2009-01-27 16:47:25.813	WSS_Content_Application_Pools
+MOSS_Ext_AdminContent	AU\svc_moss_service	WINDOWS_USER	2009-01-27 16:59:03.793	2009-01-27 16:59:03.793	WSS_Content_Application_Pools,db_ddladmin
+MOSS_Ext_AdminContent	AU\svc_moss_ServicePool	WINDOWS_USER	2009-01-27 16:56:41.180	2009-01-27 16:56:41.180	WSS_Content_Application_Pools
+MOSS_Ext_AdminContent	dbo (AU\svc_moss_farm)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.657	db_owner
+MOSS_Ext_AdminContent	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+MOSS_Ext_AdminContent	WSS_Content_Application_Pools	DATABASE_ROLE	2009-01-27 16:37:47.323	2009-01-27 16:37:47.323	
+MOSS_Ext_Config	AU\~dzhou	WINDOWS_USER	2016-03-08 16:40:39.017	2016-03-08 16:40:39.017	db_owner
+MOSS_Ext_Config	AU\AUNDDMSMOS01$	WINDOWS_USER	2009-01-27 16:37:50.920	2009-01-27 16:37:50.920	WSS_Content_Application_Pools
+MOSS_Ext_Config	AU\Badarinath.Gali	WINDOWS_USER	2017-02-15 16:22:35.300	2017-02-15 16:22:35.300	db_owner
+MOSS_Ext_Config	AU\DZHOU	WINDOWS_USER	2012-02-07 12:56:07.570	2012-02-07 12:56:07.570	db_owner
+MOSS_Ext_Config	AU\gtsiliri	WINDOWS_USER	2012-04-04 09:14:28.987	2012-04-04 09:14:28.987	db_owner
+MOSS_Ext_Config	AU\iladdu	WINDOWS_USER	2016-03-03 18:37:03.780	2016-03-03 18:37:03.780	db_owner
+MOSS_Ext_Config	AU\jdurrant	WINDOWS_USER	2012-05-28 13:15:34.963	2012-05-28 13:15:34.963	db_owner
+MOSS_Ext_Config	AU\onovik	WINDOWS_USER	2013-02-28 14:19:53.863	2013-02-28 14:19:53.863	db_owner
+MOSS_Ext_Config	AU\oudovychenko	WINDOWS_USER	2016-11-22 13:59:39.873	2016-11-22 13:59:39.873	db_owner
+MOSS_Ext_Config	AU\scoetser	WINDOWS_USER	2016-03-08 16:38:51.263	2016-03-08 16:38:51.263	db_owner
+MOSS_Ext_Config	AU\svc_moss_content	WINDOWS_USER	2009-01-27 17:07:30.533	2009-01-27 17:07:30.533	WSS_Content_Application_Pools
+MOSS_Ext_Config	AU\svc_moss_crawl	WINDOWS_USER	2009-01-27 16:47:26.033	2009-01-27 16:47:26.033	WSS_Content_Application_Pools
+MOSS_Ext_Config	AU\svc_moss_search	WINDOWS_USER	2009-01-27 16:47:25.800	2009-01-27 16:47:25.800	WSS_Content_Application_Pools
+MOSS_Ext_Config	AU\svc_moss_service	WINDOWS_USER	2009-01-27 16:59:03.777	2009-01-27 16:59:03.777	WSS_Content_Application_Pools
+MOSS_Ext_Config	AU\svc_moss_ServicePool	WINDOWS_USER	2009-01-27 16:56:41.167	2009-01-27 16:56:41.167	WSS_Content_Application_Pools
+MOSS_Ext_Config	BUILTIN\Administrators	WINDOWS_GROUP	2009-01-27 16:37:44.543	2009-01-27 16:37:44.543	db_owner
+MOSS_Ext_Config	dbo (AU\svc_moss_farm)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.660	db_owner
+MOSS_Ext_Config	NT AUTHORITY\NETWORK SERVICE	WINDOWS_USER	2009-10-01 13:23:50.620	2009-10-01 13:23:50.620	WSS_Content_Application_Pools
+MOSS_Ext_Config	OAKTON\badarinath.gali	WINDOWS_USER	2017-02-15 16:41:08.690	2017-02-15 16:41:08.690	db_owner
+MOSS_Ext_Config	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+MOSS_Ext_Config	WSS_Content_Application_Pools	DATABASE_ROLE	2009-01-27 16:36:24.073	2009-01-27 16:36:24.073	
+MOSS_Ext_Content_SharedServices	AU\svc_moss_service	WINDOWS_USER	2009-01-27 17:01:08.780	2009-01-27 17:01:08.780	db_owner
+MOSS_Ext_Content_SharedServices	AU\svc_moss_ServicePool	WINDOWS_USER	2009-01-27 16:56:50.667	2009-01-27 16:56:50.667	db_owner
+MOSS_Ext_Content_SharedServices	dbo (AU\svc_moss_farm)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.670	db_owner
+MOSS_Ext_Content_SharedServices	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+MOSS_Ext_Content_TeamSource	AU\svc_moss_content	WINDOWS_USER	2009-01-27 17:07:40.690	2009-01-27 17:07:40.690	db_owner
+MOSS_Ext_Content_TeamSource	AU\svc_moss_service	WINDOWS_USER	2009-01-27 17:08:07.130	2009-01-27 17:08:07.130	db_owner
+MOSS_Ext_Content_TeamSource	dbo (AU\svc_moss_farm)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.680	db_owner
+MOSS_Ext_Content_TeamSource	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+MOSS_Ext_Content_TeamSource_CBACTP	AU\svc_moss_content	WINDOWS_USER	2010-05-28 14:50:23.367	2010-05-28 14:50:23.367	db_owner
+MOSS_Ext_Content_TeamSource_CBACTP	AU\svc_moss_farm	WINDOWS_USER	2010-05-28 14:50:23.257	2010-05-28 14:50:23.257	db_owner
+MOSS_Ext_Content_TeamSource_CBACTP	AU\svc_moss_service	WINDOWS_USER	2010-05-28 14:50:49.523	2010-05-28 14:50:49.523	db_owner
+MOSS_Ext_Content_TeamSource_CBACTP	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.687	db_owner
+MOSS_Ext_Content_TeamSource_CBACTP	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+MOSS_Ext_Content_TeamSource_DefenceTCS	AU\svc_moss_content	WINDOWS_USER	2010-06-28 11:02:23.533	2010-06-28 11:02:23.533	db_owner
+MOSS_Ext_Content_TeamSource_DefenceTCS	AU\svc_moss_farm	WINDOWS_USER	2010-06-28 11:02:23.393	2010-06-28 11:02:23.393	db_owner
+MOSS_Ext_Content_TeamSource_DefenceTCS	AU\svc_moss_service	WINDOWS_USER	2010-06-28 11:02:58.847	2010-06-28 11:02:58.847	db_owner
+MOSS_Ext_Content_TeamSource_DefenceTCS	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.700	db_owner
+MOSS_Ext_Content_TeamSource_DefenceTCS	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+MOSS_Ext_Content_TeamSource_ExpressData	AU\svc_moss_content	WINDOWS_USER	2009-03-02 17:09:37.050	2009-03-02 17:09:37.050	db_owner
+MOSS_Ext_Content_TeamSource_ExpressData	AU\svc_moss_farm	WINDOWS_USER	2009-03-02 17:09:36.940	2009-03-02 17:09:36.940	db_owner
+MOSS_Ext_Content_TeamSource_ExpressData	AU\svc_moss_service	WINDOWS_USER	2009-03-02 17:10:31.643	2009-03-02 17:10:31.643	db_owner
+MOSS_Ext_Content_TeamSource_ExpressData	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.700	db_owner
+MOSS_Ext_Content_TeamSource_ExpressData	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+MOSS_Ext_Content_TeamSource_LearningSolutions	AU\svc_moss_content	WINDOWS_USER	2009-05-20 11:23:09.017	2009-05-20 11:23:09.017	db_owner
+MOSS_Ext_Content_TeamSource_LearningSolutions	AU\svc_moss_farm	WINDOWS_USER	2009-05-20 11:23:08.953	2009-05-20 11:23:08.953	db_owner
+MOSS_Ext_Content_TeamSource_LearningSolutions	AU\svc_moss_service	WINDOWS_USER	2009-05-20 11:24:06.797	2009-05-20 11:24:06.797	db_owner
+MOSS_Ext_Content_TeamSource_LearningSolutions	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.707	db_owner
+MOSS_Ext_Content_TeamSource_LearningSolutions	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+MOSS_Ext_Content_TeamSource_Starlight	AU\svc_moss_content	WINDOWS_USER	2009-12-08 12:26:18.837	2009-12-08 12:26:18.837	db_owner
+MOSS_Ext_Content_TeamSource_Starlight	AU\svc_moss_farm	WINDOWS_USER	2009-12-08 12:26:18.743	2009-12-08 12:26:18.743	db_owner
+MOSS_Ext_Content_TeamSource_Starlight	AU\svc_moss_service	WINDOWS_USER	2009-12-08 12:26:49.993	2009-12-08 12:26:49.993	db_owner
+MOSS_Ext_Content_TeamSource_Starlight	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.717	db_owner
+MOSS_Ext_Content_TeamSource_Starlight	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+MOSS_Ext_Content_TeamSource_Xstrata	AU\svc_moss_content	WINDOWS_USER	2009-03-02 15:25:10.283	2009-03-02 15:25:10.283	db_owner
+MOSS_Ext_Content_TeamSource_Xstrata	AU\svc_moss_farm	WINDOWS_USER	2009-03-02 15:25:10.160	2009-03-02 15:25:10.160	db_owner
+MOSS_Ext_Content_TeamSource_Xstrata	AU\svc_moss_service	WINDOWS_USER	2009-03-02 15:25:31.440	2009-03-02 15:25:31.440	db_owner
+MOSS_Ext_Content_TeamSource_Xstrata	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.720	db_owner
+MOSS_Ext_Content_TeamSource_Xstrata	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+MOSS_Ext_Content_TeamSource_X-strata	AU\svc_moss_content	WINDOWS_USER	2009-03-30 11:46:11.443	2009-03-30 11:46:11.443	db_owner
+MOSS_Ext_Content_TeamSource_X-strata	AU\svc_moss_farm	WINDOWS_USER	2009-03-30 11:46:11.413	2009-03-30 11:46:11.413	db_owner
+MOSS_Ext_Content_TeamSource_X-strata	AU\svc_moss_service	WINDOWS_USER	2009-03-30 11:46:59.617	2009-03-30 11:46:59.617	db_owner
+MOSS_Ext_Content_TeamSource_X-strata	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.723	db_owner
+MOSS_Ext_Content_TeamSource_X-strata	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+MOSS_Ext_SharedServices	AU\gtsiliri	WINDOWS_USER	2015-09-03 15:40:54.720	2015-09-03 15:40:54.720	db_owner
+MOSS_Ext_SharedServices	au\svc_moss_content	WINDOWS_USER	2009-01-27 17:08:07.020	2009-01-27 17:08:07.020	db_owner
+MOSS_Ext_SharedServices	au\svc_moss_search	WINDOWS_USER	2009-01-27 17:01:41.700	2009-01-27 17:01:41.700	db_owner
+MOSS_Ext_SharedServices	AU\svc_moss_service	WINDOWS_USER	2009-01-27 17:01:08.607	2009-01-27 17:01:08.607	db_owner
+MOSS_Ext_SharedServices	au\svc_moss_servicepool	WINDOWS_USER	2009-01-27 17:01:08.717	2009-01-27 17:01:08.717	db_owner
+MOSS_Ext_SharedServices	dbo (AU\svc_moss_farm)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.733	db_owner
+MOSS_Ext_SharedServices	NT AUTHORITY\NETWORK SERVICE	WINDOWS_USER	2009-10-01 13:23:50.747	2009-10-01 13:23:50.747	db_owner
+MOSS_Ext_SharedServices	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+MOSS_Ext_SharedServices_Search	AU\gtsiliri	WINDOWS_USER	2015-09-03 15:40:55.000	2015-09-03 15:40:55.000	
+MOSS_Ext_SharedServices_Search	au\svc_moss_content	WINDOWS_USER	2009-01-27 17:08:07.253	2009-01-27 17:08:07.253	db_owner
+MOSS_Ext_SharedServices_Search	au\svc_moss_search	WINDOWS_USER	2009-01-27 17:01:41.670	2009-01-27 17:01:41.670	db_owner
+MOSS_Ext_SharedServices_Search	AU\svc_moss_service	WINDOWS_USER	2009-01-27 17:01:37.357	2009-01-27 17:01:37.357	db_owner
+MOSS_Ext_SharedServices_Search	au\svc_moss_servicepool	WINDOWS_USER	2009-01-27 17:01:37.450	2009-01-27 17:01:37.450	db_owner
+MOSS_Ext_SharedServices_Search	dbo (AU\svc_moss_farm)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.737	db_owner
+MOSS_Ext_SharedServices_Search	NT AUTHORITY\NETWORK SERVICE	WINDOWS_USER	2009-10-01 13:23:51.150	2009-10-01 13:23:51.150	db_owner
+MOSS_Ext_SharedServices_Search	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+MOSS_Ext_WSS_Search_AUNDDMSMOS01	AU\gtsiliri	WINDOWS_USER	2015-09-03 15:40:55.030	2015-09-03 15:40:55.030	db_owner
+MOSS_Ext_WSS_Search_AUNDDMSMOS01	AU\svc_moss_content	WINDOWS_USER	2009-01-28 01:23:21.687	2009-01-28 01:23:21.687	db_owner
+MOSS_Ext_WSS_Search_AUNDDMSMOS01	AU\svc_moss_crawl	WINDOWS_USER	2009-01-27 16:47:33.783	2009-01-27 16:47:33.783	db_owner
+MOSS_Ext_WSS_Search_AUNDDMSMOS01	AU\svc_moss_search	WINDOWS_USER	2009-01-27 16:47:33.707	2009-01-27 16:47:33.707	db_owner
+MOSS_Ext_WSS_Search_AUNDDMSMOS01	AU\svc_moss_service	WINDOWS_USER	2009-01-31 01:54:09.340	2009-01-31 01:54:09.340	db_owner
+MOSS_Ext_WSS_Search_AUNDDMSMOS01	AU\svc_moss_ServicePool	WINDOWS_USER	2009-01-28 01:23:20.640	2009-01-28 01:23:20.640	db_owner
+MOSS_Ext_WSS_Search_AUNDDMSMOS01	dbo (AU\svc_moss_farm)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.747	db_owner
+MOSS_Ext_WSS_Search_AUNDDMSMOS01	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+msdb	AU\AUNNIMSMSS01$	WINDOWS_USER	2008-02-09 16:03:43.550	2008-02-09 16:03:43.550	
+msdb	AU\svc_citrix_edgesight	WINDOWS_USER	2009-05-13 15:43:53.263	2009-05-13 15:43:53.263	SQLAgentUserRole,SQLAgentReaderRole,SQLAgentOperatorRole,RSExecRole
+msdb	AU\svc_citrix_xenapp	WINDOWS_USER	2009-06-17 16:32:27.613	2009-06-17 16:32:27.613	
+msdb	AU\svc_ctxdb	WINDOWS_USER	2008-06-09 15:38:02.040	2008-06-09 15:38:02.040	RSExecRole
+msdb	AU\svc_moss_content	WINDOWS_USER	2008-03-31 17:56:31.350	2008-03-31 17:56:31.350	
+msdb	AU\svc_RSExec	WINDOWS_USER	2007-08-02 10:44:12.347	2007-08-02 10:44:12.347	
+msdb	AU\svc_sqladmin	WINDOWS_USER	2007-08-02 16:22:25.193	2007-08-02 16:22:25.193	RSExecRole
+msdb	DatabaseMailUserRole	DATABASE_ROLE	2005-10-14 01:55:45.880	2005-10-14 01:55:45.880	
+msdb	db_dtsadmin	DATABASE_ROLE	2005-10-14 01:56:00.850	2005-10-14 01:56:00.850	
+msdb	db_dtsltduser	DATABASE_ROLE	2005-10-14 01:56:00.960	2005-10-14 01:56:00.960	
+msdb	db_dtsoperator	DATABASE_ROLE	2005-10-14 01:56:01.067	2005-10-14 01:56:01.067	
+msdb	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2005-10-14 01:54:05.270	db_owner
+msdb	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+msdb	RSExecRole	DATABASE_ROLE	2008-06-09 15:36:36.430	2008-06-09 15:36:36.430	SQLAgentOperatorRole
+msdb	SQLAgentOperatorRole	DATABASE_ROLE	2005-10-14 01:55:16.817	2005-10-14 01:55:16.817	SQLAgentReaderRole
+msdb	SQLAgentReaderRole	DATABASE_ROLE	2005-10-14 01:55:16.817	2005-10-14 01:55:16.817	SQLAgentUserRole
+msdb	SQLAgentUserRole	DATABASE_ROLE	2005-10-14 01:55:16.817	2005-10-14 01:55:16.817	
+msdb	TargetServersRole	DATABASE_ROLE	2005-10-14 01:55:16.800	2005-10-14 01:55:16.800	
+msdb	vpxuser	SQL_USER	2009-07-13 13:40:42.350	2009-07-13 13:40:42.350	db_owner
+OPSXML	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.750	db_owner
+OPSXML	OpsXML	SQL_USER	2007-12-03 12:49:11.347	2007-12-04 11:36:29.640	db_owner
+OPSXML	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+PaperCut	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.753	db_owner
+PaperCut	papercut	SQL_USER	2008-12-19 13:58:27.720	2008-12-19 13:58:27.720	db_owner
+PaperCut	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+POLICYSCHEDULER	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.757	db_owner
+POLICYSCHEDULER	OpsXML	SQL_USER	2007-12-04 11:19:04.610	2007-12-04 11:19:04.610	db_owner
+POLICYSCHEDULER	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+PPSMonitoring_aunnimsmss01	AU\svc_moss_content	WINDOWS_USER	2008-02-09 17:53:39.420	2008-02-09 17:53:39.420	BpmDeveloper
+PPSMonitoring_aunnimsmss01	AU\svc_pps_monitoring	WINDOWS_USER	2008-02-09 17:53:17.263	2008-02-09 17:53:17.263	BpmDeveloper
+PPSMonitoring_aunnimsmss01	BpmDeveloper	DATABASE_ROLE	2008-02-09 17:52:54.013	2008-02-09 17:52:54.013	
+PPSMonitoring_aunnimsmss01	BpmViewer	DATABASE_ROLE	2008-02-09 17:52:54.013	2008-02-09 17:52:54.013	
+PPSMonitoring_aunnimsmss01	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.763	db_owner
+PPSMonitoring_aunnimsmss01	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+QuestAdminDB	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.767	db_owner
+QuestAdminDB	jtheeng	WINDOWS_USER	2009-03-12 10:15:55.717	2009-03-12 10:15:55.717	db_owner
+QuestAdminDB	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+ReportServer_AUNNIMSMSS01	AU\AUNNIMSMSS01$	WINDOWS_USER	2008-03-19 17:34:20.130	2008-03-19 17:34:20.130	RSExecRole
+ReportServer_AUNNIMSMSS01	AU\dmunning	WINDOWS_USER	2008-04-08 09:41:38.863	2008-04-08 09:41:38.863	RSExecRole,db_owner
+ReportServer_AUNNIMSMSS01	AU\svc_moss_content	WINDOWS_USER	2008-03-31 17:56:31.273	2008-03-31 17:56:31.273	RSExecRole
+ReportServer_AUNNIMSMSS01	AU\svc_sqladmin	WINDOWS_USER	2008-03-19 17:34:19.817	2008-03-19 17:34:19.817	RSExecRole
+ReportServer_AUNNIMSMSS01	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:17:57.240	db_owner
+ReportServer_AUNNIMSMSS01	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+ReportServer_AUNNIMSMSS01	RSExecRole	DATABASE_ROLE	2008-03-19 17:33:54.457	2008-03-19 17:33:54.457	db_owner
+ReportServer_AUNNIMSMSS01TempDB	AU\AUNNIMSMSS01$	WINDOWS_USER	2008-03-19 17:34:20.143	2008-03-19 17:34:20.143	RSExecRole
+ReportServer_AUNNIMSMSS01TempDB	AU\dmunning	WINDOWS_USER	2008-04-08 09:41:39.223	2008-04-08 09:41:39.223	RSExecRole,db_owner
+ReportServer_AUNNIMSMSS01TempDB	AU\svc_moss_content	WINDOWS_USER	2008-03-31 17:56:31.320	2008-03-31 17:56:31.320	RSExecRole
+ReportServer_AUNNIMSMSS01TempDB	AU\svc_sqladmin	WINDOWS_USER	2008-03-19 17:34:19.833	2008-03-19 17:34:19.833	RSExecRole
+ReportServer_AUNNIMSMSS01TempDB	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:18:19.193	db_owner
+ReportServer_AUNNIMSMSS01TempDB	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+ReportServer_AUNNIMSMSS01TempDB	RSExecRole	DATABASE_ROLE	2008-03-19 17:33:54.490	2008-03-19 17:33:54.490	db_owner
+RM_Cache_CF2BEBF5	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.777	db_owner
+RM_Cache_CF2BEBF5	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+RM_TEMP_CONTENT_B71BB5DA_1712308370	AU\svc_moss_service	WINDOWS_USER	2009-02-09 10:42:02.760	2009-02-09 10:42:02.760	db_owner
+RM_TEMP_CONTENT_B71BB5DA_1712308370	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.780	db_owner
+RM_TEMP_CONTENT_B71BB5DA_1712308370	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+SharedServices_ExpressData_DB	au\svc_moss_search	WINDOWS_USER	2010-07-01 14:24:20.490	2010-07-01 14:24:20.490	db_owner
+SharedServices_ExpressData_DB	AU\svc_moss_service	WINDOWS_USER	2010-07-01 14:23:59.647	2010-07-01 14:23:59.647	db_owner
+SharedServices_ExpressData_DB	dbo (AU\svc_moss_farm)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 19:11:13.647	db_owner
+SharedServices_ExpressData_DB	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+SharedServices_ExpressData_Search_DB	au\svc_moss_search	WINDOWS_USER	2010-07-01 14:24:20.443	2010-07-01 14:24:20.443	db_owner
+SharedServices_ExpressData_Search_DB	AU\svc_moss_service	WINDOWS_USER	2010-07-01 14:24:11.880	2010-07-01 14:24:11.880	db_owner
+SharedServices_ExpressData_Search_DB	dbo (AU\svc_moss_farm)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.783	db_owner
+SharedServices_ExpressData_Search_DB	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+SharedServices1_DB	AU\gtsiliri	WINDOWS_USER	2015-09-03 15:40:55.390	2015-09-03 15:40:55.390	
+SharedServices1_DB	AU\svc_moss_farm	WINDOWS_USER	2009-01-14 16:11:46.417	2009-01-14 16:11:46.417	db_owner
+SharedServices1_DB	au\svc_moss_search	WINDOWS_USER	2009-01-14 16:12:24.997	2009-01-14 16:12:24.997	db_owner
+SharedServices1_DB	AU\svc_moss_service	WINDOWS_USER	2009-01-14 16:11:46.293	2009-01-14 16:11:46.293	db_owner
+SharedServices1_DB	au\svc_sqladmin	WINDOWS_USER	2009-01-14 19:08:41.877	2009-01-14 19:08:41.877	db_owner
+SharedServices1_DB	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.790	db_owner
+SharedServices1_DB	NT AUTHORITY\NETWORK SERVICE	WINDOWS_USER	2009-01-20 17:35:07.997	2009-01-20 17:35:07.997	db_owner
+SharedServices1_DB	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+SharedServices2_DB	AU\gtsiliri	WINDOWS_USER	2015-09-03 15:40:55.440	2015-09-03 15:40:55.440	db_owner
+SharedServices2_DB	dbo (AU\svc_moss_farm)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.797	db_owner
+SharedServices2_DB	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+SharePoint_AdminContent_6e90cfc2-fad9-495f-a567-46ba4fc786e3	AU\AUNDDMSMOS01$	WINDOWS_USER	2009-01-13 17:27:24.840	2009-01-13 17:27:24.840	WSS_Content_Application_Pools
+SharePoint_AdminContent_6e90cfc2-fad9-495f-a567-46ba4fc786e3	AU\gtsiliri	WINDOWS_USER	2015-09-03 15:40:55.703	2015-09-03 15:40:55.703	
+SharePoint_AdminContent_6e90cfc2-fad9-495f-a567-46ba4fc786e3	AU\svc_moss_crawl	WINDOWS_USER	2009-01-14 15:54:54.067	2009-01-14 15:54:54.067	WSS_Content_Application_Pools
+SharePoint_AdminContent_6e90cfc2-fad9-495f-a567-46ba4fc786e3	AU\svc_moss_farm	WINDOWS_USER	2009-01-14 14:44:58.680	2009-01-14 14:44:58.680	WSS_Content_Application_Pools
+SharePoint_AdminContent_6e90cfc2-fad9-495f-a567-46ba4fc786e3	AU\svc_moss_search	WINDOWS_USER	2009-01-14 15:09:00.300	2009-01-14 15:09:00.300	WSS_Content_Application_Pools
+SharePoint_AdminContent_6e90cfc2-fad9-495f-a567-46ba4fc786e3	AU\svc_moss_service	WINDOWS_USER	2009-01-14 16:10:23.853	2009-01-14 16:10:23.853	WSS_Content_Application_Pools
+SharePoint_AdminContent_6e90cfc2-fad9-495f-a567-46ba4fc786e3	AU\svc_sqladmin	WINDOWS_USER	2009-01-13 17:26:43.310	2009-01-13 17:26:43.310	WSS_Content_Application_Pools,db_owner
+SharePoint_AdminContent_6e90cfc2-fad9-495f-a567-46ba4fc786e3	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.800	db_owner
+SharePoint_AdminContent_6e90cfc2-fad9-495f-a567-46ba4fc786e3	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+SharePoint_AdminContent_6e90cfc2-fad9-495f-a567-46ba4fc786e3	WSS_Content_Application_Pools	DATABASE_ROLE	2009-01-13 17:27:21.077	2009-01-13 17:27:21.077	
+SharePoint_AdminContent_c4126c5c-be86-4d33-aae0-580afde47ec4	AU\AUNNIMSMSS01$	WINDOWS_USER	2008-02-13 13:41:16.360	2008-02-13 13:41:16.360	WSS_Content_Application_Pools
+SharePoint_AdminContent_c4126c5c-be86-4d33-aae0-580afde47ec4	AU\gtsiliri	WINDOWS_USER	2015-09-03 15:40:55.750	2015-09-03 15:40:55.750	db_owner
+SharePoint_AdminContent_c4126c5c-be86-4d33-aae0-580afde47ec4	AU\svc_moss_content	WINDOWS_USER	2008-02-14 11:54:10.620	2008-02-14 11:54:10.620	WSS_Content_Application_Pools,db_owner
+SharePoint_AdminContent_c4126c5c-be86-4d33-aae0-580afde47ec4	AU\svc_moss_crawl	WINDOWS_USER	2008-02-13 13:52:40.860	2008-02-13 13:52:40.860	WSS_Content_Application_Pools
+SharePoint_AdminContent_c4126c5c-be86-4d33-aae0-580afde47ec4	AU\svc_moss_farm	WINDOWS_USER	2008-02-13 13:40:45.450	2008-02-13 13:40:45.450	WSS_Content_Application_Pools,db_owner
+SharePoint_AdminContent_c4126c5c-be86-4d33-aae0-580afde47ec4	AU\svc_moss_ProfileImp	WINDOWS_USER	2008-02-15 19:46:19.137	2008-02-15 19:46:19.137	WSS_Content_Application_Pools
+SharePoint_AdminContent_c4126c5c-be86-4d33-aae0-580afde47ec4	AU\svc_moss_search	WINDOWS_USER	2008-02-13 13:51:01.013	2008-02-13 13:51:01.013	WSS_Content_Application_Pools
+SharePoint_AdminContent_c4126c5c-be86-4d33-aae0-580afde47ec4	AU\svc_moss_service	WINDOWS_USER	2008-02-13 14:38:26.883	2008-02-13 14:38:26.883	WSS_Content_Application_Pools
+SharePoint_AdminContent_c4126c5c-be86-4d33-aae0-580afde47ec4	AU\svc_moss_ServicePool	WINDOWS_USER	2008-02-13 14:15:47.100	2008-02-13 14:15:47.100	WSS_Content_Application_Pools
+SharePoint_AdminContent_c4126c5c-be86-4d33-aae0-580afde47ec4	AU\svc_sqladmin	WINDOWS_USER	2008-03-12 18:16:36.963	2008-03-12 18:16:36.963	WSS_Content_Application_Pools,db_owner
+SharePoint_AdminContent_c4126c5c-be86-4d33-aae0-580afde47ec4	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.803	db_owner
+SharePoint_AdminContent_c4126c5c-be86-4d33-aae0-580afde47ec4	NT AUTHORITY\NETWORK SERVICE	WINDOWS_USER	2008-03-12 18:16:32.293	2008-03-12 18:16:32.293	WSS_Content_Application_Pools,db_owner
+SharePoint_AdminContent_c4126c5c-be86-4d33-aae0-580afde47ec4	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+SharePoint_AdminContent_c4126c5c-be86-4d33-aae0-580afde47ec4	WSS_Content_Application_Pools	DATABASE_ROLE	2008-02-13 13:41:13.470	2008-02-13 13:41:13.470	
+SharePoint_Ext_Config	AU\AUNDDMSMOS01$	WINDOWS_USER	2009-01-13 17:27:24.713	2009-01-13 17:27:24.713	WSS_Content_Application_Pools
+SharePoint_Ext_Config	AU\gtsiliri	WINDOWS_USER	2015-09-03 15:40:56.110	2015-09-03 15:40:56.110	db_owner
+SharePoint_Ext_Config	AU\svc_moss_crawl	WINDOWS_USER	2009-01-14 15:54:53.897	2009-01-14 15:54:53.897	WSS_Content_Application_Pools
+SharePoint_Ext_Config	AU\svc_moss_farm	WINDOWS_USER	2009-01-14 14:44:58.650	2009-01-14 14:44:58.650	WSS_Content_Application_Pools
+SharePoint_Ext_Config	AU\svc_moss_search	WINDOWS_USER	2009-01-14 15:09:00.207	2009-01-14 15:09:00.207	WSS_Content_Application_Pools
+SharePoint_Ext_Config	AU\svc_moss_service	WINDOWS_USER	2009-01-14 16:10:23.840	2009-01-14 16:10:23.840	WSS_Content_Application_Pools
+SharePoint_Ext_Config	AU\svc_sqladmin	WINDOWS_USER	2009-01-13 17:26:15.870	2009-01-13 17:26:15.870	WSS_Content_Application_Pools,db_owner
+SharePoint_Ext_Config	BUILTIN\Administrators	WINDOWS_GROUP	2009-01-13 17:27:18.213	2009-01-13 17:27:18.213	db_owner
+SharePoint_Ext_Config	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.817	db_owner
+SharePoint_Ext_Config	NT AUTHORITY\NETWORK SERVICE	WINDOWS_USER	2009-01-20 17:35:07.200	2009-01-20 17:35:07.200	WSS_Content_Application_Pools
+SharePoint_Ext_Config	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+SharePoint_Ext_Config	WSS_Content_Application_Pools	DATABASE_ROLE	2009-01-13 17:25:48.650	2009-01-13 17:25:48.650	
+SMS_AU2	AUNNIMSSMS02\SMS Admins	WINDOWS_GROUP	2006-11-28 13:51:01.877	2006-11-28 13:51:01.877	
+SMS_AU2	AUNNIMSSMS02\SMS_SiteSystemToSQLConnection_AU2	WINDOWS_GROUP	2006-11-28 13:51:01.547	2006-11-28 13:51:01.547	
+SMS_AU2	dbo (AU\sql_nelson1)	WINDOWS_USER	2000-08-06 01:27:55.170	2000-08-06 01:27:55.170	db_owner
+SMS_AU2	oyoon	WINDOWS_GROUP	2007-06-05 13:38:21.900	2007-06-05 13:38:21.900	db_owner
+SMS_AU2	public	DATABASE_ROLE	2000-08-06 01:27:55.187	2007-06-05 13:26:11.403	
+SMS_AU2	smsschm_users	DATABASE_ROLE	2006-11-28 13:50:55.923	2007-06-05 13:26:11.420	
+SMS_AU2	webreport_approle	APPLICATION_ROLE	2006-11-28 13:50:55.940	2007-06-05 13:26:11.420	
+SPDiagAdminDiagnostics	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.847	db_owner
+SPDiagAdminDiagnostics	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+SSLDBA	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-04 09:58:59.077	db_owner
+SSLDBA	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+SSLDBA_OLD	dbo (AU\sql_nelson1)	SQL_USER	2003-04-08 09:10:42.287	2007-08-21 14:14:42.270	db_owner
+SSLDBA_OLD	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+SSP_Content_DB	AU\svc_moss_service	WINDOWS_USER	2009-01-21 17:56:52.333	2009-01-21 17:56:52.333	db_owner
+SSP_Content_DB	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.857	db_owner
+SSP_Content_DB	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+SSP_Ext_DB	dbo (AU\svc_moss_farm)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.860	db_owner
+SSP_Ext_DB	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+SSPBI_DB	AU\gtsiliri	WINDOWS_USER	2013-01-15 16:49:14.020	2013-01-15 16:49:14.020	db_owner
+SSPBI_DB	AU\svc_moss_content	WINDOWS_USER	2008-09-30 12:33:56.810	2008-09-30 12:33:56.810	db_owner
+SSPBI_DB	au\svc_moss_search	WINDOWS_USER	2008-09-30 11:03:58.087	2008-09-30 11:03:58.087	db_owner
+SSPBI_DB	AU\svc_moss_service	WINDOWS_USER	2016-04-02 19:33:23.537	2016-04-02 19:33:23.537	
+SSPBI_DB	au\svc_moss_servicepool	WINDOWS_USER	2009-01-15 14:09:46.707	2009-01-15 14:09:46.707	db_owner
+SSPBI_DB	dbo (AU\svc_moss_farm)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.860	db_owner
+SSPBI_DB	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+SSPBI_Search_DB	AU\gtsiliri	WINDOWS_USER	2013-01-15 16:49:14.380	2013-01-15 16:49:14.380	db_owner
+SSPBI_Search_DB	AU\svc_moss_content	WINDOWS_USER	2008-09-30 12:33:56.870	2008-09-30 12:33:56.870	db_owner
+SSPBI_Search_DB	au\svc_moss_search	WINDOWS_USER	2008-09-30 11:03:57.930	2008-09-30 11:03:57.930	db_owner
+SSPBI_Search_DB	au\svc_moss_servicepool	WINDOWS_USER	2009-01-15 14:09:46.940	2009-01-15 14:09:46.940	db_owner
+SSPBI_Search_DB	dbo (AU\svc_moss_farm)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.867	db_owner
+SSPBI_Search_DB	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+TelstraConnectIP	AU\ttrinh	WINDOWS_USER	2008-12-01 09:34:24.947	2008-12-01 09:34:24.947	db_owner
+TelstraConnectIP	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.870	db_owner
+TelstraConnectIP	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+TelstraConnectIP	TelstraConnect	SQL_USER	2008-12-02 09:46:45.507	2008-12-02 09:46:45.507	db_owner
+TelstraConnectIP_Test	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.873	db_owner
+TelstraConnectIP_Test	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+tempdb	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2003-04-08 09:10:42.287	db_owner
+tempdb	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+tmsng	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.893	db_owner
+tmsng	fetchit	SQL_USER	2015-04-22 08:21:28.350	2015-04-22 08:21:28.350	db_datareader
+tmsng	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+tmsng	tmsng_user	SQL_USER	2013-02-12 13:00:13.263	2013-02-12 13:00:13.263	db_owner,db_datareader
+tmspe	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.900	db_owner
+tmspe	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+VOIP	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.900	db_owner
+VOIP	external	SQL_USER	2007-12-04 11:19:04.750	2007-12-04 11:37:33.077	
+VOIP	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+VOIP	VOIP	SQL_USER	2007-12-04 11:19:04.690	2007-12-04 11:36:57.170	db_owner
+VOS_InnovationPortal	AU\ppham	WINDOWS_USER	2014-09-23 16:49:26.070	2014-09-23 16:49:26.070	db_datareader
+VOS_InnovationPortal	AU\svc_moss_crawl	WINDOWS_USER	2014-04-16 17:13:15.913	2014-04-16 17:13:15.913	db_owner
+VOS_InnovationPortal	AU\svc_moss_farm	WINDOWS_USER	2014-04-15 15:17:41.633	2014-04-15 15:17:41.633	db_owner
+VOS_InnovationPortal	AU\svc_moss_search	WINDOWS_USER	2014-04-16 17:15:16.277	2014-04-16 17:15:16.277	db_owner
+VOS_InnovationPortal	AU\svc_moss_service	WINDOWS_USER	2014-04-16 17:16:29.950	2014-04-16 17:16:29.950	db_owner
+VOS_InnovationPortal	AU\svc_moss_ServicePool	WINDOWS_USER	2014-04-16 17:15:32.213	2014-04-16 17:15:32.213	db_owner
+VOS_InnovationPortal	AU\svc_sqladmin	WINDOWS_USER	2014-04-16 17:16:13.667	2014-04-16 17:16:13.667	db_owner
+VOS_InnovationPortal	AUYXUAP427WBC32$	WINDOWS_USER	2010-03-11 21:48:45.503	2010-03-11 21:48:45.503	
+VOS_InnovationPortal	dbo (AU\gtsiliri)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.910	db_owner
+VOS_InnovationPortal	IT-Access-Sharepoint Delegated SQL	WINDOWS_GROUP	2010-03-11 21:48:44.440	2010-03-11 21:48:44.440	IT-Access-Sharepoint Delegated SQL Role
+VOS_InnovationPortal	IT-Access-Sharepoint Delegated SQL Role	DATABASE_ROLE	2010-03-11 21:48:44.600	2010-03-11 21:48:44.600	
+VOS_InnovationPortal	IT-Access-Sharepoint Developers	WINDOWS_GROUP	2010-03-11 21:48:44.317	2010-03-11 21:48:44.317	IT-Access-Sharepoint Developers Role
+VOS_InnovationPortal	IT-Access-Sharepoint Developers Role	DATABASE_ROLE	2010-03-11 21:48:44.500	2010-03-11 21:48:44.500	
+VOS_InnovationPortal	IT-Access-Sharepoint Support	WINDOWS_GROUP	2010-03-11 21:48:44.377	2010-03-11 21:48:44.377	IT-Access-Sharepoint Support Role
+VOS_InnovationPortal	IT-Access-Sharepoint Support Role	DATABASE_ROLE	2010-03-11 21:48:44.573	2010-03-11 21:48:44.573	
+VOS_InnovationPortal	IT-Access-SQL DBA	WINDOWS_GROUP	2010-03-11 21:48:44.167	2010-03-11 21:48:44.167	db_datareader
+VOS_InnovationPortal	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+VOS_InnovationPortal	SharePoint-Access-Reporting-VOSMreasy	WINDOWS_GROUP	2011-07-15 15:25:40.187	2011-07-15 15:25:40.187	db_datareader
+VOS_InnovationPortal	spservice	WINDOWS_USER	2012-02-16 09:53:56.090	2012-02-16 09:53:56.090	db_owner
+VOS_InnovationPortal	SRV-MOSS-CRAWL	WINDOWS_USER	2010-03-11 21:48:45.690	2010-03-11 21:48:45.690	db_owner,db_datareader
+VOS_InnovationPortal	SRV-MOSS-FARM	WINDOWS_USER	2010-03-11 21:48:45.567	2010-03-11 21:48:45.567	db_owner
+VOS_InnovationPortal	SRV-MOSS-SEARCH	WINDOWS_USER	2010-03-11 21:48:45.627	2010-03-11 21:48:45.627	
+VOS_InnovationPortal	SRV-MOSS-SSP	WINDOWS_USER	2010-03-11 21:48:45.760	2010-03-11 21:48:45.760	db_owner
+VOS_InnovationPortal	SRV-MOSS-SSPAPPPOOL	WINDOWS_USER	2010-03-14 15:39:28.793	2010-03-14 15:39:28.793	db_owner
+VOS_InnovationPortal	SRV-SCOM-ACTION	WINDOWS_USER	2010-03-11 21:48:44.237	2010-03-11 21:48:44.237	db_owner
+WebDmailQueue	AU\cflowers	WINDOWS_USER	2010-03-05 14:28:57.223	2010-03-05 14:28:57.223	db_owner
+WebDmailQueue	AU\jsilberb	WINDOWS_USER	2010-03-05 14:29:22.600	2010-03-05 14:29:22.600	db_owner
+WebDmailQueue	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.917	db_owner
+WebDmailQueue	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+WebDmailQueue	WebDmailQueue_User	SQL_USER	2010-03-05 14:25:21.390	2010-03-05 14:25:21.390	db_datareader,db_datawriter
+WebDmailQueue_Staging	AU\cflowers	WINDOWS_USER	2010-03-05 14:28:57.380	2010-03-05 14:28:57.380	db_owner
+WebDmailQueue_Staging	AU\jsilberb	WINDOWS_USER	2010-03-05 14:29:22.753	2010-03-05 14:29:22.753	db_owner
+WebDmailQueue_Staging	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.920	db_owner
+WebDmailQueue_Staging	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+WebDmailQueue_Staging	WebDmailQueue_User_Staging	SQL_USER	2010-03-05 14:26:02.343	2010-03-05 14:26:02.343	db_datareader,db_datawriter
+WSS_Content	AU\gtsiliri	WINDOWS_USER	2015-09-03 15:40:56.580	2015-09-03 15:40:56.580	
+WSS_Content	AU\svc_moss_service	WINDOWS_USER	2008-09-30 10:53:16.160	2008-09-30 10:53:16.160	db_owner
+WSS_Content	AU\svc_sqladmin	WINDOWS_USER	2009-03-14 16:51:47.960	2009-03-14 16:51:47.960	db_owner
+WSS_Content	dbo (AU\svc_moss_farm)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.923	db_owner
+WSS_Content	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+WSS_Content_665af4cf6c574cf78d82a78d057b8035	AU\gtsiliri	WINDOWS_USER	2015-09-03 15:40:56.627	2015-09-03 15:40:56.627	
+WSS_Content_665af4cf6c574cf78d82a78d057b8035	AU\svc_moss_service	WINDOWS_USER	2008-09-30 11:02:16.493	2008-09-30 11:02:16.493	db_owner
+WSS_Content_665af4cf6c574cf78d82a78d057b8035	AU\svc_sqladmin	WINDOWS_USER	2009-03-14 16:51:45.990	2009-03-14 16:51:45.990	db_owner
+WSS_Content_665af4cf6c574cf78d82a78d057b8035	dbo (AU\svc_moss_farm)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.930	db_owner
+WSS_Content_665af4cf6c574cf78d82a78d057b8035	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+WSS_Content_Innovation	AU\gtsiliri	WINDOWS_USER	2015-09-03 15:40:56.657	2015-09-03 15:40:56.657	
+WSS_Content_Innovation	AU\svc_moss_service	WINDOWS_USER	2014-04-16 17:20:51.297	2014-04-16 17:20:51.297	db_owner
+WSS_Content_Innovation	dbo (AU\svc_moss_farm)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.943	db_owner
+WSS_Content_Innovation	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+WSS_Content_Intranet_ExpressData	AU\gtsiliri	WINDOWS_USER	2015-09-03 15:40:56.690	2015-09-03 15:40:56.690	
+WSS_Content_Intranet_ExpressData	AU\svc_moss_service	WINDOWS_USER	2009-01-30 12:27:34.737	2009-01-30 12:27:34.737	db_owner
+WSS_Content_Intranet_ExpressData	dbo (AU\svc_moss_farm)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.950	db_owner
+WSS_Content_Intranet_ExpressData	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+WSS_Content_MySites	AU\gtsiliri	WINDOWS_USER	2015-09-03 15:40:56.737	2015-09-03 15:40:56.737	
+WSS_Content_MySites	AU\svc_moss_service	WINDOWS_USER	2009-01-21 17:59:37.990	2009-01-21 17:59:37.990	db_owner
+WSS_Content_MySites	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.950	db_owner
+WSS_Content_MySites	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+WSS_Content_Portal_ExternalCustomers	AU\gtsiliri	WINDOWS_USER	2015-09-03 15:40:56.767	2015-09-03 15:40:56.767	
+WSS_Content_Portal_ExternalCustomers	AU\svc_moss_content	WINDOWS_USER	2009-08-18 11:53:47.007	2009-08-18 11:53:47.007	db_owner
+WSS_Content_Portal_ExternalCustomers	AU\svc_moss_service	WINDOWS_USER	2009-08-18 11:54:18.163	2009-08-18 11:54:18.163	db_owner
+WSS_Content_Portal_ExternalCustomers	dbo (AU\svc_moss_farm)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.960	db_owner
+WSS_Content_Portal_ExternalCustomers	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+WSS_Content_ProjectServices	AU\gtsiliri	WINDOWS_USER	2015-09-03 15:40:56.813	2015-09-03 15:40:56.813	
+WSS_Content_ProjectServices	AU\svc_moss_content	WINDOWS_USER	2008-09-05 17:02:27.667	2008-09-05 17:02:27.667	db_owner
+WSS_Content_ProjectServices	AU\svc_moss_service	WINDOWS_USER	2008-09-05 17:03:16.540	2008-09-05 17:03:16.540	db_owner
+WSS_Content_ProjectServices	AU\svc_sqladmin	WINDOWS_USER	2009-03-14 16:51:47.537	2009-03-14 16:51:47.537	db_owner
+WSS_Content_ProjectServices	dbo (AU\svc_moss_farm)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.960	db_owner
+WSS_Content_ProjectServices	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+WSS_Content_SAG_ManagedServices	AU\gtsiliri	WINDOWS_USER	2015-09-03 15:40:56.843	2015-09-03 15:40:56.843	
+WSS_Content_SAG_ManagedServices	AU\svc_moss_service	WINDOWS_USER	2009-06-02 10:19:07.887	2009-06-02 10:19:07.887	db_owner
+WSS_Content_SAG_ManagedServices	dbo (AU\svc_moss_farm)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.963	db_owner
+WSS_Content_SAG_ManagedServices	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+WSS_Content_teamsource	AU\gtsiliri	WINDOWS_USER	2015-09-03 15:40:56.877	2015-09-03 15:40:56.877	
+WSS_Content_teamsource	AU\svc_moss_farm	WINDOWS_USER	2009-01-22 13:16:57.667	2009-01-22 13:16:57.667	db_owner
+WSS_Content_teamsource	AU\svc_moss_service	WINDOWS_USER	2009-01-22 13:17:48.120	2009-01-22 13:17:48.120	db_owner
+WSS_Content_teamsource	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.967	db_owner
+WSS_Content_teamsource	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+WSS_Content_Wired_ApplicationIntegration	AU\gtsiliri	WINDOWS_USER	2015-09-03 15:40:56.923	2015-09-03 15:40:56.923	
+WSS_Content_Wired_ApplicationIntegration	AU\svc_moss_service	WINDOWS_USER	2010-12-02 17:39:53.937	2010-12-02 17:39:53.937	db_owner
+WSS_Content_Wired_ApplicationIntegration	dbo (AU\svc_moss_farm)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.973	db_owner
+WSS_Content_Wired_ApplicationIntegration	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+WSS_Content_Wired_CIS	AU\gtsiliri	WINDOWS_USER	2015-09-03 15:40:56.970	2015-09-03 15:40:56.970	
+WSS_Content_Wired_CIS	AU\svc_moss_farm	WINDOWS_USER	2010-07-06 11:23:42.110	2010-07-06 11:23:42.110	db_owner
+WSS_Content_Wired_CIS	AU\svc_moss_service	WINDOWS_USER	2010-07-06 11:23:42.233	2010-07-06 11:23:42.233	db_owner
+WSS_Content_Wired_CIS	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.980	db_owner
+WSS_Content_Wired_CIS	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+WSS_Content_Wired_Didata	AU\gtsiliri	WINDOWS_USER	2015-09-03 15:40:56.987	2015-09-03 15:40:56.987	
+WSS_Content_Wired_Didata	AU\svc_moss_service	WINDOWS_USER	2009-02-09 10:42:02.760	2009-02-09 10:42:02.760	db_owner
+WSS_Content_Wired_Didata	dbo (AU\svc_moss_farm)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.983	db_owner
+WSS_Content_Wired_Didata	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+WSS_Content_Wired_HHH	AU\gtsiliri	WINDOWS_USER	2015-09-03 15:40:57.017	2015-09-03 15:40:57.017	db_owner
+WSS_Content_Wired_HHH	AU\svc_moss_service	WINDOWS_USER	2010-09-24 11:58:49.567	2010-09-24 11:58:49.567	db_owner
+WSS_Content_Wired_HHH	dbo (AU\svc_moss_farm)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:54.997	db_owner
+WSS_Content_Wired_HHH	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+WSS_Content_Wired_HostedServices	AU\gtsiliri	WINDOWS_USER	2015-09-03 15:40:57.280	2015-09-03 15:40:57.280	
+WSS_Content_Wired_HostedServices	AU\svc_moss_farm	WINDOWS_USER	2009-11-10 15:08:14.560	2009-11-10 15:08:14.560	db_owner
+WSS_Content_Wired_HostedServices	AU\svc_moss_service	WINDOWS_USER	2009-11-10 15:08:14.653	2009-11-10 15:08:14.653	db_owner
+WSS_Content_Wired_HostedServices	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:55.003	db_owner
+WSS_Content_Wired_HostedServices	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+WSS_Content_Wired_ITS	AU\gtsiliri	WINDOWS_USER	2015-09-03 15:40:57.330	2015-09-03 15:40:57.330	
+WSS_Content_Wired_ITS	AU\svc_moss_farm	WINDOWS_USER	2009-02-19 11:53:24.120	2009-02-19 11:53:24.120	db_owner
+WSS_Content_Wired_ITS	AU\svc_moss_service	WINDOWS_USER	2009-02-19 11:53:24.183	2009-02-19 11:53:24.183	db_owner
+WSS_Content_Wired_ITS	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:55.007	db_owner
+WSS_Content_Wired_ITS	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+WSS_Content_Wired_ITServices	AU\gtsiliri	WINDOWS_USER	2015-09-03 15:40:57.377	2015-09-03 15:40:57.377	
+WSS_Content_Wired_ITServices	AU\svc_moss_farm	WINDOWS_USER	2009-02-19 12:38:48.877	2009-02-19 12:38:48.877	db_owner
+WSS_Content_Wired_ITServices	AU\svc_moss_service	WINDOWS_USER	2009-02-19 12:38:48.923	2009-02-19 12:38:48.923	db_owner
+WSS_Content_Wired_ITServices	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:55.010	db_owner
+WSS_Content_Wired_ITServices	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+WSS_Content_Wired_ManagedServices	AU\gtsiliri	WINDOWS_USER	2015-09-03 15:40:57.390	2015-09-03 15:40:57.390	
+WSS_Content_Wired_ManagedServices	AU\svc_moss_farm	WINDOWS_USER	2009-10-08 10:39:07.487	2009-10-08 10:39:07.487	db_owner
+WSS_Content_Wired_ManagedServices	AU\svc_moss_service	WINDOWS_USER	2009-10-08 10:39:07.563	2009-10-08 10:39:07.563	db_owner
+WSS_Content_Wired_ManagedServices	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:55.030	db_owner
+WSS_Content_Wired_ManagedServices	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+WSS_Content_Wired_MSI	AU\gtsiliri	WINDOWS_USER	2015-09-03 15:40:57.423	2015-09-03 15:40:57.423	
+WSS_Content_Wired_MSI	AU\jtheeng	WINDOWS_USER	2012-10-19 08:08:24.363	2012-10-19 08:08:24.363	db_owner
+WSS_Content_Wired_MSI	AU\svc_moss_farm	WINDOWS_USER	2010-07-15 10:05:34.427	2010-07-15 10:05:34.427	db_owner
+WSS_Content_Wired_MSI	AU\svc_moss_service	WINDOWS_USER	2010-07-15 10:05:34.897	2010-07-15 10:05:34.897	db_owner
+WSS_Content_Wired_MSI	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:55.040	db_owner
+WSS_Content_Wired_MSI	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+WSS_Content_Wired_Optus	AU\gtsiliri	WINDOWS_USER	2015-09-03 15:40:57.440	2015-09-03 15:40:57.440	db_owner
+WSS_Content_Wired_Optus	AU\svc_moss_service	WINDOWS_USER	2010-09-30 13:15:37.563	2010-09-30 13:15:37.563	db_owner
+WSS_Content_Wired_Optus	dbo (AU\svc_moss_farm)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:55.053	db_owner
+WSS_Content_Wired_Optus	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+WSS_Content_Wired_SalesOps	AU\gtsiliri	WINDOWS_USER	2015-09-03 15:40:58.080	2015-09-03 15:40:58.080	db_owner
+WSS_Content_Wired_SalesOps	AU\svc_moss_farm	WINDOWS_USER	2009-09-09 10:23:05.510	2009-09-09 10:23:05.510	db_owner
+WSS_Content_Wired_SalesOps	AU\svc_moss_service	WINDOWS_USER	2009-09-09 10:23:05.633	2009-09-09 10:23:05.633	db_owner
+WSS_Content_Wired_SalesOps	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:55.060	db_owner
+WSS_Content_Wired_SalesOps	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+WSS_Search_AUNDDMSMOS01	AU\AUNDDMSMOS01$	WINDOWS_USER	2009-01-20 17:40:01.170	2009-01-20 17:40:01.170	db_owner
+WSS_Search_AUNDDMSMOS01	AU\gtsiliri	WINDOWS_USER	2015-09-03 15:40:58.360	2015-09-03 15:40:58.360	
+WSS_Search_AUNDDMSMOS01	AU\svc_moss_crawl	WINDOWS_USER	2009-01-14 15:55:06.520	2009-01-14 15:55:06.520	db_owner
+WSS_Search_AUNDDMSMOS01	AU\svc_moss_farm	WINDOWS_USER	2009-01-14 15:55:06.583	2009-01-14 15:55:06.583	db_owner
+WSS_Search_AUNDDMSMOS01	AU\svc_moss_search	WINDOWS_USER	2009-01-14 15:55:06.443	2009-01-14 15:55:06.443	db_owner
+WSS_Search_AUNDDMSMOS01	AU\svc_moss_service	WINDOWS_USER	2009-01-14 18:10:00.480	2009-01-14 18:10:00.480	db_owner
+WSS_Search_AUNDDMSMOS01	AU\svc_sqladmin	WINDOWS_USER	2009-01-14 19:10:01.360	2009-01-14 19:10:01.360	db_owner
+WSS_Search_AUNDDMSMOS01	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:55.073	db_owner
+WSS_Search_AUNDDMSMOS01	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+WSS_Search_BIPortal	AU\gtsiliri	WINDOWS_USER	2015-09-03 15:40:58.440	2015-09-03 15:40:58.440	db_owner
+WSS_Search_BIPortal	AU\svc_moss_content	WINDOWS_USER	2009-11-21 12:34:24.570	2009-11-21 12:34:24.570	db_owner
+WSS_Search_BIPortal	AU\svc_moss_crawl	WINDOWS_USER	2009-11-21 12:34:22.290	2009-11-21 12:34:22.290	db_owner
+WSS_Search_BIPortal	AU\svc_moss_search	WINDOWS_USER	2009-11-21 12:34:22.210	2009-11-21 12:34:22.210	db_owner
+WSS_Search_BIPortal	AU\svc_moss_service	WINDOWS_USER	2009-11-21 13:00:14.047	2009-11-21 13:00:14.047	db_owner
+WSS_Search_BIPortal	AU\svc_moss_ServicePool	WINDOWS_USER	2009-11-21 12:34:24.587	2009-11-21 12:34:24.587	db_owner
+WSS_Search_BIPortal	dbo (AU\svc_moss_farm)	WINDOWS_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:55.083	db_owner
+WSS_Search_BIPortal	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+XENDataStore	AU\svc_citrix_xenapp	WINDOWS_USER	2009-06-17 17:08:28.313	2009-06-17 17:08:28.313	db_owner
+XENDataStore	dbo (sa)	SQL_USER	2003-04-08 09:10:42.287	2016-04-02 16:51:55.087	db_owner
+XENDataStore	public	DATABASE_ROLE	2003-04-08 09:10:42.317	2005-10-14 01:36:25.610	
+XENDataStore	XENAppDS_Test	SQL_USER	2009-12-18 09:49:28.550	2009-12-18 09:49:28.550	db_owner

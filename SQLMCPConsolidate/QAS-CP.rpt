@@ -1,0 +1,29 @@
+﻿                                                                                                                                 as_at_date              is_broker_enabled name
+-------------------------------------------------------------------------------------------------------------------------------- ----------------------- ----------------- --------------------------------------------------------------------------------------------------------------------------------
+AUMCPSVTSQLAG02\SQLINST1                                                                                                         2017-11-22 17:24:42.697 0                 ContentStore
+AUMCPSVTSQLAG02\SQLINST1                                                                                                         2017-11-22 17:24:42.697 0                 ContentStoreTest
+AUMCPSVTSQLAG02\SQLINST1                                                                                                         2017-11-22 17:24:42.697 0                 ChangepointTest
+AUMCPSVTSQLAG02\SQLINST1                                                                                                         2017-11-22 17:24:42.697 0                 ChangepointTest_CPExtended
+AUMCPSVTSQLAG02\SQLINST1                                                                                                         2017-11-22 17:24:42.697 0                 ChangepointTest_CPTempDB
+AUMCPSVTSQLAG02\SQLINST1                                                                                                         2017-11-22 17:24:42.697 0                 SbManagementDBTEST
+AUMCPSVTSQLAG02\SQLINST1                                                                                                         2017-11-22 17:24:42.697 0                 SbGatewayDatabaseTEST
+AUMCPSVTSQLAG02\SQLINST1                                                                                                         2017-11-22 17:24:42.697 0                 SBMessageContainerTEST01
+AUMCPSVTSQLAG02\SQLINST1                                                                                                         2017-11-22 17:24:42.697 0                 SBMessageContainerTEST02
+AUMCPSVTSQLAG02\SQLINST1                                                                                                         2017-11-22 17:24:42.697 0                 SBMessageContainerTEST03
+AUMCPSVTSQLAG02\SQLINST1                                                                                                         2017-11-22 17:24:42.697 0                 master
+AUMCPSVTSQLAG02\SQLINST1                                                                                                         2017-11-22 17:24:42.697 0                 model
+AUMCPSVTSQLAG02\SQLINST1                                                                                                         2017-11-22 17:24:42.697 0                 SSLDBA
+AUMCPSVTSQLAG02\SQLINST1                                                                                                         2017-11-22 17:24:42.697 0                 DDAITAdmin
+AUMCPSVTSQLAG02\SQLINST1                                                                                                         2017-11-22 17:24:42.697 1                 Changepoint
+AUMCPSVTSQLAG02\SQLINST1                                                                                                         2017-11-22 17:24:42.697 1                 msdb
+AUMCPSVTSQLAG02\SQLINST1                                                                                                         2017-11-22 17:24:42.697 1                 tempdb
+AUMCPSVTSQLAG02\SQLINST1                                                                                                         2017-11-22 17:24:42.697 1                 Changepoint_CPTempDB
+AUMCPSVTSQLAG02\SQLINST1                                                                                                         2017-11-22 17:24:42.697 1                 Changepoint_CPExtended
+AUMCPSVTSQLAG02\SQLINST1                                                                                                         2017-11-22 17:24:42.697 1                 SbManagementDB
+AUMCPSVTSQLAG02\SQLINST1                                                                                                         2017-11-22 17:24:42.697 1                 SbGatewayDatabase
+AUMCPSVTSQLAG02\SQLINST1                                                                                                         2017-11-22 17:24:42.697 1                 SBMessageContainer01
+AUMCPSVTSQLAG02\SQLINST1                                                                                                         2017-11-22 17:24:42.697 1                 SBMessageContainer02
+AUMCPSVTSQLAG02\SQLINST1                                                                                                         2017-11-22 17:24:42.697 1                 SBMessageContainer03
+
+(24 row(s) affected)
+

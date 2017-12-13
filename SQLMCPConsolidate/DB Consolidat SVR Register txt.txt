@@ -1,0 +1,44 @@
+number                 short_description
+SVR21537794	AUNDDVSSQL02\INST02 server migration plans
+SVR21669141	DB migration to MCP - SQL cluster instance AUNDDPDSQC01 in production - Active Directory Federation Service
+SVR21668183	DB migration to MCP - SQL cluster instance AUNDDPDSQC01 in production - AUNDDPDSRS01 SSRS server and components
+SVR21669503	DB migration to MCP - SQL cluster instance AUNDDPDSQC01 in production - BlackberryExchange databases and SQL components
+SVR21669432	DB migration to MCP - SQL cluster instance AUNDDPDSQC01 in production - Lync databases and SQL components
+SVR21668106	DB migration to MCP - SQL cluster instance AUNDDPDSQC01 in production - Mcafee
+SVR21646946	DB migration to MCP - SQL cluster instance AUNDDPDSQC01 in production - Sharepoint
+SVR21639626	DB migration to MCP - SQL cluster instance AUNDDPDSQC02  in production
+SVR21642894	DB migration to MCP - SQL cluster instance AUNDDPDSQC02 in production - Cisco TelePresence
+SVR21642858	DB migration to MCP - SQL cluster instance AUNDDPDSQC02 in production - Citrix
+SVR21642903	DB migration to MCP - SQL cluster instance AUNDDPDSQC02 in production - connections, SQL jobs, SSIS, SSRS, SSAS componen
+SVR21642877	DB migration to MCP - SQL cluster instance AUNDDPDSQC02 in production - DataServices
+SVR21642874	DB migration to MCP - SQL cluster instance AUNDDPDSQC02 in production - Enterprise Vault
+SVR21642889	DB migration to MCP - SQL cluster instance AUNDDPDSQC02 in production - Equitrac
+SVR21642898	DB migration to MCP - SQL cluster instance AUNDDPDSQC02 in production - Microsoft Forefront Identity Manager 2010 R2
+SVR21642882	DB migration to MCP - SQL cluster instance AUNDDPDSQC02 in production - Sharepoint
+SVR21669809	DB migration to MCP - SQL cluster instance aunddpdsqc02 in production - vCenter databases and SQL components
+SVR21669806	DB migration to MCP - SQL cluster instance aunddpdsqc02 in production - WQM databases and SQL components
+SVR21669134	DB migration to MCP - SQL cluster instance AUNDDPDSQD03 in production - Active Directory Federation Service 
+SVR21669122	DB migration to MCP - SQL cluster instance AUNDDPDSQD03 in production - SharePointBI database
+SVR21669107	DB migration to MCP - SQL cluster instance AUNDDPDSQD03 in production - Xtraction framework
+SVR21669105	DB migration to MCP - SQL cluster instance AUNDDPDSQD03 in production - Xtraction report data sources
+SVR21671618	DB migration to MCP - SQL cluster instance AUNDDVSSQL01 in production - DDLS Intranet and components
+SVR21671592	DB migration to MCP - SQL cluster instance AUNDDVSSQL01 in production - Equitrac Platform SQL databases and components
+SVR21671611	DB migration to MCP - SQL cluster instance AUNDDVSSQL01 in production - MIIS2003 (Identity Integration Server) SQL datab
+SVR21671626	DB migration to MCP - SQL cluster instance AUNDDVSSQL01 in production - Sharepoint farm AUNDDMSMOS01 and Sharepoint sites
+SVR21646935	DB migration to MCP - SQL cluster instance C01, D01, D03 in production
+SVR21647717	DB migration to MCP - SQL cluster instance C01, D01, D03 in production - Apollo and DWH databases
+SVR21673052	DB migration to MCP-SQL cluster instance AUNDDVSSQL01 in production - PaperCut
+SVR21672975	DB migration to MCP-SQL cluster instance AUNDDVSSQL01 in production - VOS_InnovationPortal
+SVR21536112	DDA IT SQL Instance AUNDDDVSPDB01 - offline databases
+SVR21607563	move DB to cloud instance(s)
+SVR21617988	SQL Consolidation - SQL server migration - K2 Wave3 DBs in non-production environment
+SVR21617329	SQL Consolidation Project - AUNDDDVSPDB01 - user DBs migration
+SVR21617319	SQL Consolidation Project - AUNDDMSSQLQ02 - user DBs migration
+SVR21618917	SQL Consolidation Project - Non-Production Environments - Shared SQL instances - user DBs migration
+SVR21619152	SQL Consolidation Project - Shared SQL instances AUNDDVSSQL03, AUNDDSSDBD01 - user DBs migration
+SVR21551027	Subject: RE: AUNDDVSSQL02\INST02 server migration plans
+SVR21675975	DB migration to MCP-SQL cluster instance AUNDDVSSQL01 in production - TelstraConnectIP
+SVR21675997 DB migration to MCP-SQL cluster instance AUNDDVSSQL01 in production - Citrix
+
+
+

@@ -1,0 +1,21 @@
+DB migration to MCP - SQL cluster instance AUNDDVSSQL01 in production - Equitrac Platform SQL databases and components
+
+Hi Team,
+ 
+As you know IT is in the process to migrate on-premises server to MCP environment, Equitrac Platform are in the scope of the server migration, can you please assist with the tasks as following?
+1. Review and confirm if Equitrac Platform uses the database;
+2. SQL Services can migrate these databases to MCP environment if required;  
+3. Reconfigure Equitrac Platform and components to connect to new MCP SQL environment; 
+ 
+Source SQL instance: Shared SQL instance AUNDDVSSQL01 in Production environments.
+
+server_name : AUNDDVSSQL01
+
+Databases:
+Name     Status Containment Type Recovery Model CompatLvl Collation            Owner
+----     ------ ---------------- -------------- --------- ---------            -----
+eqcas    Normal                  Full                  90 Latin1_General_CI_AS AU\svc_equitrac
+Equitrac Normal                  Full                  90 Latin1_General_CI_AS sa
+
+Link to MCP SQL environment document:
+http://community.didata.com.au/sites/it/Shared%20Documents/Application%20Services/SQL/MCP%20SQL%20Environment/MCP%20SQL%20Environment.docx

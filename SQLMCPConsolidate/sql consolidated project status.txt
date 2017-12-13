@@ -1,0 +1,116 @@
+&$env:windir\\system32\\inetsrv\\appcmd.exe list apppool "SharePoint Central Administration v4" /text:ProcessModel.Password
+
+C:\Windows\System32\inetsrv>appcmd list apppool "Sharepoint Central Administration v4" /text:processmodel.username, processmodel.password
+Failed to process input: The parameter 'processmodel.password' must begin with a / or - (HRESULT=80070057).
+
+C:\Windows\System32\inetsrv>appcmd list apppool "Sharepoint Central Administration v4" /text:processmodel.username
+AU\svc_360_farm
+C:\Windows\System32\inetsrv>appcmd list apppool "Sharepoint Central Administration v4" /text:processmodel.password
+aTB3`y?XJtsa&;JTd,!Z
+
+"C:\Program Files\Microsoft\Kerberos Configuration Manager for SQL Server\KerberosConfigMgr.exe"
+
+'Jon-Henri Quin' <
+Jon-Henri.Quin@sqlservices.com
+>
+
+Citrix-SVR21642858
+25/09/2017: emailed Luke
+ 
+Enterprise Vault-SVR21642874
+25/09/2017: Valentine Schwartz - “EV server is in the process of getting decommissioned and migrated to another system
+closing the ticket
+ 
+DataService-SVR21642877
+25/09/2017: email Jon-Henri to move BusObj databases 
+server_name
+-----------
+AUNDDPDSQC02\AUNDDPDSQC02
+Name                    Status      Size Space Available Recovery Model Compat. Level Owner Collation            Containment Type
+----                    ------      ---- --------------- -------------- ------------- ----- ---------            ----------------
+BusObj_AUDIT            Normal    1.6 GB        67.95 MB Full                     100 sa    Latin1_General_CI_AS None
+BusObj_AUDIT_2017       Normal    1.6 GB       685.07 MB Simple                   110 sa    Latin1_General_CI_AS None
+BusObj_CMS              Normal 101.13 MB        19.34 MB Full                     100 sa    Latin1_General_CI_AS None
+BusObj_CMS_2017         Normal 162.81 MB        85.13 MB Simple                   110 sa    Latin1_General_CI_AS None
+BusObjDsCentralRepo     Normal 808.56 MB       469.17 MB Full                     100 sa    Latin1_General_CI_AS None
+BusObjDsRepository      Normal    3.3 GB       474.93 MB Full                     100 sa    Latin1_General_CI_AS None
+BusObjDsRepository_2017 Normal    3.3 GB          1.4 GB Simple                   110 sa    Latin1_General_CI_AS None
+BusObjDsRepository_PROD Normal 883.56 MB       121.37 MB Full                     100 sa    Latin1_General_CI_AS None
+ 
+Sharepoint-SVR21642882
+25/09/2017: Emailed Jon-Henri and George to update the ticket
+ 
+Equitrac-SVR21642889
+25/09/2017: emailed Asif Kalimulla to ask for update, need him to assign to EUC to action.
+
+Telepresence-SVR21642894
+25/09/2017: emailed Tas, SD Anantharaman Krishnan to assign to the proper team
+ 
+Forefront Identity-SVR21642898
+ 
+existing sql server stack components-SVR21642903
+emailed Jon-Henri to confirm if any outstanding items on AUNDDPDSQC02?
+
+Enterprise Vault: Number SVR21642874 was assigned to Request
+DataService - Number SVR21642877 was assigned to Request
+Sharepoint - Number SVR21642882 was assigned to Request
+Equitrac - Number SVR21642889 was assigned to Request
+Telepresence = Number SVR21642894 was assigned to Request
+Forefront Identity - Number SVR21642898 was assigned to Request
+Generic sql components - Number SVR21642903 was assigned to Request
+
+
+AUNDDVSSQL01->AUMCPSVPSQLSA02
+
+
+like: teamwork
+dislike: audit
+
+SVR21652522 
+
+
+27/09/2017:
+to do - c01
+macfee to reconfigure
+
+
+28/09/2017:
+Xtraction
+Server: AUNDDPDSQD03\AUNDDPDSQD03, Database: Xtraction, User: BusObjDSAdmin
+
+data source: Server: 
+ITSM: AUNDDPDSQD03\AUNDDPDSQD03, Database: Apollo_Warehouse, User: BusObj_DS_user
+Sales: Server: AUNDDPDSQD03\AUNDDPDSQD03, Database: Apollo_Warehouse, User: BusObj_DS_user
+SAP:Server: AUNDDPDSQD03\AUNDDPDSQD03, Database: Apollo_Warehouse, User: BusObj_DS_user
+CBAMyService: Server: AUNDDPDSQD03\AUNDDPDSQD03, Database: Apollo_Warehouse, User: BusObj_DS_user
+Cisco UCCX Historical: Server: AUNDDPDSQD03\AUNDDPDSQD03, Database: Apollo_ODS, User: BusObj_DS_user
+Cisco UCCX Merge: Server: AUNDDPDSQD03\AUNDDPDSQD03, Database: Apollo_ODS, User: BusObj_DS_user
+CISCO_UCCX: Server: AUNDDPDSQD03\AUNDDPDSQD03, Database: Apollo_STAGING, User: BusObj_DS_user
+https://didatasydprod.service-now.com/nav_to.do?uri=incident.do?sys_id={0}
+
+
+SELECT TOP 10000 s.[database_id]
+,d.name
+,d.create_date
+,s.[index_id]
+,s.[object_id]
+,s.[user_seeks]
+,s.[user_scans]
+,s.[user_lookups]
+,s.[user_updates]
+,s.[last_user_seek]
+,s.[last_user_scan]
+,s.[last_user_lookup]
+,s.[last_user_update]
+FROM [master].[sys].[dm_db_index_usage_stats] as s right outer join sys.databases d on s.database_id = d.database_id
+  --where d.database_id > 4
+  --where d.name = 'direct'
+  order by d.name
+  
+  use master
+  go
+
+sp_help 'sys.databases'
+go
+  select * from sysprocesses p inner join master.sys.databases d on d.database_id= p.dbid where d.name = 'Direct'
+

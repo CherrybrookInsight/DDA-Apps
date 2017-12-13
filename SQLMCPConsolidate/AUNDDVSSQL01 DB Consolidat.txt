@@ -1,0 +1,22 @@
+DB migration to MCP - SQL cluster instance aunddpdsqc02 in production - vCenter databases and SQL components
+
+Hi Team,
+ 
+As you know IT is in the process to migrate on-premises server to MCP environment, vCenter are in the scope of the server migration, can you please assist with the tasks as following?
+1. Review and confirm if vCenter  uses the database in the scope;
+2. SQL Services can migrate these databases to MCP environment if required;  
+3. Reconfigure vCenter and components to connect to new MCP SQL environment; 
+
+ 
+Source SQL instance: Shared SQL instance in Production environments.
+server_name : aunddpdsqc02
+	name	database_id	source_database_id	owner_sid	create_date	compatibility_level	collation_name	user_access	user_access_desc	is_read_only	is_auto_close_on	is_auto_shrink_on	state	state_desc
+1	VCUM	141	NULL	0x01	2015-02-25 20:28:36.097	110	SQL_Latin1_General_CP1_CI_AS	0	MULTI_USER	0	0	0	0	ONLINE
+2	VCDB	142	NULL	0x01	2015-02-25 21:25:35.063	90	SQL_Latin1_General_CP1_CI_AS	0	MULTI_USER	0	0	0	0	ONLINE
+
+Link to MCP SQL environment document:
+http://community.didata.com.au/sites/it/Shared%20Documents/Application%20Services/SQL/MCP%20SQL%20Environment/MCP%20SQL%20Environment.docx
+
+
+
+http://metis3.didata.com.au/Archive12/Documents/Excel Reports/Metis3_90DayOutlook.xlsx

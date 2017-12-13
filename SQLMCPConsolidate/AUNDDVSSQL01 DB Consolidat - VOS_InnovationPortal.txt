@@ -1,0 +1,15 @@
+DB migration to MCP-SQL cluster instance AUNDDVSSQL01 in production - VOS_InnovationPortal
+
+Hi Team,
+ 
+As you know IT is in the process to migrate on-premises server to MCP environment, VOS_InnovationPortal DB are in the scope of the server migration, can you please assist with the tasks as following?
+1. Review and confirm if InnovationPortal uses the database. SQL Services can migrate these databases to MCP environment if required;  
+3. Reconfigure InnovationPortal and components to connect to new MCP SQL environment; 
+ 
+Source SQL instance: Shared SQL instance AUNDDVSSQL01 in Production environments.
+name                                                                                                                             db_size       owner                                                                                                                            dbid   created     status                                                                                                                                                                                                                                                           compatibility_level
+-------------------------------------------------------------------------------------------------------------------------------- ------------- -------------------------------------------------------------------------------------------------------------------------------- ------ ----------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------
+VOS_InnovationPortal                                                                                                                1249.88 MB AU\gtsiliri                                                                                                                      10     Apr  2 2016 Status=ONLINE, Updateability=READ_WRITE, UserAccess=MULTI_USER, Recovery=SIMPLE, Version=611, Collation=Latin1_General_CI_AS_KS_WS, SQLSortOrder=0, IsAutoCreateStatistics, IsAutoUpdateStatistics, IsFullTextEnabled                                            90
+
+Link to MCP SQL environment document:
+http://community.didata.com.au/sites/it/Shared%20Documents/Application%20Services/SQL/MCP%20SQL%20Environment/MCP%20SQL%20Environment.docx
