@@ -1,0 +1,745 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/8/2012 5:27:29 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="0611-09006"
+  DTS:CreatorName="AUSODOM\bensonc"
+  DTS:DTSID="{73E657C0-E1F3-49EB-8C18-6F50F5D111D2}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3025.39"
+  DTS:LocaleID="3081"
+  DTS:ObjectName="6100_DDS_Load_Master"
+  DTS:VersionBuild="265"
+  DTS:VersionGUID="{086B8DD2-E9E3-4C1B-9948-CA6007549E18}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E586ADC4-BB4D-40AF-9679-4400D471FEC8}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="BeginPackageLogging">
+      <DTS:VariableValue
+        DTS:DataType="11">-1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{856EB16C-E2EC-4033-96FC-DE00861FF783}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Entity">
+      <DTS:VariableValue
+        DTS:DataType="8">ARC</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DD34D78B-11A5-439B-B41B-1633B497EC49}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Error">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{ABB46519-B8F9-4FED-AE56-5F11A1947D9F}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ETLRunID">
+      <DTS:VariableValue
+        DTS:DataType="3">1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4BE08F14-2677-47DA-BA7A-673043D8A74C}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExecutionInstanceGUID">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D40D3C13-5825-4DBF-856D-E6628B8BDCAD}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LogStatus">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{54806A03-A5FF-4CDF-9650-DA0FA49ADE89}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="PackageCanRun">
+      <DTS:VariableValue
+        DTS:DataType="11">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F3664457-8140-4BA4-A592-54029698BADB}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="PackageEnabled">
+      <DTS:VariableValue
+        DTS:DataType="11">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{51C23599-7B08-415A-9F46-A83202744B3C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="PackageID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7FFD0CAE-25B5-491E-A7F9-354232795BDB}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="PackageLastRunDate">
+      <DTS:VariableValue
+        DTS:DataType="7">6/28/2013 9:45:42 AM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5FC5BF20-2891-4146-A91B-FA78FCEE1065}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="PackageLogID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FCED2DA3-1A4A-4020-B301-AEBFB0CEE184}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="PackageStatus">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7246E4C7-EE10-4047-9073-D53FA340C886}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ReportingDate">
+      <DTS:VariableValue
+        DTS:DataType="7">10/15/2012 4:22:32 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E64F1D34-5DB8-4BA8-9087-A91507500E34}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Source">
+      <DTS:VariableValue
+        DTS:DataType="8">MQ</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6A0CB20A-8F0A-443D-ABC1-BE5632B53BF8}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="StatusDescription">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\EPT - Execute Package Check Package Status"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{C6A55FC9-C481-485A-A32C-D67D2AB4E0F2}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EPT - Execute Package Check Package Status"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>1020_Package_Auditing.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>Package_CanRun</ParameterName>
+            <BindedVariableOrParameterName>User::PackageCanRun</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EPT - Execute Package Set Package Status"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{DBA4F612-EBCB-4BF3-9DD5-2EF6E043FA0E}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EPT - Execute Package Set Package Status"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>1020_Package_Auditing.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SEQ - Load DDS Dims and Fact"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{754DE451-1084-4060-8351-C481F878A5E5}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQ - Load DDS Dims and Fact">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQ - Load DDS Dims and Fact\6101_DDS_Load_DIMs"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{D1FB5792-F1A4-4EA0-8D3F-26E76A59642F}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="6101_DDS_Load_DIMs"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>6101_DDS_Load_DIMs.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ - Load DDS Dims and Fact\6102_DDS_Load_Facts"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{6b9059ec-cf5c-47e8-ba95-98b4e4cc8346}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="6102_DDS_Load_Facts"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>6102_DDS_Load_Facts.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ - Load DDS Dims and Fact\6104_DDS_LoadManstatReports"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{e6e76f7c-5924-4f9c-8014-cba6124971d8}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="6104_DDS_LoadManstatReports"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>6104_LoadManstatReports.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ - Load DDS Dims and Fact\DDS Temp Tables for HT &amp; MQ Referrers - Views"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:DTSID="{70D95C28-D794-4F09-815A-18EB18739953}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DDS Temp Tables for HT &amp; MQ Referrers - Views">
+          <DTS:Variables />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\SEQ - Load DDS Dims and Fact\DDS Temp Tables for HT &amp; MQ Referrers - Views\6103_DDS_PatientLoad"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{7B9D94D6-4D4F-4CFA-8C96-EAE9C8FD7C0C}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="6103_DDS_PatientLoad"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>6103_DDS_PatientSurveyLoad.dtsx</PackageName>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\SEQ - Load DDS Dims and Fact\DDS Temp Tables for HT &amp; MQ Referrers - Views\6105_DDS_Load_Master"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{342f6283-4ecb-40c1-b3ed-5588a14b0792}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="6105_DDS_Load_Master"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>6105_DDS_Load_Master.dtsx</PackageName>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\SEQ - Load DDS Dims and Fact\DDS Temp Tables for HT &amp; MQ Referrers - Views\6106_Load HTMQ Views"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{6fa85acd-3ac9-46b9-8905-18a832e34b19}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="6106_Load HTMQ Views"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>6106_Load HTMQ Views.dtsx</PackageName>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\SEQ - Load DDS Dims and Fact\DDS Temp Tables for HT &amp; MQ Referrers - Views\6107_LoadETLProcessViews"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{6cee1306-89fe-4080-b86d-73ee2f48c2f8}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="6107_LoadETLProcessViews"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>6107_LoadETLProcessViews.dtsx</PackageName>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\SEQ - Load DDS Dims and Fact\DDS Temp Tables for HT &amp; MQ Referrers - Views.PrecedenceConstraints[Constraint]"
+              DTS:CreationName=""
+              DTS:DTSID="{E43B2A69-B265-4D45-B157-A70252A16872}"
+              DTS:From="Package\SEQ - Load DDS Dims and Fact\DDS Temp Tables for HT &amp; MQ Referrers - Views\6105_DDS_Load_Master"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint"
+              DTS:To="Package\SEQ - Load DDS Dims and Fact\DDS Temp Tables for HT &amp; MQ Referrers - Views\6106_Load HTMQ Views" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\SEQ - Load DDS Dims and Fact\DDS Temp Tables for HT &amp; MQ Referrers - Views.PrecedenceConstraints[Constraint 1]"
+              DTS:CreationName=""
+              DTS:DTSID="{E85455C5-E1C2-4449-987F-9A2C2CE17CC9}"
+              DTS:From="Package\SEQ - Load DDS Dims and Fact\DDS Temp Tables for HT &amp; MQ Referrers - Views\6106_Load HTMQ Views"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 1"
+              DTS:To="Package\SEQ - Load DDS Dims and Fact\DDS Temp Tables for HT &amp; MQ Referrers - Views\6103_DDS_PatientLoad" />
+          </DTS:PrecedenceConstraints>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ - Load DDS Dims and Fact.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{9701CDD7-55CE-4932-8406-99540E075559}"
+          DTS:From="Package\SEQ - Load DDS Dims and Fact\6101_DDS_Load_DIMs"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\SEQ - Load DDS Dims and Fact\6102_DDS_Load_Facts" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ - Load DDS Dims and Fact.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{FC36B081-9428-43FC-86A2-D12E3B5DF2BF}"
+          DTS:From="Package\SEQ - Load DDS Dims and Fact\6102_DDS_Load_Facts"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\SEQ - Load DDS Dims and Fact\DDS Temp Tables for HT &amp; MQ Referrers - Views" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ - Load DDS Dims and Fact.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{181E360B-70D1-4C9D-9DB4-CC1ACE77040B}"
+          DTS:From="Package\SEQ - Load DDS Dims and Fact\6104_DDS_LoadManstatReports"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\SEQ - Load DDS Dims and Fact\DDS Temp Tables for HT &amp; MQ Referrers - Views" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{664492ED-7A32-4CDD-A768-B3072408ECA5}"
+      DTS:From="Package\SEQ - Load DDS Dims and Fact"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\EPT - Execute Package Set Package Status" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[con_Cannot_Execute_&lt;Package Name&gt;]"
+      DTS:CreationName=""
+      DTS:DTSID="{4B9C0F6A-A7BD-4FC9-B63D-EB9FCB70D0C2}"
+      DTS:EvalOp="1"
+      DTS:Expression="!@[User::PackageCanRun]"
+      DTS:From="Package\EPT - Execute Package Check Package Status"
+      DTS:ObjectName="con_Cannot_Execute_&lt;Package Name&gt;"
+      DTS:To="Package\EPT - Execute Package Set Package Status"
+      DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[con_Can_Execute_&lt;Package Name&gt;]"
+      DTS:CreationName=""
+      DTS:DTSID="{511CD990-6942-43C6-AC6E-D17A569B9B32}"
+      DTS:EvalOp="1"
+      DTS:Expression="@[User::PackageCanRun] = 1"
+      DTS:From="Package\EPT - Execute Package Check Package Status"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="con_Can_Execute_&lt;Package Name&gt;"
+      DTS:To="Package\SEQ - Load DDS Dims and Fact" />
+  </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{70F48000-B705-42E0-AB9E-BDC4BA3BF2E4}"
+      DTS:EventID="0"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{66AA8F4C-C9E2-4E1C-9464-FEE538E4A777}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\EPT - Log Package Error"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{BC583CBB-FF8F-434D-93F4-FB2A0B796C2B}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EPT - Log Package Error"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>1030_Log_Package_Error.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="294,42"
+          Id="Package\EPT - Execute Package Check Package Status"
+          TopLeft="29.2499991059303,29.866667968432" />
+        <NodeLayout
+          Size="280,42"
+          Id="Package\EPT - Execute Package Set Package Status"
+          TopLeft="33.7499991556009,603.2333329924" />
+        <NodeLayout
+          Size="186,46"
+          Id="Package\SEQ - Load DDS Dims and Fact\6101_DDS_Load_DIMs"
+          TopLeft="227.833319537342,79.7999911820893" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\SEQ - Load DDS Dims and Fact\6102_DDS_Load_Facts"
+          TopLeft="231.416660234332,175.940482699304" />
+        <NodeLayout
+          Size="230,42"
+          Id="Package\SEQ - Load DDS Dims and Fact\6104_DDS_LoadManstatReports"
+          TopLeft="442.345236316172,124.227869977106" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\SEQ - Load DDS Dims and Fact\DDS Temp Tables for HT &amp; MQ Referrers - Views\6103_DDS_PatientLoad"
+          TopLeft="324.5,152.823539128353" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\SEQ - Load DDS Dims and Fact\DDS Temp Tables for HT &amp; MQ Referrers - Views\6105_DDS_Load_Master"
+          TopLeft="27.7857146652377,22.9882449849669" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\SEQ - Load DDS Dims and Fact\DDS Temp Tables for HT &amp; MQ Referrers - Views\6106_Load HTMQ Views"
+          TopLeft="321.5,24.8235391283532" />
+        <NodeLayout
+          Size="211,42"
+          Id="Package\SEQ - Load DDS Dims and Fact\DDS Temp Tables for HT &amp; MQ Referrers - Views\6107_LoadETLProcessViews"
+          TopLeft="32.3571433145173,153.227440633084" />
+        <EdgeLayout
+          Id="Package\SEQ - Load DDS Dims and Fact\DDS Temp Tables for HT &amp; MQ Referrers - Views.PrecedenceConstraints[Constraint]"
+          TopLeft="221.385714665238,44.70589205666">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="100.114285334762,0"
+              Start="0,0"
+              End="92.6142853347623,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="92.6142853347623,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ - Load DDS Dims and Fact\DDS Temp Tables for HT &amp; MQ Referrers - Views.PrecedenceConstraints[Constraint 1]"
+          TopLeft="420,66.8235391283532">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,86"
+              Start="0,0"
+              End="0,78.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,78.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Patient has dependency on the HT and MQ loads"
+          ParentId="Package\SEQ - Load DDS Dims and Fact\DDS Temp Tables for HT &amp; MQ Referrers - Views"
+          FontInfo="{assembly:Null}"
+          Size="130,88"
+          Id="553603df-30af-428d-bb34-3df51ef2514c"
+          TopLeft="543.833319285441,136.75685424244" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="692,382"
+          Size="692,425"
+          Id="Package\SEQ - Load DDS Dims and Fact\DDS Temp Tables for HT &amp; MQ Referrers - Views"
+          TopLeft="93.416665300727,280.752380890392" />
+        <EdgeLayout
+          Id="Package\SEQ - Load DDS Dims and Fact.PrecedenceConstraints[Constraint]"
+          TopLeft="322.95832321917,126.466657848756">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49.4738248505477"
+              Start="0,0"
+              End="0,41.9738248505477">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.9738248505477" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ - Load DDS Dims and Fact.PrecedenceConstraints[Constraint 1]"
+          TopLeft="324.816662767529,217.540482699304">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,63.2118981910879"
+              Start="0,0"
+              End="0,55.7118981910879">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.7118981910879" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ - Load DDS Dims and Fact.PrecedenceConstraints[Constraint 2]"
+          TopLeft="555.480950808449,165.827869977106">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,114.924510913286"
+              Start="0,0"
+              End="0,107.424510913286">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,107.424510913286" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="927,761"
+          Size="927,804"
+          Id="Package\SEQ - Load DDS Dims and Fact"
+          TopLeft="425.583333097398,19.166666666667" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="425.583333097398,553.833333333334">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-111.833333941797,70.3999996590665"
+              Start="0,0"
+              End="-104.333333941797,70.3999996590665">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-40.8666007075333,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-40.8666007075333,0"
+                    Point2="-44.8666007075333,0"
+                    Point3="-44.8666007075333,4" />
+                  <mssgle:LineSegment
+                    End="-44.8666007075333,66.3999996590665" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-44.8666007075333,66.3999996590665"
+                    Point2="-44.8666007075333,70.3999996590665"
+                    Point3="-48.8666007075333,70.3999996590665" />
+                  <mssgle:LineSegment
+                    End="-104.333333941797,70.3999996590665" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[con_Cannot_Execute_&lt;Package Name&gt;]"
+          TopLeft="174.999999130766,71.866667968432">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,531.366665023968"
+              Start="0,0"
+              End="0,523.866665023968">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,523.866665023968" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-33.9655859375,253.933332511984,67.931171875,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[con_Can_Execute_&lt;Package Name&gt;]"
+          TopLeft="323.64999910593,50.666667968432">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="101.933333991468,237.833332031568"
+              Start="0,0"
+              End="94.4333339914676,237.833332031568">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="57.0385306820804,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="57.0385306820804,0"
+                    Point2="61.0385306820804,0"
+                    Point3="61.0385306820804,4" />
+                  <mssgle:LineSegment
+                    End="61.0385306820804,233.833332031568" />
+                  <mssgle:CubicBezierSegment
+                    Point1="61.0385306820804,233.833332031568"
+                    Point2="61.0385306820804,237.833332031568"
+                    Point3="65.0385306820804,237.833332031568" />
+                  <mssgle:LineSegment
+                    End="94.4333339914676,237.833332031568" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="53.0385306820804,-22,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="193,42"
+          Id="Package.EventHandlers[OnError]\EPT - Log Package Error"
+          TopLeft="NaN,NaN" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
