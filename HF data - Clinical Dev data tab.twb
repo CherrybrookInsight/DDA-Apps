@@ -1,0 +1,1543 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 10000.16.0812.0001                               -->
+<workbook source-build='10.0.0 (10000.16.0812.0001)' source-platform='win' version='10.0' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='HF_Patient_Referral_Sources (Multiple Connections)' inline='true' name='federated.0kjwhl1041v1qt0zlm1wx1t7kmgz' version='10.0'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='GCPRBI01' name='sqlserver.1s8mf3p1ofelq213co5xj0dgf9zo'>
+            <connection authentication='sspi' class='sqlserver' dbname='AdHoc_Data' odbc-native-protocol='yes' one-time-sql='' server='GCPRBI01' />
+          </named-connection>
+          <named-connection caption='GCPRBI02' name='sqlserver.0s90r6112vu3ox1byze3f1nxsu4x'>
+            <connection authentication='sspi' class='sqlserver' dbname='HFM_Feed' odbc-native-protocol='yes' one-time-sql='' server='GCPRBI02' />
+          </named-connection>
+        </named-connections>
+        <relation connection='sqlserver.0s90r6112vu3ox1byze3f1nxsu4x' name='HF_Patient_Referral_Sources' table='[dbo].[HF_Patient_Referral_Sources]' type='table' />
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>HT_PAT_ID</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[HT_PAT_ID]</local-name>
+            <parent-name>[HF_Patient_Referral_Sources]</parent-name>
+            <remote-alias>HT_PAT_ID</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>VISIT_ID</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[VISIT_ID]</local-name>
+            <parent-name>[HF_Patient_Referral_Sources]</parent-name>
+            <remote-alias>VISIT_ID</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>false</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>REFERRAL_SOURCE_TYPE</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[REFERRAL_SOURCE_TYPE]</local-name>
+            <parent-name>[HF_Patient_Referral_Sources]</parent-name>
+            <remote-alias>REFERRAL_SOURCE_TYPE</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>REFERRAL_SOURCE_DISCHARGE_DATE</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[REFERRAL_SOURCE_DISCHARGE_DATE]</local-name>
+            <parent-name>[HF_Patient_Referral_Sources]</parent-name>
+            <remote-alias>REFERRAL_SOURCE_DISCHARGE_DATE</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>REFERRAL_SOURCE_SUB_TYPE</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[REFERRAL_SOURCE_SUB_TYPE]</local-name>
+            <parent-name>[HF_Patient_Referral_Sources]</parent-name>
+            <remote-alias>REFERRAL_SOURCE_SUB_TYPE</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>REFERRAL_SOURCE_CHRONIC_STABLE</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[REFERRAL_SOURCE_CHRONIC_STABLE]</local-name>
+            <parent-name>[HF_Patient_Referral_Sources]</parent-name>
+            <remote-alias>REFERRAL_SOURCE_CHRONIC_STABLE</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>REFERRAL_SOURCE_PRECIPITANTS_ISCHAEMIA_ACS</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[REFERRAL_SOURCE_PRECIPITANTS_ISCHAEMIA_ACS]</local-name>
+            <parent-name>[HF_Patient_Referral_Sources]</parent-name>
+            <remote-alias>REFERRAL_SOURCE_PRECIPITANTS_ISCHAEMIA_ACS</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>REFERRAL_SOURCE_PRECIPITANTS_ISCHAEMIA_STEMI_NSTEMI</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[REFERRAL_SOURCE_PRECIPITANTS_ISCHAEMIA_STEMI_NSTEMI]</local-name>
+            <parent-name>[HF_Patient_Referral_Sources]</parent-name>
+            <remote-alias>REFERRAL_SOURCE_PRECIPITANTS_ISCHAEMIA_STEMI_NSTEMI</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>REFERRAL_SOURCE_PRECIPITANTS_ISCHAEMIA_ACS_PEAK_TROPONIN</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[REFERRAL_SOURCE_PRECIPITANTS_ISCHAEMIA_ACS_PEAK_TROPONIN]</local-name>
+            <parent-name>[HF_Patient_Referral_Sources]</parent-name>
+            <remote-alias>REFERRAL_SOURCE_PRECIPITANTS_ISCHAEMIA_ACS_PEAK_TROPONIN</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>REFERRAL_SOURCE_PRECIPITANTS_ISCHAEMIA_ACS_PEAK_CK</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[REFERRAL_SOURCE_PRECIPITANTS_ISCHAEMIA_ACS_PEAK_CK]</local-name>
+            <parent-name>[HF_Patient_Referral_Sources]</parent-name>
+            <remote-alias>REFERRAL_SOURCE_PRECIPITANTS_ISCHAEMIA_ACS_PEAK_CK</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>REFERRAL_SOURCE_PRECIPITANTS_ARRHYTHMIA</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[REFERRAL_SOURCE_PRECIPITANTS_ARRHYTHMIA]</local-name>
+            <parent-name>[HF_Patient_Referral_Sources]</parent-name>
+            <remote-alias>REFERRAL_SOURCE_PRECIPITANTS_ARRHYTHMIA</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>REFERRAL_SOURCE_PRECIPITANTS_INFECTION_SEPSIS</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[REFERRAL_SOURCE_PRECIPITANTS_INFECTION_SEPSIS]</local-name>
+            <parent-name>[HF_Patient_Referral_Sources]</parent-name>
+            <remote-alias>REFERRAL_SOURCE_PRECIPITANTS_INFECTION_SEPSIS</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>REFERRAL_SOURCE_PRECIPITANTS_RENAL_FAILURE</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[REFERRAL_SOURCE_PRECIPITANTS_RENAL_FAILURE]</local-name>
+            <parent-name>[HF_Patient_Referral_Sources]</parent-name>
+            <remote-alias>REFERRAL_SOURCE_PRECIPITANTS_RENAL_FAILURE</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>REFERRAL_SOURCE_PRECIPITANTS_NON_COMPLIANCE_MEDICATION</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[REFERRAL_SOURCE_PRECIPITANTS_NON_COMPLIANCE_MEDICATION]</local-name>
+            <parent-name>[HF_Patient_Referral_Sources]</parent-name>
+            <remote-alias>REFERRAL_SOURCE_PRECIPITANTS_NON_COMPLIANCE_MEDICATION</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>REFERRAL_SOURCE_PRECIPITANTS_NON_COMPLIANCE_NON_PHARMA</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[REFERRAL_SOURCE_PRECIPITANTS_NON_COMPLIANCE_NON_PHARMA]</local-name>
+            <parent-name>[HF_Patient_Referral_Sources]</parent-name>
+            <remote-alias>REFERRAL_SOURCE_PRECIPITANTS_NON_COMPLIANCE_NON_PHARMA</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>REFERRAL_SOURCE_PRECIPITANTS_HYPERTENSION</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[REFERRAL_SOURCE_PRECIPITANTS_HYPERTENSION]</local-name>
+            <parent-name>[HF_Patient_Referral_Sources]</parent-name>
+            <remote-alias>REFERRAL_SOURCE_PRECIPITANTS_HYPERTENSION</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>REFERRAL_SOURCE_PRECIPITANTS_ATRIAL_FIBRILLATION</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[REFERRAL_SOURCE_PRECIPITANTS_ATRIAL_FIBRILLATION]</local-name>
+            <parent-name>[HF_Patient_Referral_Sources]</parent-name>
+            <remote-alias>REFERRAL_SOURCE_PRECIPITANTS_ATRIAL_FIBRILLATION</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>REFERRAL_SOURCE_PRECIPITANTS_ATRIAL_FLUTTER</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[REFERRAL_SOURCE_PRECIPITANTS_ATRIAL_FLUTTER]</local-name>
+            <parent-name>[HF_Patient_Referral_Sources]</parent-name>
+            <remote-alias>REFERRAL_SOURCE_PRECIPITANTS_ATRIAL_FLUTTER</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>REFERRAL_SOURCE_PRECIPITANTS_OTHER</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[REFERRAL_SOURCE_PRECIPITANTS_OTHER]</local-name>
+            <parent-name>[HF_Patient_Referral_Sources]</parent-name>
+            <remote-alias>REFERRAL_SOURCE_PRECIPITANTS_OTHER</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>REFERRAL_SOURCE_PRECIPITANTS_OTHER_DETAIL</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[REFERRAL_SOURCE_PRECIPITANTS_OTHER_DETAIL]</local-name>
+            <parent-name>[HF_Patient_Referral_Sources]</parent-name>
+            <remote-alias>REFERRAL_SOURCE_PRECIPITANTS_OTHER_DETAIL</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>REFERRAL_SOURCE_REFERRED_FROM</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[REFERRAL_SOURCE_REFERRED_FROM]</local-name>
+            <parent-name>[HF_Patient_Referral_Sources]</parent-name>
+            <remote-alias>REFERRAL_SOURCE_REFERRED_FROM</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>REFERRAL_SOURCE_REFERRED_TO</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[REFERRAL_SOURCE_REFERRED_TO]</local-name>
+            <parent-name>[HF_Patient_Referral_Sources]</parent-name>
+            <remote-alias>REFERRAL_SOURCE_REFERRED_TO</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='string' name='[:Measure Names]' role='dimension' type='nominal'>
+        <aliases>
+          <alias key='&quot;[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[ctd:HT_PAT_ID:qk]&quot;' value='Distinct Count Of Patients' />
+          <alias key='&quot;[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[cum:ctd:Ht Pat Id (copy):qk]&quot;' value='Distinct N ' />
+          <alias key='&quot;[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[pcto:ctd:Ht Pat Id (copy):qk:2]&quot;' value='Percentage of Distinct Count Of Patients' />
+          <alias key='&quot;[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[pcto:ctd:HT_PAT_ID:qk:2]&quot;' value='Percentage' />
+        </aliases>
+      </column>
+      <column caption='Referral Source Sub Type - Null And Blank' datatype='string' name='[Calculation_703124503566159872]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='' />
+      </column>
+      <column caption='PID N' datatype='string' name='[HT_PAT_ID]' role='dimension' type='nominal' />
+      <column caption='PID Percentage' datatype='string' name='[Ht Pat Id (copy)]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='[HT_PAT_ID]' />
+      </column>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='Referral Source Chronic Stable' datatype='string' name='[REFERRAL_SOURCE_CHRONIC_STABLE]' role='dimension' type='nominal' />
+      <column caption='Referral Source Discharge Date' datatype='string' name='[REFERRAL_SOURCE_DISCHARGE_DATE]' role='dimension' type='nominal' />
+      <column caption='Referral Source Precipitants Arrhythmia' datatype='string' name='[REFERRAL_SOURCE_PRECIPITANTS_ARRHYTHMIA]' role='dimension' type='nominal' />
+      <column caption='Referral Source Precipitants Atrial Fibrillation' datatype='string' name='[REFERRAL_SOURCE_PRECIPITANTS_ATRIAL_FIBRILLATION]' role='dimension' type='nominal' />
+      <column caption='Referral Source Precipitants Atrial Flutter' datatype='string' name='[REFERRAL_SOURCE_PRECIPITANTS_ATRIAL_FLUTTER]' role='dimension' type='nominal' />
+      <column caption='Referral Source Precipitants Hypertension' datatype='string' name='[REFERRAL_SOURCE_PRECIPITANTS_HYPERTENSION]' role='dimension' type='nominal' />
+      <column caption='Referral Source Precipitants Infection Sepsis' datatype='string' name='[REFERRAL_SOURCE_PRECIPITANTS_INFECTION_SEPSIS]' role='dimension' type='nominal' />
+      <column caption='Referral Source Precipitants Ischaemia Acs' datatype='string' name='[REFERRAL_SOURCE_PRECIPITANTS_ISCHAEMIA_ACS]' role='dimension' type='nominal' />
+      <column caption='Referral Source Precipitants Ischaemia Acs Peak Ck' datatype='string' name='[REFERRAL_SOURCE_PRECIPITANTS_ISCHAEMIA_ACS_PEAK_CK]' role='dimension' type='nominal' />
+      <column caption='Referral Source Precipitants Ischaemia Acs Peak Troponin' datatype='string' name='[REFERRAL_SOURCE_PRECIPITANTS_ISCHAEMIA_ACS_PEAK_TROPONIN]' role='dimension' type='nominal' />
+      <column caption='Referral Source Precipitants Ischaemia Stemi Nstemi' datatype='string' name='[REFERRAL_SOURCE_PRECIPITANTS_ISCHAEMIA_STEMI_NSTEMI]' role='dimension' type='nominal' />
+      <column caption='Referral Source Precipitants Non Compliance Medication' datatype='string' name='[REFERRAL_SOURCE_PRECIPITANTS_NON_COMPLIANCE_MEDICATION]' role='dimension' type='nominal' />
+      <column caption='Referral Source Precipitants Non Compliance Non Pharma' datatype='string' name='[REFERRAL_SOURCE_PRECIPITANTS_NON_COMPLIANCE_NON_PHARMA]' role='dimension' type='nominal' />
+      <column caption='Referral Source Precipitants Other' datatype='string' name='[REFERRAL_SOURCE_PRECIPITANTS_OTHER]' role='dimension' type='nominal' />
+      <column caption='Referral Source Precipitants Other Detail' datatype='string' name='[REFERRAL_SOURCE_PRECIPITANTS_OTHER_DETAIL]' role='dimension' type='nominal' />
+      <column caption='Referral Source Precipitants Renal Failure' datatype='string' name='[REFERRAL_SOURCE_PRECIPITANTS_RENAL_FAILURE]' role='dimension' type='nominal' />
+      <column caption='Referral Source Referred From' datatype='string' name='[REFERRAL_SOURCE_REFERRED_FROM]' role='dimension' type='nominal' />
+      <column caption='Referral Source Referred To' datatype='string' name='[REFERRAL_SOURCE_REFERRED_TO]' role='dimension' type='nominal' />
+      <column aggregation='CountD' caption='Referral Source Sub Type' datatype='string' name='[REFERRAL_SOURCE_SUB_TYPE]' role='dimension' type='nominal' />
+      <column aggregation='CountD' caption='Referral Source' datatype='string' name='[REFERRAL_SOURCE_TYPE]' role='dimension' type='nominal' />
+      <column caption='Visit Id' datatype='string' name='[VISIT_ID]' role='dimension' type='nominal' />
+      <column-instance column='[HT_PAT_ID]' derivation='CountD' name='[ctd:HT_PAT_ID:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Ht Pat Id (copy)]' derivation='CountD' name='[cum:ctd:Ht Pat Id (copy):qk]' pivot='key' type='quantitative'>
+        <table-calc aggregation='Sum' ordering-field='[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[none:REFERRAL_SOURCE_TYPE:nk]' ordering-type='Field' type='CumTotal' />
+      </column-instance>
+      <column-instance column='[REFERRAL_SOURCE_TYPE]' derivation='None' name='[none:REFERRAL_SOURCE_TYPE:nk]' pivot='key' type='nominal' />
+      <column-instance column='[HT_PAT_ID]' derivation='CountD' name='[pcto:ctd:HT_PAT_ID:qk:2]' pivot='key' type='quantitative'>
+        <table-calc ordering-type='Columns' type='PctTotal' />
+      </column-instance>
+      <column-instance column='[Ht Pat Id (copy)]' derivation='CountD' name='[pcto:ctd:Ht Pat Id (copy):qk:2]' pivot='key' type='quantitative'>
+        <table-calc ordering-type='Columns' type='PctTotal' />
+      </column-instance>
+      <group name='[NullAndBlank]' name-style='unqualified' user:ui-builder='lasso-group'>
+        <groupfilter function='union'>
+          <groupfilter function='member' level='[REFERRAL_SOURCE_SUB_TYPE]' member='%null%' />
+          <groupfilter function='member' level='[REFERRAL_SOURCE_SUB_TYPE]' member='&quot;&quot;' />
+        </groupfilter>
+      </group>
+      <extract count='-1' enabled='true' units='records'>
+        <connection class='dataengine' dbname='C:\Project\HF Data Request from Dr. Leighton\HF_Patient_Referral_Sources (Multiple Connections).tde' schema='Extract' tablename='Extract' update-time='06/20/2018 01:29:09 AM'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <calculations>
+            <calculation column='[Number of Records]' formula='1' />
+          </calculations>
+          <refresh>
+            <refresh-event add-from-file-path='' increment-value='%null%' refresh-type='create' rows-inserted='6179' timestamp-start='2018-06-20 01:29:09.837' />
+          </refresh>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>HT_PAT_ID</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[HT_PAT_ID]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>HT_PAT_ID</remote-alias>
+              <ordinal>0</ordinal>
+              <family>HF_Patient_Referral_Sources</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>958</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>false</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;133071&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;467496&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>6179</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>20</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>2</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Number of Records</remote-name>
+              <remote-type>16</remote-type>
+              <local-name>[Number of Records]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Number of Records</remote-alias>
+              <ordinal>1</ordinal>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Sum' datatype='real'>6179.0</statistic>
+                <statistic aggregation='Avg' datatype='real'>1.0</statistic>
+                <statistic aggregation='Min' datatype='integer'>1</statistic>
+                <statistic aggregation='Max' datatype='integer'>1</statistic>
+                <statistic aggregation='Stdev' datatype='real'>0.0</statistic>
+                <statistic aggregation='StdevP' datatype='real'>0.0</statistic>
+                <statistic aggregation='Var' datatype='real'>0.0</statistic>
+                <statistic aggregation='VarP' datatype='real'>0.0</statistic>
+                <statistic aggregation='Count' datatype='integer'>6179</statistic>
+                <statistic aggregation='Median' datatype='integer'>1</statistic>
+                <statistic aggregation='SumXSqr' datatype='real'>6179.0</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteMetadata (ordered)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;sint8&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>REFERRAL_SOURCE_CHRONIC_STABLE</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[REFERRAL_SOURCE_CHRONIC_STABLE]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>REFERRAL_SOURCE_CHRONIC_STABLE</remote-alias>
+              <ordinal>2</ordinal>
+              <family>HF_Patient_Referral_Sources</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>4</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;Subacute deterioration&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>4458</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>11</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>REFERRAL_SOURCE_DISCHARGE_DATE</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[REFERRAL_SOURCE_DISCHARGE_DATE]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>REFERRAL_SOURCE_DISCHARGE_DATE</remote-alias>
+              <ordinal>3</ordinal>
+              <family>HF_Patient_Referral_Sources</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>178</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;31/10/2015&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>4458</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>17</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>2</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>REFERRAL_SOURCE_PRECIPITANTS_ARRHYTHMIA</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[REFERRAL_SOURCE_PRECIPITANTS_ARRHYTHMIA]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>REFERRAL_SOURCE_PRECIPITANTS_ARRHYTHMIA</remote-alias>
+              <ordinal>4</ordinal>
+              <family>HF_Patient_Referral_Sources</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>365</statistic>
+                <statistic aggregation='Median' datatype='string'>&quot;True&quot;</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (ordered)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>0</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>REFERRAL_SOURCE_PRECIPITANTS_ATRIAL_FIBRILLATION</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[REFERRAL_SOURCE_PRECIPITANTS_ATRIAL_FIBRILLATION]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>REFERRAL_SOURCE_PRECIPITANTS_ATRIAL_FIBRILLATION</remote-alias>
+              <ordinal>5</ordinal>
+              <family>HF_Patient_Referral_Sources</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>53</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>REFERRAL_SOURCE_PRECIPITANTS_ATRIAL_FLUTTER</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[REFERRAL_SOURCE_PRECIPITANTS_ATRIAL_FLUTTER]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>REFERRAL_SOURCE_PRECIPITANTS_ATRIAL_FLUTTER</remote-alias>
+              <ordinal>6</ordinal>
+              <family>HF_Patient_Referral_Sources</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>2</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>2</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>REFERRAL_SOURCE_PRECIPITANTS_HYPERTENSION</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[REFERRAL_SOURCE_PRECIPITANTS_HYPERTENSION]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>REFERRAL_SOURCE_PRECIPITANTS_HYPERTENSION</remote-alias>
+              <ordinal>7</ordinal>
+              <family>HF_Patient_Referral_Sources</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>77</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>3</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>REFERRAL_SOURCE_PRECIPITANTS_INFECTION_SEPSIS</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[REFERRAL_SOURCE_PRECIPITANTS_INFECTION_SEPSIS]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>REFERRAL_SOURCE_PRECIPITANTS_INFECTION_SEPSIS</remote-alias>
+              <ordinal>8</ordinal>
+              <family>HF_Patient_Referral_Sources</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>144</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>4</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>REFERRAL_SOURCE_PRECIPITANTS_ISCHAEMIA_ACS</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[REFERRAL_SOURCE_PRECIPITANTS_ISCHAEMIA_ACS]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>REFERRAL_SOURCE_PRECIPITANTS_ISCHAEMIA_ACS</remote-alias>
+              <ordinal>9</ordinal>
+              <family>HF_Patient_Referral_Sources</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>98</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>5</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>REFERRAL_SOURCE_PRECIPITANTS_ISCHAEMIA_ACS_PEAK_CK</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[REFERRAL_SOURCE_PRECIPITANTS_ISCHAEMIA_ACS_PEAK_CK]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>REFERRAL_SOURCE_PRECIPITANTS_ISCHAEMIA_ACS_PEAK_CK</remote-alias>
+              <ordinal>10</ordinal>
+              <family>HF_Patient_Referral_Sources</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>9</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;997&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>4458</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>14</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>REFERRAL_SOURCE_PRECIPITANTS_ISCHAEMIA_ACS_PEAK_TROPONIN</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[REFERRAL_SOURCE_PRECIPITANTS_ISCHAEMIA_ACS_PEAK_TROPONIN]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>REFERRAL_SOURCE_PRECIPITANTS_ISCHAEMIA_ACS_PEAK_TROPONIN</remote-alias>
+              <ordinal>11</ordinal>
+              <family>HF_Patient_Referral_Sources</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>15</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;93&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>4458</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>16</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>REFERRAL_SOURCE_PRECIPITANTS_ISCHAEMIA_STEMI_NSTEMI</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[REFERRAL_SOURCE_PRECIPITANTS_ISCHAEMIA_STEMI_NSTEMI]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>REFERRAL_SOURCE_PRECIPITANTS_ISCHAEMIA_STEMI_NSTEMI</remote-alias>
+              <ordinal>12</ordinal>
+              <family>HF_Patient_Referral_Sources</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>4</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;STEMI&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>4458</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>12</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>REFERRAL_SOURCE_PRECIPITANTS_NON_COMPLIANCE_MEDICATION</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[REFERRAL_SOURCE_PRECIPITANTS_NON_COMPLIANCE_MEDICATION]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>REFERRAL_SOURCE_PRECIPITANTS_NON_COMPLIANCE_MEDICATION</remote-alias>
+              <ordinal>13</ordinal>
+              <family>HF_Patient_Referral_Sources</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>23</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>6</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>REFERRAL_SOURCE_PRECIPITANTS_NON_COMPLIANCE_NON_PHARMA</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[REFERRAL_SOURCE_PRECIPITANTS_NON_COMPLIANCE_NON_PHARMA]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>REFERRAL_SOURCE_PRECIPITANTS_NON_COMPLIANCE_NON_PHARMA</remote-alias>
+              <ordinal>14</ordinal>
+              <family>HF_Patient_Referral_Sources</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>71</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>7</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>REFERRAL_SOURCE_PRECIPITANTS_OTHER</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[REFERRAL_SOURCE_PRECIPITANTS_OTHER]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>REFERRAL_SOURCE_PRECIPITANTS_OTHER</remote-alias>
+              <ordinal>15</ordinal>
+              <family>HF_Patient_Referral_Sources</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>857</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>8</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>REFERRAL_SOURCE_PRECIPITANTS_OTHER_DETAIL</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[REFERRAL_SOURCE_PRECIPITANTS_OTHER_DETAIL]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>REFERRAL_SOURCE_PRECIPITANTS_OTHER_DETAIL</remote-alias>
+              <ordinal>16</ordinal>
+              <family>HF_Patient_Referral_Sources</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>198</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;yet to be determined&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>4458</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>18</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>2</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>REFERRAL_SOURCE_PRECIPITANTS_RENAL_FAILURE</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[REFERRAL_SOURCE_PRECIPITANTS_RENAL_FAILURE]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>REFERRAL_SOURCE_PRECIPITANTS_RENAL_FAILURE</remote-alias>
+              <ordinal>17</ordinal>
+              <family>HF_Patient_Referral_Sources</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>109</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>9</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>REFERRAL_SOURCE_REFERRED_FROM</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[REFERRAL_SOURCE_REFERRED_FROM]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>REFERRAL_SOURCE_REFERRED_FROM</remote-alias>
+              <ordinal>18</ordinal>
+              <family>HF_Patient_Referral_Sources</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>598</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>false</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot; Khanon&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;Zia Ahmed&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>6179</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>19</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>2</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>REFERRAL_SOURCE_REFERRED_TO</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[REFERRAL_SOURCE_REFERRED_TO]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>REFERRAL_SOURCE_REFERRED_TO</remote-alias>
+              <ordinal>19</ordinal>
+              <family>HF_Patient_Referral_Sources</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>13</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;Wai-Ee Thai&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>4458</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>15</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>REFERRAL_SOURCE_SUB_TYPE</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[REFERRAL_SOURCE_SUB_TYPE]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>REFERRAL_SOURCE_SUB_TYPE</remote-alias>
+              <ordinal>20</ordinal>
+              <family>HF_Patient_Referral_Sources</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>4</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;De novo&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>4458</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>13</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>REFERRAL_SOURCE_TYPE</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[REFERRAL_SOURCE_TYPE]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>REFERRAL_SOURCE_TYPE</remote-alias>
+              <ordinal>21</ordinal>
+              <family>HF_Patient_Referral_Sources</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>3</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>false</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;Hospital&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>6179</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>10</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>VISIT_ID</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[VISIT_ID]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>VISIT_ID</remote-alias>
+              <ordinal>22</ordinal>
+              <family>HF_Patient_Referral_Sources</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>6179</approx-count>
+              <scale>1</scale>
+              <width>255</width>
+              <contains-null>false</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;0028e45c-6ab8-487e-8d89-f241643066af&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;fff6f5e6-4a78-4d26-a7a5-ca2890d24fdb&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>6179</statistic>
+                <statistic aggregation='Median' datatype='string'>&quot;85578bfc-e17e-45bc-b62a-c987fbc27ff8&quot;</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>1020</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>21</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>4</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (unique)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' dim-percentage='0.744459' group-percentage='0.114733' measure-ordering='alphabetic' measure-percentage='0.140808' rowDisplayCount='1000' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Australia&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Referral Source'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='HF_Patient_Referral_Sources (Multiple Connections)' name='federated.0kjwhl1041v1qt0zlm1wx1t7kmgz' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0kjwhl1041v1qt0zlm1wx1t7kmgz'>
+            <column caption='PID N' datatype='string' name='[HT_PAT_ID]' role='dimension' type='nominal' />
+            <column caption='PID Percentage' datatype='string' name='[Ht Pat Id (copy)]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='[HT_PAT_ID]' />
+            </column>
+            <column aggregation='CountD' caption='Referral Source' datatype='string' name='[REFERRAL_SOURCE_TYPE]' role='dimension' type='nominal' />
+            <column-instance column='[Ht Pat Id (copy)]' derivation='CountD' name='[cum:ctd:Ht Pat Id (copy):qk]' pivot='key' type='quantitative'>
+              <table-calc aggregation='Sum' ordering-field='[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[none:REFERRAL_SOURCE_TYPE:nk]' ordering-type='Field' type='CumTotal' />
+            </column-instance>
+            <column-instance column='[REFERRAL_SOURCE_TYPE]' derivation='None' name='[none:REFERRAL_SOURCE_TYPE:nk]' pivot='key' type='nominal' />
+            <column-instance column='[HT_PAT_ID]' derivation='CountD' name='[pcto:ctd:HT_PAT_ID:qk:2]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Columns' type='PctTotal' />
+            </column-instance>
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[cum:ctd:Ht Pat Id (copy):qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[pcto:ctd:HT_PAT_ID:qk:2]&quot;' />
+            </groupfilter>
+          </filter>
+          <sort class='manual' column='[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[:Measure Names]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[cum:ctd:Ht Pat Id (copy):qk]&quot;</bucket>
+              <bucket>&quot;[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[pcto:ctd:HT_PAT_ID:qk:2]&quot;</bucket>
+            </dictionary>
+          </sort>
+          <slices>
+            <column>[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[:Measure Names]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[pcto:ctd:HT_PAT_ID:qk:2]' value='' />
+            <format attr='width' field='[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[:Measure Names]' value='167' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='width' field='[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[none:REFERRAL_SOURCE_TYPE:nk]' value='116' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-format' field='[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[pcto:ctd:HT_PAT_ID:qk:2]' value='n#,##0;-#,##0' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='size-bar' field='[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[pcto:ctd:HT_PAT_ID:qk:2]' field-type='quantitative' max-size='1' min-size='0.005' type='centersize' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[Multiple Values]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[none:REFERRAL_SOURCE_TYPE:nk]</rows>
+        <cols>[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[:Measure Names]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='Referral Sub Type'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='HF_Patient_Referral_Sources (Multiple Connections)' name='federated.0kjwhl1041v1qt0zlm1wx1t7kmgz' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0kjwhl1041v1qt0zlm1wx1t7kmgz'>
+            <column caption='PID N' datatype='string' name='[HT_PAT_ID]' role='dimension' type='nominal' />
+            <column caption='PID Percentage' datatype='string' name='[Ht Pat Id (copy)]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='[HT_PAT_ID]' />
+            </column>
+            <column aggregation='CountD' caption='Referral Source Sub Type' datatype='string' name='[REFERRAL_SOURCE_SUB_TYPE]' role='dimension' type='nominal' />
+            <column-instance column='[HT_PAT_ID]' derivation='CountD' name='[ctd:HT_PAT_ID:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[REFERRAL_SOURCE_SUB_TYPE]' derivation='None' name='[none:REFERRAL_SOURCE_SUB_TYPE:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Ht Pat Id (copy)]' derivation='CountD' name='[pcto:ctd:Ht Pat Id (copy):qk:2]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Columns' type='PctTotal' />
+            </column-instance>
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[ctd:HT_PAT_ID:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[pcto:ctd:Ht Pat Id (copy):qk:2]&quot;' />
+            </groupfilter>
+          </filter>
+          <sort class='manual' column='[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[:Measure Names]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[ctd:HT_PAT_ID:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[pcto:ctd:Ht Pat Id (copy):qk:2]&quot;</bucket>
+            </dictionary>
+          </sort>
+          <slices>
+            <column>[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[:Measure Names]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[Multiple Values]' value='n#,##0;-#,##0' />
+            <format attr='width' field='[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[:Measure Names]' value='315' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='width' field='[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[none:REFERRAL_SOURCE_SUB_TYPE:nk]' value='148' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[Multiple Values]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[none:REFERRAL_SOURCE_SUB_TYPE:nk]</rows>
+        <cols total='true'>[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[:Measure Names]</cols>
+      </table>
+    </worksheet>
+  </worksheets>
+  <windows source-height='30'>
+    <window class='worksheet' name='Referral Source'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card AVG='true' KURTOSIS='false' MAX='true' MEDIAN='true' MIN='true' QUART1='false' QUART3='false' SKEWNESS='false' STDEV='false' SUM='true' type='summary' />
+            <card param='[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[none:REFERRAL_SOURCE_TYPE:nk]' type='highlighter' />
+          </strip>
+        </edge>
+        <edge name='bottom'>
+          <strip size='92'>
+            <card type='caption' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[none:HT_PAT_ID:nk]</field>
+            <field>[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[none:Ht Pat Id (copy):nk]</field>
+            <field>[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[none:REFERRAL_SOURCE_SUB_TYPE:nk]</field>
+            <field>[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[none:REFERRAL_SOURCE_TYPE:nk]</field>
+            <field>[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[pcto:ctd:HT_PAT_ID:qk:2]</field>
+            <field>[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[pcto:ctd:Ht Pat Id (copy):qk:1]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' maximized='true' name='Referral Sub Type'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[none:Calculation_703124503566159872:ok]</field>
+            <field>[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[none:HT_PAT_ID:nk]</field>
+            <field>[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[none:Ht Pat Id (copy):nk]</field>
+            <field>[federated.0kjwhl1041v1qt0zlm1wx1t7kmgz].[none:REFERRAL_SOURCE_SUB_TYPE:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='84' name='Referral Source' width='192'>
+      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
+    </thumbnail>
+    <thumbnail height='104' name='Referral Sub Type' width='192'>
+      iVBORw0KGgoAAAANSUhEUgAAAMAAAABoCAYAAACnk/+EAAAACXBIWXMAAA7DAAAOwwHHb6hk
+      AAAHiklEQVR4nO3db1AU5wHH8W+6jkGY0KApRsc2joVmjNEgnCJ0OAbBs8E2NMkMWKER0Who
+      m5ikVqYlEhIrrWaayqjNv8ZIotc5J81UtI06IGU1KHhS4qSZGlIViROxVSoZzz/jjX0BRhsx
+      6N0WE5/f593d7T67++J7u7e3d3vT+fPnzyNiqK9c7xUQuZ4UgBhNAYjRFIAYTQGI0RSAGE0B
+      iNEUgBhNAYjRFIAYTQGI0RSAGE0BiNEUgBhNAYjRFIAYTQGI0RSAGE0BiNEUgBhNAYjRFIAY
+      TQGI0RSAGE0BiNEUgBhNAYjRBvQ1gd/v74/1ELkubtKf44rJdAgkRlMAYjQFIEZTAGK0MAJo
+      oyrfhcs1B1/HJU/b5bjyq2i7yvnL7WudT8Q5Ye8BEhLg5deaCDqxNiL9LOwARsyYy5Q6H1u7
+      nFgdkf4V/meAARN54IEDvPKHDy5/ra2K/EsPaz77WOQ6c+RD8LcKHiHuLS/2SSdGE+k/zpwF
+      isokL2snr2/q6HtakS8Qh06DWiQ9VASrX2fPOWdGFOkPzn0PMPS75N5TjffPnf/7/JF2Dp+B
+      YOAg2zft4ohjCxQJn4NfhEXhmVPAgfp3Lj41Io3s+G389NspTHloFfuHx3ObcwsUCZuuBhWj
+      6VIIMZoCEKMpADGaAhCj9fmb4EAg0B/rIXJdaA8gRlMAYjQFIEZTAGI0BSBGUwBiNAUgRlMA
+      YjQFIEZTAGI0BSBGUwBiNAUgRlMAYjQFIEZTAGI0BSBGUwBiNAUgRtMfY4nRtAcQoykAMZoC
+      EKMpADFamAEE+XhbBUWeNFwuF2meIlbsOQnYlLvyqdLNwOQLLqwAuuzFFJbuI2nZBhr9fmrW
+      FhN35j9OrdtVaavK1/2FJWR9/jXilbWweskW7i7bwo8TogGwYidwbyzAPx1Zuatxx8x1+Gf2
+      2+LkBhP6HqDtXXYfSyB1YvQVJuiiddOFw6MUpi226b6V8IU7xHfRtPwHpLnKsQG6mlhe5CHN
+      5cKVdj8/q9rLhVsP2+Uu8paspqLn9ZRpj1Pd85bfVpWP69PbzXcfkv1wckr3Idn9z1BzLOQt
+      FAOEHsDpU5xiKF8b8jnTfDOXyo3bady6kLgNr7Lx8MWXWl8twztsEVsay3HTwR9L5rP7nmVs
+      aPTTuOFRorzz+OXWi/ddDZwaTm7lRrY3bmVh3A58f738oCe453kKS/eRsbKWRn8jW16YyZiI
+      kLdQDBB6ABGDGEQH/7riO2w08aPjuOVmsAYPIYZznLv0DpLpj/GbvLuItICTzTTsTqVgTgKD
+      LbAGT2bWjFFsa9hzcbT40cR1D8aQmN6XuG+XzcCCEoruisTCIvL2kQyLCnkLxQChB3DH3SR8
+      tYWGpq6+p+1FfNworJAXLuKMMM4CJTFvQSoNy0upajlOEDhzdDdvNxzuc87LRCWSOqGBtb9v
+      4XgQgse38Zp3P5NTk65pmDsnuTm7dimr3w8QJEjgyEE+1t3r5XOEdRo0+t5lvFUyjPqFOSS7
+      XGQVvMCHN98awkhDeXBpJRPeXUhOsovknBWcnPEST3mu7fjFSnqSNUvupO4nmSS7kplaXMXf
+      T4ewOmIMXQ0qRtOlEGI0BSBGUwBiNAUgRtNtUsVo2gOI0RSAGE0BiNEUgBhNAYjRwvhF2CG8
+      swt4sbXnYUQMYzxP8vQT6dyuyzzlSyLsPcB3Kmxs26bG+zQTDiwh/0c+DjmxZiL9wLFDoIG3
+      JVL0qwUkf/gGb/qDTg0r8n/l7GeA6Eympnex9/327sddflY9nE2m243bM53S6oN8No1D3tm4
+      F/4Ob2kB2Zlu3J5ZvPS3C1++deFfVUyOx43b7WF6qZf3uoDgDioyc3n5HxdGCbKjIpPZ3kM9
+      i11FcY4Ht9uNZ3op3vdC+9GO3Pgc/hBsYQ2A/R99BBylumwFZx5ex1bbps5XTNTqUqpae5nt
+      1CDGP/YKG2trWPm9k6x7uxmAo9VllDSPZbGvDrvOR3HUeuY/V0PASsGdeYz6hp7Bgjuxa0eT
+      nfUNOFpNWUkzYxf7qLPr8BVHsX7+c9ToC23phcMBBAmeg1EjRkCghV3NB/jTghwy3G4ychax
+      +Xg7Rzp6mW1YPKOHDsJiILcOuaXnyQAtu5pJzitkXIwFVgzpBbmMrG+iGYsUzzRO1G6nFQju
+      tKkdnUFaLARadtGcnEfhuBgsLGLSC8gdWU9Ts7NbKjeGMM4C9SJQR019NOOyvw58AIxj/psr
+      eTDW0aUAYI13M/nEb9neOpMOu5axnnnEAnqjl2vh2B7g7L+b8ZatpGHsXApcFkQmkDRuL2+s
+      +AuHzwKc5ZP9Dey56lNEkSRMSqTRt4a9nUEIdlK/dj0H0yeSCGC5yJhygnd2+rBrk8nO6v5/
+      lsiESSQ2+lizt5MgQTrr17L+YDoTE53aUrmRhL0H2PwLN5sBIoaTlPME6x5Jp/sNP5bvP7WY
+      A888z6ysX3OaCGLGuHn056lXPXbsfc+ytL2ERXkZdJ6OYHhaIZUlWUT2vD5+6n18MvdFatPL
+      eDzy05l4dmk7JYvyyOg8TcTwNAorS8iKvNJSxGR9/iZYl0PLjUyXQojR/guZpTJ22eEzjAAA
+      AABJRU5ErkJggg==
+    </thumbnail>
+  </thumbnails>
+</workbook>

@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# SQL Server Management Studio Solution File, Format Version 14.00
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D9314E83-C60A-4D2D-A4E9-5F44C0D68656}"
+	ProjectSection(SolutionItems) = preProject
+		KeyCharacteristics.sql = KeyCharacteristics.sql
+		QualityOfCareParameterData.sql = QualityOfCareParameterData.sql
+		QueryGala-Formatted.sql = QueryGala-Formatted.sql
+		HF data request from Dr_Leighton\QueryGala.sql = HF data request from Dr_Leighton\QueryGala.sql
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Default|Default = Default|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ACC4E4D8-BDAC-41DB-B832-ED2A74D8DBDF}.Default|Default.ActiveCfg = Default
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
