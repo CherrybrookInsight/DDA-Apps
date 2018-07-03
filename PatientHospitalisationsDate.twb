@@ -1,0 +1,1867 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 10000.16.0812.0001                               -->
+<workbook source-build='10.0.0 (10000.16.0812.0001)' source-platform='win' version='10.0' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='HF_Patient_Hospitalisations (HFM_Feed)' inline='true' name='federated.1swgh7a0hpkkb318vc37l0q3bood' version='10.0'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='GCPRBI02' name='sqlserver.10a2fmq0uforxl1cuo3xz01dsbyo'>
+            <connection authentication='sspi' class='sqlserver' dbname='HFM_Feed' odbc-native-protocol='yes' one-time-sql='' server='GCPRBI02' />
+          </named-connection>
+        </named-connections>
+        <relation connection='sqlserver.10a2fmq0uforxl1cuo3xz01dsbyo' name='HF_Patient_Hospitalisations' table='[dbo].[HF_Patient_Hospitalisations]' type='table' />
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>HT_PAT_ID</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[HT_PAT_ID]</local-name>
+            <parent-name>[HF_Patient_Hospitalisations]</parent-name>
+            <remote-alias>HT_PAT_ID</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>false</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>VISIT_ID</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[VISIT_ID]</local-name>
+            <parent-name>[HF_Patient_Hospitalisations]</parent-name>
+            <remote-alias>VISIT_ID</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>false</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>HP_HOSPITALISATION_NUMBER</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[HP_HOSPITALISATION_NUMBER]</local-name>
+            <parent-name>[HF_Patient_Hospitalisations]</parent-name>
+            <remote-alias>HP_HOSPITALISATION_NUMBER</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>HP_DATE_OF_ADMISSION</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[HP_DATE_OF_ADMISSION]</local-name>
+            <parent-name>[HF_Patient_Hospitalisations]</parent-name>
+            <remote-alias>HP_DATE_OF_ADMISSION</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>HP_DATE_OF_DISCHARGE</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[HP_DATE_OF_DISCHARGE]</local-name>
+            <parent-name>[HF_Patient_Hospitalisations]</parent-name>
+            <remote-alias>HP_DATE_OF_DISCHARGE</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>HP_PRESENTATION</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[HP_PRESENTATION]</local-name>
+            <parent-name>[HF_Patient_Hospitalisations]</parent-name>
+            <remote-alias>HP_PRESENTATION</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>HP_PRECIPITANT_ISCHAEMIA_ACS</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[HP_PRECIPITANT_ISCHAEMIA_ACS]</local-name>
+            <parent-name>[HF_Patient_Hospitalisations]</parent-name>
+            <remote-alias>HP_PRECIPITANT_ISCHAEMIA_ACS</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>HP_PRECIPITANT_ISCHAEMIA_STEMI_NSTEMI</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[HP_PRECIPITANT_ISCHAEMIA_STEMI_NSTEMI]</local-name>
+            <parent-name>[HF_Patient_Hospitalisations]</parent-name>
+            <remote-alias>HP_PRECIPITANT_ISCHAEMIA_STEMI_NSTEMI</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>HP_PRECIPITANT_ISCHAEMIA_ACS_PEAK_TROPONIN</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[HP_PRECIPITANT_ISCHAEMIA_ACS_PEAK_TROPONIN]</local-name>
+            <parent-name>[HF_Patient_Hospitalisations]</parent-name>
+            <remote-alias>HP_PRECIPITANT_ISCHAEMIA_ACS_PEAK_TROPONIN</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>HP_PRECIPITANT_ISCHAEMIA_ACS_PEAK_CK</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[HP_PRECIPITANT_ISCHAEMIA_ACS_PEAK_CK]</local-name>
+            <parent-name>[HF_Patient_Hospitalisations]</parent-name>
+            <remote-alias>HP_PRECIPITANT_ISCHAEMIA_ACS_PEAK_CK</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>HP_PRECIPITANT_ARRHYTHMIA</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[HP_PRECIPITANT_ARRHYTHMIA]</local-name>
+            <parent-name>[HF_Patient_Hospitalisations]</parent-name>
+            <remote-alias>HP_PRECIPITANT_ARRHYTHMIA</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>HP_PRECIPITANT_ATRIAL_FIBRILLATION</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[HP_PRECIPITANT_ATRIAL_FIBRILLATION]</local-name>
+            <parent-name>[HF_Patient_Hospitalisations]</parent-name>
+            <remote-alias>HP_PRECIPITANT_ATRIAL_FIBRILLATION</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>HP_PRECIPITANT_ATRIAL_FLUTTER</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[HP_PRECIPITANT_ATRIAL_FLUTTER]</local-name>
+            <parent-name>[HF_Patient_Hospitalisations]</parent-name>
+            <remote-alias>HP_PRECIPITANT_ATRIAL_FLUTTER</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>HP_PRECIPITANT_INFECTION_SEPSIS</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[HP_PRECIPITANT_INFECTION_SEPSIS]</local-name>
+            <parent-name>[HF_Patient_Hospitalisations]</parent-name>
+            <remote-alias>HP_PRECIPITANT_INFECTION_SEPSIS</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>HP_PRECIPITANT_RENAIL_FAILURE</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[HP_PRECIPITANT_RENAIL_FAILURE]</local-name>
+            <parent-name>[HF_Patient_Hospitalisations]</parent-name>
+            <remote-alias>HP_PRECIPITANT_RENAIL_FAILURE</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>HP_PRECIPITANT_NON_COMPLIANCE_MEDICATION</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[HP_PRECIPITANT_NON_COMPLIANCE_MEDICATION]</local-name>
+            <parent-name>[HF_Patient_Hospitalisations]</parent-name>
+            <remote-alias>HP_PRECIPITANT_NON_COMPLIANCE_MEDICATION</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>HP_PRECIPITANT_NON_COMPLIANCE_NON_PHARMA</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[HP_PRECIPITANT_NON_COMPLIANCE_NON_PHARMA]</local-name>
+            <parent-name>[HF_Patient_Hospitalisations]</parent-name>
+            <remote-alias>HP_PRECIPITANT_NON_COMPLIANCE_NON_PHARMA</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>HP_PRECIPITANT_HYPERTENSION</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[HP_PRECIPITANT_HYPERTENSION]</local-name>
+            <parent-name>[HF_Patient_Hospitalisations]</parent-name>
+            <remote-alias>HP_PRECIPITANT_HYPERTENSION</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>HP_PRECIPITANT_OTHER</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[HP_PRECIPITANT_OTHER]</local-name>
+            <parent-name>[HF_Patient_Hospitalisations]</parent-name>
+            <remote-alias>HP_PRECIPITANT_OTHER</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>HP_PRECIPITANT_OTHER_DETAILS</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[HP_PRECIPITANT_OTHER_DETAILS]</local-name>
+            <parent-name>[HF_Patient_Hospitalisations]</parent-name>
+            <remote-alias>HP_PRECIPITANT_OTHER_DETAILS</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Hp Date Of Admission' datatype='string' name='[HP_DATE_OF_ADMISSION]' role='dimension' type='nominal' />
+      <column caption='Hp Date Of Discharge' datatype='string' name='[HP_DATE_OF_DISCHARGE]' role='dimension' type='nominal' />
+      <column caption='Hp Hospitalisation Number' datatype='integer' name='[HP_HOSPITALISATION_NUMBER]' role='dimension' type='ordinal' />
+      <column caption='Hp Precipitant Arrhythmia' datatype='string' name='[HP_PRECIPITANT_ARRHYTHMIA]' role='dimension' type='nominal' />
+      <column caption='Hp Precipitant Atrial Fibrillation' datatype='string' name='[HP_PRECIPITANT_ATRIAL_FIBRILLATION]' role='dimension' type='nominal' />
+      <column caption='Hp Precipitant Atrial Flutter' datatype='string' name='[HP_PRECIPITANT_ATRIAL_FLUTTER]' role='dimension' type='nominal' />
+      <column caption='Hp Precipitant Hypertension' datatype='string' name='[HP_PRECIPITANT_HYPERTENSION]' role='dimension' type='nominal' />
+      <column caption='Hp Precipitant Infection Sepsis' datatype='string' name='[HP_PRECIPITANT_INFECTION_SEPSIS]' role='dimension' type='nominal' />
+      <column caption='Hp Precipitant Ischaemia Acs' datatype='string' name='[HP_PRECIPITANT_ISCHAEMIA_ACS]' role='dimension' type='nominal' />
+      <column caption='Hp Precipitant Ischaemia Acs Peak Ck' datatype='string' name='[HP_PRECIPITANT_ISCHAEMIA_ACS_PEAK_CK]' role='dimension' type='nominal' />
+      <column caption='Hp Precipitant Ischaemia Acs Peak Troponin' datatype='string' name='[HP_PRECIPITANT_ISCHAEMIA_ACS_PEAK_TROPONIN]' role='dimension' type='nominal' />
+      <column caption='Hp Precipitant Ischaemia Stemi Nstemi' datatype='string' name='[HP_PRECIPITANT_ISCHAEMIA_STEMI_NSTEMI]' role='dimension' type='nominal' />
+      <column caption='Hp Precipitant Non Compliance Medication' datatype='string' name='[HP_PRECIPITANT_NON_COMPLIANCE_MEDICATION]' role='dimension' type='nominal' />
+      <column caption='Hp Precipitant Non Compliance Non Pharma' datatype='string' name='[HP_PRECIPITANT_NON_COMPLIANCE_NON_PHARMA]' role='dimension' type='nominal' />
+      <column caption='Hp Precipitant Other' datatype='string' name='[HP_PRECIPITANT_OTHER]' role='dimension' type='nominal' />
+      <column caption='Hp Precipitant Other Details' datatype='string' name='[HP_PRECIPITANT_OTHER_DETAILS]' role='dimension' type='nominal' />
+      <column caption='Hp Precipitant Renail Failure' datatype='string' name='[HP_PRECIPITANT_RENAIL_FAILURE]' role='dimension' type='nominal' />
+      <column caption='Hp Presentation' datatype='string' name='[HP_PRESENTATION]' role='dimension' type='nominal' />
+      <column caption='Ht Pat Id' datatype='string' name='[HT_PAT_ID]' role='dimension' type='nominal' />
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='Visit Id' datatype='string' name='[VISIT_ID]' role='dimension' type='nominal' />
+      <extract count='-1' enabled='true' units='records'>
+        <connection class='dataengine' dbname='C:\Project\Amgen Data Request\HF_Patient_Hospitalisations (HFM_Feed).tde' schema='Extract' tablename='Extract' update-time='06/18/2018 12:19:37 AM'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <calculations>
+            <calculation column='[Number of Records]' formula='1' />
+          </calculations>
+          <refresh>
+            <refresh-event add-from-file-path='' increment-value='%null%' refresh-type='create' rows-inserted='136' timestamp-start='2018-06-18 00:19:37.484' />
+          </refresh>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>HP_DATE_OF_ADMISSION</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[HP_DATE_OF_ADMISSION]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>HP_DATE_OF_ADMISSION</remote-alias>
+              <ordinal>0</ordinal>
+              <family>HF_Patient_Hospitalisations</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>120</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;01-01-2017&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;31/10/2017&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>132</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>17</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>2</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>HP_DATE_OF_DISCHARGE</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[HP_DATE_OF_DISCHARGE]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>HP_DATE_OF_DISCHARGE</remote-alias>
+              <ordinal>1</ordinal>
+              <family>HF_Patient_Hospitalisations</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>38</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;02/01/2018&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;31/01/2018&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>44</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>14</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>2</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>HP_HOSPITALISATION_NUMBER</remote-name>
+              <remote-type>16</remote-type>
+              <local-name>[HP_HOSPITALISATION_NUMBER]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>HP_HOSPITALISATION_NUMBER</remote-alias>
+              <ordinal>2</ordinal>
+              <family>HF_Patient_Hospitalisations</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Sum' datatype='real'>7.0</statistic>
+                <statistic aggregation='Avg' datatype='real'>0.051470588235294115</statistic>
+                <statistic aggregation='Min' datatype='integer'>0</statistic>
+                <statistic aggregation='Max' datatype='integer'>2</statistic>
+                <statistic aggregation='Stdev' datatype='real'>0.2529779068431916</statistic>
+                <statistic aggregation='StdevP' datatype='real'>0.25204612501474427</statistic>
+                <statistic aggregation='Var' datatype='real'>0.063997821350762527</statistic>
+                <statistic aggregation='VarP' datatype='real'>0.063527249134948102</statistic>
+                <statistic aggregation='Count' datatype='integer'>136</statistic>
+                <statistic aggregation='Median' datatype='integer'>0</statistic>
+                <statistic aggregation='SumXSqr' datatype='real'>9.0</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>1</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>10</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;sint8&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>HP_PRECIPITANT_ARRHYTHMIA</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[HP_PRECIPITANT_ARRHYTHMIA]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>HP_PRECIPITANT_ARRHYTHMIA</remote-alias>
+              <ordinal>3</ordinal>
+              <family>HF_Patient_Hospitalisations</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>8</statistic>
+                <statistic aggregation='Median' datatype='string'>&quot;True&quot;</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (ordered)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>0</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>HP_PRECIPITANT_ATRIAL_FIBRILLATION</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[HP_PRECIPITANT_ATRIAL_FIBRILLATION]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>HP_PRECIPITANT_ATRIAL_FIBRILLATION</remote-alias>
+              <ordinal>4</ordinal>
+              <family>HF_Patient_Hospitalisations</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>1</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>HP_PRECIPITANT_ATRIAL_FLUTTER</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[HP_PRECIPITANT_ATRIAL_FLUTTER]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>HP_PRECIPITANT_ATRIAL_FLUTTER</remote-alias>
+              <ordinal>5</ordinal>
+              <family>HF_Patient_Hospitalisations</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>1</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Count' datatype='integer'>0</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (ordered)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>HP_PRECIPITANT_HYPERTENSION</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[HP_PRECIPITANT_HYPERTENSION]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>HP_PRECIPITANT_HYPERTENSION</remote-alias>
+              <ordinal>6</ordinal>
+              <family>HF_Patient_Hospitalisations</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>1</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>2</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>HP_PRECIPITANT_INFECTION_SEPSIS</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[HP_PRECIPITANT_INFECTION_SEPSIS]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>HP_PRECIPITANT_INFECTION_SEPSIS</remote-alias>
+              <ordinal>7</ordinal>
+              <family>HF_Patient_Hospitalisations</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>24</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>3</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>HP_PRECIPITANT_ISCHAEMIA_ACS</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[HP_PRECIPITANT_ISCHAEMIA_ACS]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>HP_PRECIPITANT_ISCHAEMIA_ACS</remote-alias>
+              <ordinal>8</ordinal>
+              <family>HF_Patient_Hospitalisations</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>8</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>4</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>HP_PRECIPITANT_ISCHAEMIA_ACS_PEAK_CK</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[HP_PRECIPITANT_ISCHAEMIA_ACS_PEAK_CK]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>HP_PRECIPITANT_ISCHAEMIA_ACS_PEAK_CK</remote-alias>
+              <ordinal>9</ordinal>
+              <family>HF_Patient_Hospitalisations</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>5</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;97&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>43</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>12</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>HP_PRECIPITANT_ISCHAEMIA_ACS_PEAK_TROPONIN</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[HP_PRECIPITANT_ISCHAEMIA_ACS_PEAK_TROPONIN]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>HP_PRECIPITANT_ISCHAEMIA_ACS_PEAK_TROPONIN</remote-alias>
+              <ordinal>10</ordinal>
+              <family>HF_Patient_Hospitalisations</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>9</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;93&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>46</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>13</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>HP_PRECIPITANT_ISCHAEMIA_STEMI_NSTEMI</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[HP_PRECIPITANT_ISCHAEMIA_STEMI_NSTEMI]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>HP_PRECIPITANT_ISCHAEMIA_STEMI_NSTEMI</remote-alias>
+              <ordinal>11</ordinal>
+              <family>HF_Patient_Hospitalisations</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;NSTEMI&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;NSTEMI&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>7</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>5</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>HP_PRECIPITANT_NON_COMPLIANCE_MEDICATION</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[HP_PRECIPITANT_NON_COMPLIANCE_MEDICATION]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>HP_PRECIPITANT_NON_COMPLIANCE_MEDICATION</remote-alias>
+              <ordinal>12</ordinal>
+              <family>HF_Patient_Hospitalisations</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>7</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>6</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>HP_PRECIPITANT_NON_COMPLIANCE_NON_PHARMA</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[HP_PRECIPITANT_NON_COMPLIANCE_NON_PHARMA]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>HP_PRECIPITANT_NON_COMPLIANCE_NON_PHARMA</remote-alias>
+              <ordinal>13</ordinal>
+              <family>HF_Patient_Hospitalisations</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>8</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>7</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>HP_PRECIPITANT_OTHER</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[HP_PRECIPITANT_OTHER]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>HP_PRECIPITANT_OTHER</remote-alias>
+              <ordinal>14</ordinal>
+              <family>HF_Patient_Hospitalisations</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>76</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>8</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>HP_PRECIPITANT_OTHER_DETAILS</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[HP_PRECIPITANT_OTHER_DETAILS]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>HP_PRECIPITANT_OTHER_DETAILS</remote-alias>
+              <ordinal>15</ordinal>
+              <family>HF_Patient_Hospitalisations</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>67</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;Worsening RHF, liver congestion  ?not absorbing oral diuretics&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>89</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>15</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>2</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>HP_PRECIPITANT_RENAIL_FAILURE</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[HP_PRECIPITANT_RENAIL_FAILURE]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>HP_PRECIPITANT_RENAIL_FAILURE</remote-alias>
+              <ordinal>16</ordinal>
+              <family>HF_Patient_Hospitalisations</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;True&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>12</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>9</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>HP_PRESENTATION</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[HP_PRESENTATION]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>HP_PRESENTATION</remote-alias>
+              <ordinal>17</ordinal>
+              <family>HF_Patient_Hospitalisations</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>3</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;ED presentation or &lt;24 hours&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;Hospital admission or &gt;24 hours&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>135</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>11</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>HT_PAT_ID</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[HT_PAT_ID]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>HT_PAT_ID</remote-alias>
+              <ordinal>18</ordinal>
+              <family>HF_Patient_Hospitalisations</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>92</approx-count>
+              <scale>1</scale>
+              <width>255</width>
+              <contains-null>false</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;133423&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;412532&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>136</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>1020</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>16</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>2</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Number of Records</remote-name>
+              <remote-type>16</remote-type>
+              <local-name>[Number of Records]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Number of Records</remote-alias>
+              <ordinal>19</ordinal>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Sum' datatype='real'>136.0</statistic>
+                <statistic aggregation='Avg' datatype='real'>1.0</statistic>
+                <statistic aggregation='Min' datatype='integer'>1</statistic>
+                <statistic aggregation='Max' datatype='integer'>1</statistic>
+                <statistic aggregation='Stdev' datatype='real'>0.0</statistic>
+                <statistic aggregation='StdevP' datatype='real'>0.0</statistic>
+                <statistic aggregation='Var' datatype='real'>0.0</statistic>
+                <statistic aggregation='VarP' datatype='real'>0.0</statistic>
+                <statistic aggregation='Count' datatype='integer'>136</statistic>
+                <statistic aggregation='Median' datatype='integer'>1</statistic>
+                <statistic aggregation='SumXSqr' datatype='real'>136.0</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteMetadata (ordered)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;sint8&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>VISIT_ID</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[VISIT_ID]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>VISIT_ID</remote-alias>
+              <ordinal>20</ordinal>
+              <family>HF_Patient_Hospitalisations</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>130</approx-count>
+              <scale>1</scale>
+              <width>255</width>
+              <contains-null>false</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;013f6036-858a-4d13-aa77-d7f01c2994c0&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;fefdcc49-dd86-4cb2-9761-d11c597082ee&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>136</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>1020</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>18</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>2</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' dim-percentage='0.751889' measure-ordering='alphabetic' measure-percentage='0.248111' show-aliased-fields='true' show-hidden-fields='true' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Australia&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+      <filter class='categorical' column='[HP_DATE_OF_ADMISSION]' filter-group='2'>
+        <groupfilter function='level-members' level='[HP_DATE_OF_ADMISSION]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+      </filter>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='HF_Patient_Hospitalisations (HFM_Feed)' name='federated.1swgh7a0hpkkb318vc37l0q3bood' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1swgh7a0hpkkb318vc37l0q3bood'>
+            <column caption='Hp Date Of Admission' datatype='string' name='[HP_DATE_OF_ADMISSION]' role='dimension' type='nominal' />
+            <column caption='Ht Pat Id' datatype='string' name='[HT_PAT_ID]' role='dimension' type='nominal' />
+            <column caption='Visit Id' datatype='string' name='[VISIT_ID]' role='dimension' type='nominal' />
+            <column-instance column='[HP_DATE_OF_ADMISSION]' derivation='None' name='[none:HP_DATE_OF_ADMISSION:nk]' pivot='key' type='nominal' />
+            <column-instance column='[HT_PAT_ID]' derivation='None' name='[none:HT_PAT_ID:nk]' pivot='key' type='nominal' />
+            <column-instance column='[VISIT_ID]' derivation='None' name='[none:VISIT_ID:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <sort class='alphabetic' column='[federated.1swgh7a0hpkkb318vc37l0q3bood].[none:HP_DATE_OF_ADMISSION:nk]' direction='DESC' />
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='header'>
+            <format attr='width' field='[federated.1swgh7a0hpkkb318vc37l0q3bood].[none:HP_DATE_OF_ADMISSION:nk]' value='144' />
+            <format attr='width' field='[federated.1swgh7a0hpkkb318vc37l0q3bood].[none:VISIT_ID:nk]' value='296' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>([federated.1swgh7a0hpkkb318vc37l0q3bood].[none:HT_PAT_ID:nk] / ([federated.1swgh7a0hpkkb318vc37l0q3bood].[none:VISIT_ID:nk] / [federated.1swgh7a0hpkkb318vc37l0q3bood].[none:HP_DATE_OF_ADMISSION:nk]))</rows>
+        <cols />
+      </table>
+    </worksheet>
+  </worksheets>
+  <windows source-height='30'>
+    <window class='worksheet' maximized='true' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card AVG='true' KURTOSIS='false' MAX='true' MEDIAN='true' MIN='true' QUART1='false' QUART3='false' SKEWNESS='false' STDEV='false' SUM='true' type='summary' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.1swgh7a0hpkkb318vc37l0q3bood].[none:HP_DATE_OF_ADMISSION:nk]</field>
+            <field>[federated.1swgh7a0hpkkb318vc37l0q3bood].[none:HT_PAT_ID:nk]</field>
+            <field>[federated.1swgh7a0hpkkb318vc37l0q3bood].[none:VISIT_ID:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Sheet 1' width='192'>
+      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
+      AElFTkSuQmCC
+    </thumbnail>
+  </thumbnails>
+</workbook>
